@@ -1,0 +1,19 @@
+{
+  "emoji": true,
+  "color": true,
+  "local_requests": false,
+  "master_timeout": "30s",
+  "verbose": true,
+  "es_config": {
+    "hot1": {
+      "hostname": "localhost",
+      "port": "9200",
+      "default": false
+    },
+    "hot2": {
+      "hostname": "localhost",
+      "port": "9202",
+      "default": false
+    }
+  }
+}
