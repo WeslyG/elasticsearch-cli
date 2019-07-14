@@ -10,6 +10,7 @@ elasticsearch_cli.egg-info/top_level.txt
 source/__init__.py
 source/config.py
 source/es_connect.py
+source/main.py
 source/api/__init__.py
 source/api/allocation/__init__.py
 source/api/allocation/allocation.py
