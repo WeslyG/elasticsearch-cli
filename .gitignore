@@ -3,4 +3,4 @@ __pycache__
 *.pyc
 venv
 .vscode
-es.egg-info
+elasticsearch_cli.egg-info
