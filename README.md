@@ -115,7 +115,7 @@ chmod + x run.sh
 
 #### OR Docker
 
-Connection parameter variables are set in docker-compose.yml file.
+Connection variables are set in docker-compose.yml file.
 
 The following variables are available:
 ES_HOST - Elasticsearch address
