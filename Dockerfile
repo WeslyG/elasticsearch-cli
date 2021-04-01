@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 ENV ELASTIC_CLI_HOME /opt/elasticsearch-cli
-ARG URL=https://github.com/eaxr/elasticsearch-cli.git
+ARG URL=https://github.com/WeslyG/elasticsearch-cli.git
 
 WORKDIR /opt
 RUN apt-get update && apt-get upgrade -y
