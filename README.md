@@ -113,6 +113,30 @@ chmod + x run.sh
 
 ```
 
+#### OR Docker
+
+Connection variables are set in docker-compose.yml file.
+
+The following variables are available:
+ES_HOST - Elasticsearch address
+ES_PORT - Elasticsearch port
+ES_USERNAME - name to connect to the cluster
+ES_PASSWORD password to connect to the cluster
+ES_SSL - use SSL (default is use_ssl)
+ES_SSL_VERIFY - SSL verification type (by default verify_certs)
+ES_SSL_CA - path to the CA certificate, which is specified in the "volumes" section
+
+```
+git clone https://github.com/eaxr/elasticsearch-cli.git
+cd elasticsearch-cli
+docker-compose up -d --build
+docker exec -it elasticsearch-cli /bin/bash
+es health
+
+```
+
+![alt text](https://github.com/eaxr/elasticsearch-cli/blob/eaxr-patch-1/etc/esclidocker.PNG?raw=true)
+
 #### Tests
 
 pytest
