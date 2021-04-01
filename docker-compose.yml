@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  elastic:
+    container_name: elasticsearch-cli
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - "ES_HOST=hostname"
+      - "ES_PORT=9200"
+      - "ES_USERNAME=username"
+      - "ES_PASSWORD=password"
+      - "ES_SSL=use_ssl"
+      - "ES_SSL_VERIFY=verify_certs"
+      - "ES_SSL_CA=/.../.crt"
+    volumes:
+      - /.../certs:/.../certs
+
+    command: bash -c "while true; do sleep 5; done;"
+    working_dir: /opt/elasticsearch-cli
