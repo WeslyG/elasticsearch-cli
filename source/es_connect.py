@@ -1,17 +1,17 @@
 from elasticsearch import Elasticsearch
 import os
 
-host = os.environ.get('ES_HOST')
-port = os.environ.get('ES_PORT')
+host = os.environ.get('ES_HOST', 'localhost')
+port = os.environ.get('ES_PORT', '9200')
 
-name = os.environ.get('ES_USERNAME')
-secret = os.environ.get('ES_PASSWORD')
+name = os.environ.get('ES_USERNAME', '')
+secret = os.environ.get('ES_PASSWORD', '')
 
-ssl = os.environ.get('ES_SSL')
-ssl_verify = os.environ.get('ES_SSL_VERIFY')
-ssl_ca = os.environ.get('ES_SSL_CA')
-ssl_cert = os.environ.get('ES_SSL_CERT')
-ssl_key = os.environ.get('ES_SSL_KEY')
+ssl = os.environ.get('ES_SSL', '')
+ssl_verify = os.environ.get('ES_SSL_VERIFY', '')
+ssl_ca = os.environ.get('ES_SSL_CA', '')
+ssl_cert = os.environ.get('ES_SSL_CERT', '')
+ssl_key = os.environ.get('ES_SSL_KEY', '')
 
 def es_connect():
     return Elasticsearch(
