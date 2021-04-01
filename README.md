@@ -135,7 +135,7 @@ es health
 
 ```
 
-![alt text](https://github.com/eaxr/elasticsearch-cli/blob/eaxr-patch-1/etc/esclidocker.PNG?raw=true)
+![alt text](https://github.com/WeslyG/elasticsearch-cli/blob/master/etc/esclidocker.PNG?raw=true)
 
 #### Tests
 
