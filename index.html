@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta
+            name="description"
+            content="Проверяемые контракты Elasticsearch: исходники, реальные HTTP-сценарии и открытые пробелы."
+        />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'"
+        />
+        <title>Contract Atlas · Elasticsearch</title>
+        <link rel="stylesheet" href="styles.css" />
+        <script src="app.js" defer></script>
+    </head>
+    <body>
+        <a class="skip" href="#results">К результатам</a>
+        <header class="topbar">
+            <a class="brand" href="./"
+                ><span class="brand-mark" aria-hidden="true">⌘</span
+                ><span
+                    >CONTRACT ATLAS<small
+                        >ELASTICSEARCH · RESEARCH NOTES</small
+                    ></span
+                ></a
+            >
+            <div class="top-actions">
+                <span class="local-badge">STATIC / NO TRACKING</span
+                ><button id="share" class="quiet">Ссылка на выборку ↗</button>
+            </div>
+        </header>
+        <main>
+            <section class="intro">
+                <div>
+                    <p class="eyebrow">ОТ ИСХОДНИКА — К НАБЛЮДЕНИЮ</p>
+                    <h1>Контракты.<br /><em>Без догадок.</em></h1>
+                    <p class="lede">
+                        Исследование Elasticsearch 6–9: какие запросы
+                        действительно выполнялись, что вернул сервер и что ещё
+                        предстоит проверить.
+                    </p>
+                </div>
+                <aside class="research-note">
+                    <span class="note-number">01 / МЕТОД</span>
+                    <h2>Успешный сценарий ≠<br />полное покрытие API.</h2>
+                    <p>
+                        Здесь отдельно показаны определения из source, реальные
+                        наблюдения и незакрытые контракты. Ни один релиз не
+                        объявлен полностью поддержанным.
+                    </p>
+                    <span id="buildDate" class="muted">Загрузка снимка…</span>
+                </aside>
+            </section>
+            <section
+                id="metrics"
+                class="metrics"
+                aria-label="Выбранные данные"
+            ></section>
+            <details class="version-map">
+                <summary>
+                    Матрица версий <span id="matrixCount"></span
+                    ><span class="muted">/ выбрать релиз</span>
+                </summary>
+                <div id="versions" class="version-grid"></div>
+            </details>
+            <section class="workspace">
+                <div class="workspace-head">
+                    <div>
+                        <p class="eyebrow">ОБЗОР ДОКАЗАТЕЛЬСТВ</p>
+                        <h2>Исследовать отчёт</h2>
+                    </div>
+                    <nav class="tabs" aria-label="Представление">
+                        <button data-tab="operations" aria-pressed="true">
+                            Операции</button
+                        ><button data-tab="scenarios" aria-pressed="false">
+                            Сценарии</button
+                        ><button data-tab="compare" aria-pressed="false">
+                            Сравнение</button
+                        ><button data-tab="journal" aria-pressed="false">
+                            Журнал</button
+                        ><button data-tab="method" aria-pressed="false">
+                            Методика
+                        </button>
+                    </nav>
+                </div>
+                <div class="filters" id="filters">
+                    <label>Версия<select id="version"></select></label
+                    ><label id="queryLabel" class="search-label"
+                        >Поиск <span class="key">/</span
+                        ><input
+                            id="query"
+                            type="search"
+                            placeholder="API, путь или сценарий"
+                            autocomplete="off" /></label
+                    ><label id="methodLabel"
+                        >Метод<select id="method">
+                            <option value="">Все методы</option>
+                            <option>GET</option>
+                            <option>HEAD</option>
+                            <option>POST</option>
+                            <option>PUT</option>
+                            <option>DELETE</option>
+                            <option>PATCH</option>
+                        </select></label
+                    ><label id="statusLabel"
+                        >Наблюдение<select id="status"></select></label
+                    ><label id="compareLabel" hidden
+                        >Операция для сравнения<select
+                            id="compareApi"
+                        ></select></label
+                    ><button id="reset" class="quiet reset">Сбросить</button>
+                </div>
+                <div class="result-heading">
+                    <p id="resultCount" role="status" aria-live="polite">
+                        Загрузка…
+                    </p>
+                    <div>
+                        <button id="export" class="quiet">
+                            Экспорт JSON ↓
+                        </button>
+                    </div>
+                </div>
+                <div id="results" tabindex="-1"></div>
+                <div id="pagination" class="pagination"></div>
+            </section>
+            <footer>
+                <span>Данные важнее обещаний.</span>
+                <p>
+                    Базовые HTML / CSS / JavaScript. Без внешних шрифтов,
+                    аналитики, CDN и обращений к кластерам.
+                </p>
+            </footer>
+        </main>
+        <dialog id="detail">
+            <div class="dialog-head">
+                <p class="eyebrow">КАРТОЧКА КОНТРАКТА</p>
+                <button
+                    id="closeDetail"
+                    class="quiet"
+                    aria-label="Закрыть карточку"
+                >
+                    Закрыть ×
+                </button>
+            </div>
+            <div id="detailBody"></div>
+        </dialog>
+        <div id="toast" role="status" aria-live="polite"></div>
+    </body>
+</html>
