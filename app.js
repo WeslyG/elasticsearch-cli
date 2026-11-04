@@ -119,7 +119,7 @@ function syncControls() {
         );
     const methodPage = state.tab === "method",
         compare = state.tab === "compare",
-        journal = state.tab === "journal";
+        journal = state.tab === "journal" || state.tab === "findings";
     $("filters").hidden = methodPage;
     $("queryLabel").hidden = compare || journal;
     $("statusLabel").hidden = compare || journal;
@@ -606,6 +606,96 @@ function renderComparison(payloads) {
     currentRows = rows;
 }
 
+function readableMarkdown(text) {
+    const article = el("article", "methodology");
+    const lines = text.split("\n");
+    const clean = (value) =>
+        value.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/\*\*|`/g, "");
+    let paragraph = [];
+    const flush = () => {
+        if (paragraph.length)
+            article.append(el("p", "", clean(paragraph.join(" "))));
+        paragraph = [];
+    };
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) {
+            flush();
+            continue;
+        }
+        if (line.startsWith("#")) {
+            flush();
+            article.append(
+                el(
+                    line.startsWith("# ") ? "h2" : "h3",
+                    "",
+                    clean(line.replace(/^#+\s*/, "")),
+                ),
+            );
+            continue;
+        }
+        if (
+            line.startsWith("|") &&
+            lines[i + 1]?.trim().match(/^\|[\s:|\-]+\|$/)
+        ) {
+            flush();
+            const cells = (value) =>
+                value
+                    .split("|")
+                    .slice(1, -1)
+                    .map((v) => clean(v.trim()));
+            const { wrap, body } = table(cells(line));
+            i++;
+            while (lines[i + 1]?.trim().startsWith("|")) {
+                const tr = el("tr");
+                for (const value of cells(lines[++i])) td(tr, value);
+                body.append(tr);
+            }
+            article.append(wrap);
+            continue;
+        }
+        if (line.startsWith("- ")) {
+            flush();
+            const list = el("ul");
+            do {
+                let value = lines[i].trim().slice(2);
+                while (
+                    lines[i + 1]?.trim() &&
+                    !lines[i + 1].trim().startsWith("- ") &&
+                    !lines[i + 1].trim().startsWith("#")
+                )
+                    value += " " + lines[++i].trim();
+                list.append(el("li", "", clean(value)));
+                i++;
+            } while (lines[i]?.trim().startsWith("- "));
+            i--;
+            article.append(list);
+            continue;
+        }
+        paragraph.push(line);
+    }
+    flush();
+    return article;
+}
+async function renderFindings() {
+    const token = renderToken;
+    try {
+        const data = await getJSON("data/findings.json");
+        if (token !== renderToken) return;
+        const key = state.v === "all" ? "all" : state.v.split(".")[0];
+        $("results").replaceChildren(readableMarkdown(data[key]));
+        $("pagination").replaceChildren();
+        $("resultCount").textContent =
+            "Выводы · " +
+            (key === "all" ? "сводный отчёт" : key + ".x") +
+            " · ограничения сохранены";
+        currentRows = [{ version: state.v, findings: data[key] }];
+    } catch (error) {
+        if (token === renderToken)
+            $("results").replaceChildren(el("p", "empty", error.message));
+    }
+}
+
 function renderJournal(payloads) {
     const article = el("article", "methodology");
     for (const p of payloads) {
@@ -703,6 +793,10 @@ async function render() {
             renderComparison(payloads);
             return;
         }
+        if (state.tab === "findings") {
+            await renderFindings();
+            return;
+        }
         if (state.tab === "journal") {
             renderJournal(payloads);
             return;
@@ -795,6 +889,7 @@ async function init() {
                 "scenarios",
                 "compare",
                 "journal",
+                "findings",
                 "method",
             ].includes(state.tab)
         )
