@@ -410,6 +410,7 @@ function showOperation(row) {
         scope: row.scope_category, basis: row.scope_basis,
         path_normalization_evidence: row.path_normalization_evidence,
         parameters: row.parameter_facts,
+        additional_parameters_from_pinned_handlers: row.query_parameter_source_facts,
         open_dimensions: row.required_dimension_facts,
         note: "Наличие параметра в определении не подтверждает его семантику в живом кластере."
     });
@@ -431,7 +432,8 @@ function showOperation(row) {
                 " " +
                 (observation.status ?? "") +
                 " · " +
-                (labels[observation.result] || observation.result),
+                (labels[observation.result] || observation.result) +
+                (observation.run_id ? " · " + observation.run_id : " · v1"),
         );
         b.addEventListener("click", () => showCase(observation));
         list.append(b);
