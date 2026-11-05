@@ -79,18 +79,67 @@ def sample(value):
     }
 
 
+def evidence_folders(version):
+    for outcome in sorted(
+        (ROOT / "docs/research/runs" / version).glob("*/attempts/*/driver-outcome.json")
+    ):
+        driver = json.loads(outcome.read_text())
+        if driver["evidence_copied"] and (outcome.parent / "manifest.json").exists():
+            yield outcome.parent, driver
+
+
+def load_attribution(version, source_commit):
+    path = ROOT / "docs/research/source-analysis" / version / "nodes-info-attribution.json"
+    if not path.exists():
+        return None
+    content = path.read_bytes()
+    fact = json.loads(content)
+    if (
+        fact["kind"] != "pinned-nodes-info-logical-route-attribution-not-new-http"
+        or fact["release"] != version
+        or fact["source_commit"] != source_commit
+        or fact["api_id"] != "nodes.info"
+    ):
+        raise ValueError("Selector attribution source differs")
+    source_facts = json.loads((path.parent / "route-scope-facts.json").read_text())
+    handlers = {row["source"]: row["sha256"] for row in source_facts["handlers"]}
+    if handlers.get(fact["handler"]["path"]) != fact["handler"]["sha256"]:
+        raise ValueError("Selector attribution handler bytes differ")
+    allowed = set(fact["metric_source"]["allowed_metrics"])
+    if not {"jvm", "process"} <= allowed or "_local" in allowed:
+        raise ValueError("Unexpected pinned metric membership proof")
+    return {
+        "source_ref": str(path.relative_to(ROOT)),
+        "sha256": hashlib.sha256(content).hexdigest(),
+        "facts": fact,
+    }
+
+
+def attributed_routes(api, method, path, routes, trailing_slash=False, proof=None):
+    candidates = best_routes(method, path, routes, trailing_slash)
+    if len(candidates) < 2 or not proof or api != proof["facts"]["api_id"]:
+        return candidates
+    rules = [
+        rule
+        for rule in proof["facts"]["attributions"]
+        if rule["method"] == method and rule["wire_path"] == path
+    ]
+    if not rules:
+        return candidates
+    if len(rules) != 1:
+        raise ValueError("Conflicting selector attributions")
+    selected = [index for index in candidates if routes[index]["path"] == rules[0]["source_path"]]
+    if len(selected) != 1:
+        raise ValueError("Attribution does not select one existing ambiguous source route")
+    return selected
+
+
 def build(version):
     folder = ROOT / "docs/research/versions" / version
     backlog_path = folder / "contract-backlog.json"
     backlog = json.loads(backlog_path.read_text())
     attempts, calls, effects = [], defaultdict(list), []
-    for outcome in sorted(
-        (ROOT / "docs/research/runs" / version).glob("*/attempts/*/driver-outcome.json")
-    ):
-        source = outcome.parent
-        driver = json.loads(outcome.read_text())
-        if not driver["evidence_copied"] or not (source / "manifest.json").exists():
-            continue
+    for source, driver in evidence_folders(version):
         summary = validate(source)
         rows = [
             json.loads(line) for line in (source / "observations.jsonl").read_text().splitlines()
@@ -133,6 +182,8 @@ def build(version):
     operations, unmatched = [], []
     aggregate = Counter()
     by_scope = defaultdict(Counter)
+    attribution = load_attribution(version, backlog["source_commit"])
+    attributed_calls = []
     for operation in backlog["operations"]:
         api = operation["api_id"]
         routes = operation["required_dimensions"]["method_paths"]
@@ -140,7 +191,22 @@ def build(version):
         trailing = bool(operation.get("path_normalization_evidence"))
         for reference, row in calls[api]:
             wire_path = row["request"]["path"].partition("?")[0]
-            matched = best_routes(row["request"]["method"], wire_path, routes, trailing)
+            matched = attributed_routes(
+                api, row["request"]["method"], wire_path, routes, trailing, attribution
+            )
+            if (
+                len(matched) == 1
+                and len(best_routes(row["request"]["method"], wire_path, routes, trailing)) > 1
+            ):
+                attributed_calls.append(
+                    {
+                        "ref": reference,
+                        "api_id": api,
+                        "wire_path": wire_path,
+                        "source_path": routes[matched[0]]["path"],
+                        "proof_sha256": attribution["sha256"],
+                    }
+                )
             if len(matched) == 1:
                 buckets[matched[0]].append((reference, row))
             else:
@@ -260,6 +326,8 @@ def build(version):
         },
         "operations": operations,
         "unassigned_calls": unmatched,
+        "route_attribution_proof": attribution,
+        "source_attributed_calls": attributed_calls,
         "complete_api_coverage": False,
         "limitations": [
             "Only independently indexed v2 observations; historical v1 remains separate.",
@@ -318,6 +386,15 @@ def validate_inputs(matrix):
         cwd=ROOT,
     )
     assert hashlib.sha256(original_code).hexdigest() == matrix["generator_sha256"]
+    current = [
+        str((folder / "observations.jsonl").relative_to(ROOT))
+        for folder, _ in evidence_folders(version)
+    ]
+    assert [attempt["source"] for attempt in matrix["attempts"]] == current, (
+        "Matrix does not include the current indexed attempt set"
+    )
+    attribution = load_attribution(version, backlog["source_commit"])
+    assert matrix.get("route_attribution_proof") == attribution
     attempts = []
     for attempt in matrix["attempts"]:
         source = (ROOT / attempt["source"]).resolve()
@@ -349,11 +426,13 @@ def validate_inputs(matrix):
             for reference in route["evidence_refs"]:
                 row = resolve(reference)
                 assert row["api_id"] == operation["api_id"]
-                assert best_routes(
+                assert attributed_routes(
+                    operation["api_id"],
                     row["request"]["method"],
                     row["request"]["path"].partition("?")[0],
                     routes,
                     bool(source.get("path_normalization_evidence")),
+                    attribution,
                 ) == [number]
                 rows.append(row)
             assert http_state(rows) == route["http_observation"]
