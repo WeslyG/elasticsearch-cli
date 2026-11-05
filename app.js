@@ -385,6 +385,7 @@ async function showContractMatrix(row) {
         const names = {
             "default-media-2xx-observed": "Есть HTTP 2xx · default media",
             "compatibility-media-only-2xx-observed": "HTTP 2xx только с compatibility media",
+            "misrouted-2xx-observed": "HTTP 201: вызван другой API",
             "non-2xx-only-observed": "Только ответы без 2xx",
             "transport-failure-only": "Только транспортные сбои",
             "not-observed": "Нет сопоставленного v2-запроса",
@@ -392,6 +393,7 @@ async function showContractMatrix(row) {
         for (const route of operation.method_paths) {
             const section = el("details", "source-facts");
             section.append(el("summary", "", route.method + " " + route.path + " · " + (names[route.http_observation] || route.http_observation)));
+            if (route.route_discrepancy) section.append(el("p", "notice", "Проверено: этот URL сохраняет тело как документ _rank_eval. Ранжирование не выполняется. GET и счётчик подтвердили запись; тест затем удалил созданный документ."));
             jsonBlock(section, "Фактические ответы и ссылки", route);
             for (const ref of route.evidence_refs) {
                 const [attempt, position] = ref.split(":").map(Number);
@@ -406,6 +408,7 @@ async function showContractMatrix(row) {
             }
             body.append(section);
         }
+        for (const source of row.contract_matrix.route_discrepancy_sources || []) body.append(external(source.file, "Проверенные ошибки маршрутизации · JSON · SHA-256 " + source.sha256));
         const parameters = el("details", "source-facts");
         parameters.append(el("summary", "", "Query-параметры: значения, ответы и пропуски · " + operation.query_parameters.length));
         jsonBlock(parameters, "Наблюдения параметров; семантика остаётся отдельной проверкой", operation.query_parameters);

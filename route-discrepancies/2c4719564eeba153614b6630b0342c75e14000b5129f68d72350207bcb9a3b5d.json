@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "kind": "live-verified-wrong-api-routing-not-support",
+  "release": "6.2.4",
+  "source_commit": "ccec39f080c7c5d352378b73c507c1c334e6e27d",
+  "records": [
+    {
+      "classification": "typed-rank-indexer",
+      "api_id": "rank_eval",
+      "method": "POST",
+      "path": "/{index}/{type}/_rank_eval",
+      "actual_handler_source": "server/src/main/java/org/elasticsearch/rest/action/document/RestIndexAction.java",
+      "actual_handler_sha256": "76a8845c70aef0274aef89c13f8f6352db68f1b64987c40494c988b4bbe04321",
+      "intended_handler_source": "modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RestRankEvalAction.java",
+      "intended_handler_sha256": "f752322123ca4a7266ff1e5c51bb7c41c58ae59af596d9da6177676a1957a9a3",
+      "verification": {
+        "attempt": "docs/research/runs/6.2.4/deep-20261105T194917Z-f6821b/attempts/20261105T195029Z-5761ef4e",
+        "attempt_id": "20261105T195029Z-5761ef4e",
+        "observations_sha256": "543d47bbb994a0ac30d5255bc508a8f617e99f74e899f8d3053bbdc4511952a7",
+        "scenario_id": "rank-eval.typed-route",
+        "status": 201
+      },
+      "note": "HTTP201 is document indexing here. The rank payload was stored as document _rank_eval, independently read, refreshed and counted. Cleanup deleted only that document and restored the two originals. This URI does not execute rank_eval."
+    }
+  ]
+}
