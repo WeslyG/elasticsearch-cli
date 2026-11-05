@@ -106,6 +106,15 @@
                             <option>DELETE</option>
                             <option>PATCH</option>
                         </select></label
+                    ><label id="scopeLabel">Область<select id="scope">
+                        <option value="target">Core, модули и неизвестное</option>
+                        <option value="">Все исходные определения</option>
+                        <option value="public-core-source">Public core (исходники)</option>
+                        <option value="public-module-candidate">Модули: кандидаты</option>
+                        <option value="unknown">Не определено</option>
+                        <option value="excluded-xpack">X-Pack: исключено</option>
+                        <option value="private">Private: исключено</option>
+                    </select></label
                     ><label id="statusLabel"
                         >Наблюдение<select id="status"></select></label
                     ><label id="compareLabel" hidden

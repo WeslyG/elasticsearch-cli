@@ -20,6 +20,7 @@ const state = {
     method: params.get("method") || "",
     status: params.get("status") || "",
     api: params.get("api") || "bulk",
+    scope: params.has("scope") ? params.get("scope") : "target",
 };
 const labels = {
     partial: "Есть наблюдения",
@@ -103,6 +104,7 @@ function syncControls() {
     $("version").value = state.v;
     $("query").value = state.q;
     $("method").value = state.method;
+    $("scope").value = state.scope;
     $("compareApi").value = state.api;
     const old = state.status;
     $("status").replaceChildren();
@@ -126,6 +128,7 @@ function syncControls() {
     $("filters").hidden = methodPage;
     $("queryLabel").hidden = compare || journal;
     $("statusLabel").hidden = compare || journal;
+    $("scopeLabel").hidden = compare || journal;
     $("methodLabel").hidden = journal;
     $("compareLabel").hidden = !compare;
     $("export").hidden = methodPage;
@@ -143,6 +146,9 @@ function operationStatus(row) {
           : "not-tested";
 }
 function matching(row) {
+    const scope = row.scope_category || "unknown";
+    if (state.scope === "target" && ["excluded-xpack", "private", "example-metadata"].includes(scope)) return false;
+    if (state.scope && state.scope !== "target" && state.scope !== scope) return false;
     const methods = row.routes
         ? [...new Set(row.routes.flatMap((r) => r.methods))]
         : [row.method];
@@ -295,6 +301,7 @@ async function showCase(row) {
             jsonBlock(body, "Связи и происхождение", {
                 scenario_id: record.scenario_id, run_id: record.run_id,
                 depends_on: record.depends_on, verifies: record.verifies,
+                blocked_by: record.blocked_by, reason: record.reason,
                 dimensions: record.dimensions, elapsed_seconds: record.elapsed_seconds,
                 source_jsonl_sha256: raw.source_jsonl_sha256, source_ref: raw.source_ref
             });
@@ -399,6 +406,7 @@ function showOperation(row) {
     jsonBlock(body, "Типы, значения и основание классификации (только исходники)", {
         scope: row.scope_category, basis: row.scope_basis,
         parameters: row.parameter_facts,
+        open_dimensions: row.required_dimension_facts,
         note: "Наличие параметра в определении не подтверждает его семантику в живом кластере."
     });
     body.append(
@@ -481,7 +489,7 @@ function renderTable(rows) {
         const routes = el("div", "route");
         if (isCases) {
             if (row.method) routes.append(method(row.method));
-            routes.append(el("span", "", row.path || "Локальная TLS fixture"));
+            routes.append(el("span", "", row.executed === false ? "HTTP не отправлялся · план: " + row.planned_path : row.path || "Локальная TLS fixture"));
         } else {
             const methods = [...new Set(row.routes.flatMap((r) => r.methods))];
             for (const m of methods) routes.append(method(m));
@@ -500,7 +508,7 @@ function renderTable(rows) {
         td(
             tr,
             isCases
-                ? (row.expected_status ?? "—") + " → " + (row.status ?? "TLS")
+                ? (row.expected_status ?? "—") + " → " + (row.status ?? (row.executed === false ? "не отправлен" : "TLS"))
                 : String(
                       (state.method
                           ? row.observations.filter(
@@ -737,8 +745,8 @@ function renderJournal(payloads) {
                 "p",
                 "",
                 m
-                    ? String(p.observations.length) +
-                          " фактических сценариев. Outcome: " +
+                    ? String(p.observations.filter(r => r.executed !== false).length) +
+                          " выполнений; " + p.observations.filter(r => r.executed === false).length + " заблокированных записей. Базовый outcome: " +
                           m.outcome +
                           ". Контракты остаются неполными."
                     : "Законченного прогона в этом snapshot нет.",
@@ -985,6 +993,7 @@ async function init() {
             state.method = e.target.value;
             change();
         };
+        $("scope").onchange = (e) => { state.scope = e.target.value; change(); };
         $("status").onchange = (e) => {
             state.status = e.target.value;
             change();
@@ -1003,6 +1012,7 @@ async function init() {
             state.q = "";
             state.method = "";
             state.status = "";
+            state.scope = "target";
             change();
         };
         $("share").onclick = () => copy(location.href);
