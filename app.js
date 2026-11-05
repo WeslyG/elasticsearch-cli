@@ -161,6 +161,7 @@ function matching(row) {
         row.path,
         ...(row.routes || []).map((r) => r.path),
         ...(row.params || []),
+        ...Object.values(row.request_media_type_facts || {}).flat(),
     ]
         .join(" ")
         .toLowerCase();
@@ -401,12 +402,20 @@ function showOperation(row) {
         line.append(el("code", "route", route.path));
         body.append(line);
     }
+    const compatibilityMedia = [...new Set(Object.values(row.request_media_type_facts || {}).flat()
+        .filter(value => value.includes("compatible-with=")))];
+    if (compatibilityMedia.length)
+        body.append(el("p", "", "В исходнике этот API объявлен для REST compatibility media: " +
+            compatibilityMedia.join(", ") + ". Доступность в default режиме из этого не следует."));
     jsonBlock(body, "Параметры из исходников (не все проверены)", {
         query_parameters: row.params,
         path_parameters: [...new Set(row.routes.flatMap((r) => r.parts || []))],
         body_encoding_hint: row.body_encoding_hint,
+        request_media_types: row.request_media_type_facts || {},
     });
-    jsonBlock(body, "Типы, значения и основание классификации (только исходники)", {
+    const sourceFacts = el("details", "source-facts");
+    sourceFacts.append(el("summary", "", "Исходники и открытые проверки"));
+    jsonBlock(sourceFacts, "Типы, значения и основание классификации (только исходники)", {
         scope: row.scope_category, basis: row.scope_basis,
         path_normalization_evidence: row.path_normalization_evidence,
         parameters: row.parameter_facts,
@@ -414,6 +423,7 @@ function showOperation(row) {
         open_dimensions: row.required_dimension_facts,
         note: "Наличие параметра в определении не подтверждает его семантику в живом кластере."
     });
+    body.append(sourceFacts);
     body.append(
         external(
             sourceURL(row),
