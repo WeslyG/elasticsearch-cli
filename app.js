@@ -296,6 +296,8 @@ async function showCase(row) {
         const record = raw.results[row.row_index];
         if (record.schema_version === 2) {
             body.append(el("p", "", row.purpose || ""));
+            if (raw.driver_outcome && raw.driver_outcome.exit_code !== 0)
+                body.append(el("p", "", "Весь прогон завершился с ошибкой runner (exit " + raw.driver_outcome.exit_code + "). Здесь сохранён исход отдельного запроса; завершение полного сценария из него не следует."));
             jsonBlock(body, "Реальный запрос (тело и байты сохранены явно)", record.request);
             jsonBlock(body, "Реальный ответ", record.response);
             jsonBlock(body, "Проверки ожиданий", record.assertions);
@@ -311,7 +313,7 @@ async function showCase(row) {
                 dimensions: record.dimensions, elapsed_seconds: record.elapsed_seconds,
                 timeouts: record.timeouts,
                 source_jsonl_sha256: raw.source_jsonl_sha256, source_ref: raw.source_ref,
-                fixture_context: raw.fixture_context, auxiliary_evidence_sha256: raw.auxiliary_evidence_sha256
+                fixture_context: raw.fixture_context, auxiliary_evidence_sha256: raw.auxiliary_evidence_sha256, driver_outcome: raw.driver_outcome
             });
             for (const source of raw.code_sources || [])
                 body.append(external(source.url, source.name + " · SHA-256 " + source.sha256));
@@ -373,6 +375,52 @@ function scopeLabel(row) {
         unknown: "Область требует исследования",
     })[row.scope_category] || "Область требует исследования";
 }
+async function showContractMatrix(row) {
+    const body = showDialog(row.api + " · " + row.version + " · Матрица"), token = detailToken;
+    try {
+        const matrix = await getJSON(row.contract_matrix.file);
+        if (token !== detailToken || !$("detail").open) return;
+        const operation = matrix.operations.find(item => item.api_id === row.api);
+        body.append(el("p", "", "Только сопоставленные v2-запросы. HTTP 2xx может быть отказом на уровне приложения. Параметр в запросе не доказывает его семантику или default. Полного покрытия нет."));
+        const names = {
+            "default-media-2xx-observed": "Есть HTTP 2xx · default media",
+            "compatibility-media-only-2xx-observed": "HTTP 2xx только с compatibility media",
+            "non-2xx-only-observed": "Только ответы без 2xx",
+            "transport-failure-only": "Только транспортные сбои",
+            "not-observed": "Нет сопоставленного v2-запроса",
+        };
+        for (const route of operation.method_paths) {
+            const section = el("details", "source-facts");
+            section.append(el("summary", "", route.method + " " + route.path + " · " + (names[route.http_observation] || route.http_observation)));
+            jsonBlock(section, "Фактические ответы и ссылки", route);
+            for (const ref of route.evidence_refs) {
+                const [attempt, position] = ref.split(":").map(Number);
+                const source = matrix.attempts[attempt].source;
+                const observation = row.observations.find(item => item.source_ref === source && item.row_index === position);
+                if (observation) {
+                    const incomplete = matrix.attempts[attempt].driver_exit_code !== 0 ? " · прогон прерван" : "";
+                    const button = el("button", "evidence-button", observation.scenario + " · " + (labels[observation.result] || observation.result) + " · " + ref + incomplete);
+                    button.onclick = () => showCase(observation);
+                    section.append(button);
+                }
+            }
+            body.append(section);
+        }
+        const parameters = el("details", "source-facts");
+        parameters.append(el("summary", "", "Query-параметры: значения, ответы и пропуски · " + operation.query_parameters.length));
+        jsonBlock(parameters, "Наблюдения параметров; семантика остаётся отдельной проверкой", operation.query_parameters);
+        body.append(parameters);
+        const links = el("details", "source-facts");
+        links.append(el("summary", "", "Связанные проверки эффектов · " + operation.independent_check_links.length));
+        jsonBlock(links, "Явные связи рецептов; не автоматическая полнота", operation.independent_check_links);
+        body.append(links);
+        body.append(external(row.contract_matrix.file, "Полная матрица версии · JSON · SHA-256 " + row.contract_matrix.sha256));
+        body.append(external("research-code/" + matrix.generator_sha256 + "/contract_matrix.py", "Код аудитора · SHA-256 " + matrix.generator_sha256));
+    } catch (error) {
+        if (token === detailToken) body.append(el("p", "", error.message));
+    }
+}
+
 function showOperation(row) {
     const body = showDialog(row.api),
         meta = el("div", "dialog-meta");
@@ -392,6 +440,11 @@ function showOperation(row) {
             "Любое наблюдение здесь частичное: не все методы, пути, параметры и ошибки проверены.",
         ),
     );
+    if (row.contract_matrix) {
+        const matrixButton = el("button", "evidence-button", "Матрица методов, путей и query-параметров");
+        matrixButton.onclick = () => showContractMatrix(row);
+        body.append(matrixButton);
+    }
     if (row.routes.some((r) => !r.path.startsWith("/")))
         body.append(
             el(
