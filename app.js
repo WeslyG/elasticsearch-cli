@@ -735,6 +735,42 @@ async function renderFindings() {
     }
 }
 
+async function showNativeTLS(run) {
+    const body = showDialog("Native TLS · " + run.name), token = detailToken;
+    body.append(el("p", "", "Транспортные проверки на настоящем HTTPS Elasticsearch. TLS-отказы не увеличивают REST-покрытие. Кластеры были временными; доверие менялось только внутри девконтейнера."));
+    try {
+        const raw = await getJSON(run.file);
+        if (token !== detailToken || !$("detail").open) return;
+        jsonBlock(body, "Сводка и среда", raw.summary);
+        const list = el("div", "case-list");
+        for (const record of raw.records) {
+            const outcome = record.response.status === null ? "TLS отказ" : "HTTP " + record.response.status;
+            const button = el("button", "", record.case_id + " · " + outcome + " · " + record.state);
+            button.onclick = () => {
+                const detail = showDialog(record.case_id);
+                detail.append(el("p", "", "Это исследование транспорта, а не проверка установленного core/CLI. Пути CA относятся к временному контейнеру; закрытые ключи и пароли не публикуются."));
+                jsonBlock(detail, "Ожидания и проверки", record.assertions);
+                jsonBlock(detail, "Запрос и SSL режим", record.request);
+                jsonBlock(detail, "Ответ и TLS ошибка", {response: record.response, transport_error: record.transport_error, elapsed_seconds: record.elapsed_seconds});
+                if (record.response.body_base64) {
+                    const bytes = Uint8Array.from(atob(record.response.body_base64), c => c.charCodeAt(0));
+                    const decoded = new TextDecoder().decode(bytes);
+                    let value;
+                    try { value = JSON.parse(decoded); } catch { value = decoded; }
+                    jsonBlock(detail, "Расшифрованное тело HTTP-ответа", value);
+                }
+                jsonBlock(detail, "Публичный сертификат (ключ удалён)", raw.certificates[record.mode]);
+                for (const source of raw.code_sources)
+                    detail.append(external(source.url, source.name + " · SHA-256 " + source.sha256));
+            };
+            list.append(button);
+        }
+        body.append(list);
+    } catch (error) {
+        if (token === detailToken) body.append(el("p", "", error.message));
+    }
+}
+
 function renderJournal(payloads) {
     const article = el("article", "methodology");
     for (const p of payloads) {
@@ -754,7 +790,7 @@ function renderJournal(payloads) {
         );
         if (m) {
             article.append(
-                el("p", "", "Незакрыто: " + (m.remaining || []).join("; ")),
+                el("p", "", "Незакрыто в базовом v1-манифесте: " + (m.remaining || []).join("; ")),
             );
             const stages = el("ul");
             for (const row of m.stage_outcomes || [])
@@ -783,6 +819,11 @@ function renderJournal(payloads) {
                 );
             article.append(b);
         }
+        for (const run of p.transport_runs || []) {
+            const b = el("button", "quiet", "Native TLS · " + run.summary.probes + " проверок · отдельно от REST");
+            b.onclick = () => showNativeTLS(run);
+            article.append(b);
+        }
         for (const [title, data] of [
             ["Пропуски fixture (не тесты)", p.applicability],
             ["Попытки и история", p.attempts],
@@ -803,6 +844,7 @@ function renderJournal(payloads) {
         version: p.version,
         manifest: p.manifest,
         attempts: p.attempts,
+        transport_runs: p.transport_runs,
         applicability: p.applicability,
         route_candidates: p.route_candidates,
     }));

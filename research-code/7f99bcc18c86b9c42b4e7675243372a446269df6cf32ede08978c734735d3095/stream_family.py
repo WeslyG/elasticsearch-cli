@@ -1,0 +1,617 @@
+"""Data stream metadata, dry run, rollover and alias migration effects."""
+
+from evidence_runner import OMITTED
+
+
+def declare(add):
+    graph = {}
+
+    def case(name, api, method, path, deps=(), expected=(200,), purpose="api-contract"):
+        add("stream." + name, api, method, path, expected=expected, purpose=purpose)
+        graph["stream." + name] = tuple("stream." + d for d in deps)
+
+    case(
+        "template",
+        "indices.put_index_template",
+        "PUT",
+        "/_index_template/{template}",
+        purpose="fixture-setup",
+    )
+    case("create", "indices.create_data_stream", "PUT", "/_data_stream/{stream}", ("template",))
+    case(
+        "initial",
+        "indices.get_data_stream",
+        "GET",
+        "/_data_stream/{stream}",
+        ("create",),
+        purpose="effect-check",
+    )
+    case("all", "indices.get_data_stream", "GET", "/_data_stream", ("create",))
+    case("index", "create", "PUT", "/{stream}/_create/one?refresh=true", ("initial",), (201,))
+    case("count", "count", "GET", "/{stream}/_count", ("index",), purpose="effect-check")
+    case(
+        "put-mapping",
+        "indices.put_data_stream_mappings",
+        "PUT",
+        "/_data_stream/{stream}/_mappings",
+        ("initial",),
+    )
+    case(
+        "get-mapping",
+        "indices.get_data_stream_mappings",
+        "GET",
+        "/_data_stream/{stream}/_mappings",
+        ("put-mapping",),
+        purpose="effect-check",
+    )
+    case(
+        "dry-mapping",
+        "indices.put_data_stream_mappings",
+        "PUT",
+        "/_data_stream/{stream}/_mappings?dry_run=true",
+        ("put-mapping",),
+    )
+    case(
+        "dry-mapping-readback",
+        "indices.get_data_stream_mappings",
+        "GET",
+        "/_data_stream/{stream}/_mappings",
+        ("dry-mapping",),
+        purpose="effect-check",
+    )
+    case(
+        "put-settings",
+        "indices.put_data_stream_settings",
+        "PUT",
+        "/_data_stream/{stream}/_settings",
+        ("initial",),
+    )
+    case(
+        "get-settings",
+        "indices.get_data_stream_settings",
+        "GET",
+        "/_data_stream/{stream}/_settings",
+        ("put-settings",),
+        purpose="effect-check",
+    )
+    case(
+        "dry-settings",
+        "indices.put_data_stream_settings",
+        "PUT",
+        "/_data_stream/{stream}/_settings?dry_run=true",
+        ("put-settings",),
+    )
+    case(
+        "dry-settings-readback",
+        "indices.get_data_stream_settings",
+        "GET",
+        "/_data_stream/{stream}/_settings",
+        ("dry-settings",),
+        purpose="effect-check",
+    )
+    case(
+        "rollover",
+        "indices.rollover",
+        "POST",
+        "/{stream}/_rollover?wait_for_active_shards=all",
+        ("get-mapping", "get-settings", "count"),
+    )
+    case(
+        "rolled-stream",
+        "indices.get_data_stream",
+        "GET",
+        "/_data_stream/{stream}",
+        ("rollover",),
+        purpose="effect-check",
+    )
+    case(
+        "backing-mapping",
+        "indices.get_mapping",
+        "GET",
+        "/{backing}/_mapping",
+        ("rolled-stream",),
+        purpose="effect-check",
+    )
+    case(
+        "backing-settings",
+        "indices.get_settings",
+        "GET",
+        "/{backing}/_settings?flat_settings=true",
+        ("rolled-stream",),
+        purpose="effect-check",
+    )
+    for name, path in [("all", "/_data_stream/_stats"), ("named", "/_data_stream/{stream}/_stats")]:
+        case("stats." + name, "indices.data_streams_stats", "GET", path, ("rolled-stream",))
+    case(
+        "put-lifecycle",
+        "indices.put_data_lifecycle",
+        "PUT",
+        "/_data_stream/{stream}/_lifecycle",
+        ("create",),
+    )
+    case(
+        "get-lifecycle",
+        "indices.get_data_lifecycle",
+        "GET",
+        "/_data_stream/{stream}/_lifecycle?include_defaults=true",
+        ("put-lifecycle",),
+        purpose="effect-check",
+    )
+    case(
+        "explain-lifecycle",
+        "indices.explain_data_lifecycle",
+        "GET",
+        "/{oldbacking}/_lifecycle/explain",
+        ("put-lifecycle", "initial"),
+    )
+    case(
+        "lifecycle-stats",
+        "indices.get_data_lifecycle_stats",
+        "GET",
+        "/_lifecycle/stats",
+        ("put-lifecycle",),
+    )
+    case(
+        "delete-lifecycle",
+        "indices.delete_data_lifecycle",
+        "DELETE",
+        "/_data_stream/{stream}/_lifecycle",
+        ("put-lifecycle",),
+    )
+    case(
+        "lifecycle-removed",
+        "indices.get_data_lifecycle",
+        "GET",
+        "/_data_stream/{stream}/_lifecycle",
+        ("delete-lifecycle",),
+        purpose="effect-check",
+    )
+    case(
+        "put-options",
+        "indices.put_data_stream_options",
+        "PUT",
+        "/_data_stream/{stream}/_options",
+        ("create",),
+    )
+    case(
+        "get-options",
+        "indices.get_data_stream_options",
+        "GET",
+        "/_data_stream/{stream}/_options",
+        ("put-options",),
+        purpose="effect-check",
+    )
+    case(
+        "delete-options",
+        "indices.delete_data_stream_options",
+        "DELETE",
+        "/_data_stream/{stream}/_options",
+        ("put-options",),
+    )
+    case(
+        "options-removed",
+        "indices.get_data_stream_options",
+        "GET",
+        "/_data_stream/{stream}/_options",
+        ("delete-options",),
+        purpose="effect-check",
+    )
+    case(
+        "remove-backing",
+        "indices.modify_data_stream",
+        "POST",
+        "/_data_stream/_modify",
+        ("rolled-stream",),
+    )
+    case(
+        "removed-backing-readback",
+        "indices.get_data_stream",
+        "GET",
+        "/_data_stream/{stream}",
+        ("remove-backing",),
+        purpose="effect-check",
+    )
+    case(
+        "add-backing",
+        "indices.modify_data_stream",
+        "POST",
+        "/_data_stream/_modify",
+        ("removed-backing-readback",),
+    )
+    case(
+        "added-backing-readback",
+        "indices.get_data_stream",
+        "GET",
+        "/_data_stream/{stream}",
+        ("add-backing",),
+        purpose="effect-check",
+    )
+    case(
+        "promote-regular",
+        "indices.promote_data_stream",
+        "POST",
+        "/_data_stream/_promote/{stream}",
+        ("create",),
+        (400,),
+    )
+    case(
+        "migration-index",
+        "indices.create",
+        "PUT",
+        "/{migration_index}",
+        ("template",),
+        purpose="fixture-setup",
+    )
+    case(
+        "migrate",
+        "indices.migrate_to_data_stream",
+        "POST",
+        "/_data_stream/_migrate/{migration_stream}",
+        ("migration-index",),
+    )
+    case(
+        "migration-readback",
+        "indices.get_data_stream",
+        "GET",
+        "/_data_stream/{migration_stream}",
+        ("migrate",),
+        purpose="effect-check",
+    )
+    case(
+        "migration-write",
+        "create",
+        "PUT",
+        "/{migration_stream}/_create/one?refresh=true",
+        ("migrate",),
+        (201,),
+    )
+    case(
+        "migration-count",
+        "count",
+        "GET",
+        "/{migration_stream}/_count",
+        ("migration-write",),
+        purpose="effect-check",
+    )
+    for name, api, path in [
+        ("main", "indices.delete_data_stream", "/_data_stream/{stream}"),
+        ("migration", "indices.delete_data_stream", "/_data_stream/{migration_stream}"),
+        ("migration-index", "indices.delete", "/{migration_index}"),
+        ("old-backing", "indices.delete", "/{oldbacking}"),
+        ("template", "indices.delete_index_template", "/_index_template/{template}"),
+    ]:
+        deps = (
+            ("cleanup-migration",)
+            if name == "migration-index"
+            else ("cleanup-main",)
+            if name == "old-backing"
+            else ()
+        )
+        case("cleanup-" + name, api, "DELETE", path, deps, (200, 404), purpose="cleanup")
+    return graph
+
+
+def execute(run, catalog, prefix):
+    values = {
+        "stream": prefix + "-stream-main",
+        "template": prefix + "-stream-template",
+        "migration_stream": prefix + "-stream-migrated",
+        "migration_index": prefix + "-migration-seed",
+        "backing": "unavailable",
+        "oldbacking": "unavailable",
+    }
+
+    def call(name, body=OMITTED, assertions=(), verifies=(), semantic=False):
+        case = catalog.cases["stream." + name]
+        result = catalog.execute(
+            run,
+            case.id,
+            values=values,
+            body=body,
+            assertions=assertions,
+            depends_on=case.dependency_plan,
+            semantic=semantic,
+            verifies=["stream." + n for n in verifies],
+        )
+        print(case.id, result.state, result.status, flush=True)
+        return result
+
+    def stream(data):
+        return next(row for row in data["data_streams"] if row["name"] == values["stream"])
+
+    def properties(data):
+        mapping = stream(data)["mappings"]
+        return mapping.get("_doc", mapping).get("properties", {})
+
+    def refresh_interval(data):
+        return stream(data)["settings"]["index"]["refresh_interval"]
+
+    ack = [("acknowledged", lambda d: d["acknowledged"], True)]
+    call(
+        "template",
+        {
+            "index_patterns": [prefix + "-stream-*"],
+            "data_stream": {},
+            "priority": 300,
+            "template": {
+                "settings": {"number_of_shards": 1, "number_of_replicas": 0},
+                "mappings": {
+                    "properties": {"@timestamp": {"type": "date"}, "n": {"type": "integer"}}
+                },
+            },
+        },
+        ack,
+    )
+    try:
+        call("create", assertions=ack)
+        response = call(
+            "initial",
+            assertions=[("one initial backing index", lambda d: len(stream(d)["indices"]), 1)],
+            verifies=["create"],
+            semantic=True,
+        )
+        indices = (response.data or {}).get("data_streams", [{}])[0].get("indices", [])
+        values["oldbacking"] = indices[0]["index_name"] if indices else "unavailable"
+        call(
+            "all",
+            assertions=[("fixture stream listed", lambda d: stream(d)["name"], values["stream"])],
+        )
+        document = {"@timestamp": "2026-11-05T00:00:00Z", "n": 1}
+        call(
+            "index",
+            document,
+            [("written to backing index", lambda d: d["_index"], values["oldbacking"])],
+        )
+        call(
+            "count",
+            assertions=[("stream sees document", lambda d: d["count"], 1)],
+            verifies=["index"],
+            semantic=True,
+        )
+        call(
+            "put-mapping",
+            {"properties": {"added": {"type": "keyword"}}},
+            [("mapping applied to stream", lambda d: stream(d)["applied_to_data_stream"], True)],
+        )
+        call(
+            "get-mapping",
+            assertions=[
+                ("persisted stream mapping", lambda d: properties(d)["added"]["type"], "keyword")
+            ],
+            verifies=["put-mapping"],
+            semantic=True,
+        )
+        call("dry-mapping", {"properties": {"dry_only": {"type": "keyword"}}})
+        call(
+            "dry-mapping-readback",
+            assertions=[
+                ("dry-run field not persisted", lambda d: "dry_only" in properties(d), False)
+            ],
+            verifies=["dry-mapping"],
+            semantic=True,
+        )
+        call(
+            "put-settings",
+            {"index.refresh_interval": "5s"},
+            [("settings applied to stream", lambda d: stream(d)["applied_to_data_stream"], True)],
+        )
+        call(
+            "get-settings",
+            assertions=[("stream refresh interval persisted", refresh_interval, "5s")],
+            verifies=["put-settings"],
+            semantic=True,
+        )
+        call("dry-settings", {"index.refresh_interval": "30s"})
+        call(
+            "dry-settings-readback",
+            assertions=[("dry-run keeps five seconds", refresh_interval, "5s")],
+            verifies=["dry-settings"],
+            semantic=True,
+        )
+        call("rollover", {}, [("stream rolled", lambda d: d["rolled_over"], True)])
+        response = call(
+            "rolled-stream",
+            assertions=[("two backing indices", lambda d: len(stream(d)["indices"]), 2)],
+            verifies=["rollover"],
+            semantic=True,
+        )
+        indices = (response.data or {}).get("data_streams", [{}])[0].get("indices", [])
+        values["backing"] = indices[-1]["index_name"] if indices else "unavailable"
+        backing = values["backing"]
+        call(
+            "backing-mapping",
+            assertions=[
+                (
+                    "new backing inherits stream mapping",
+                    lambda d: d[backing]["mappings"]["properties"]["added"]["type"],
+                    "keyword",
+                ),
+                (
+                    "dry mapping absent from new backing",
+                    lambda d: "dry_only" in d[backing]["mappings"]["properties"],
+                    False,
+                ),
+            ],
+            verifies=["put-mapping", "rollover", "dry-mapping"],
+            semantic=True,
+        )
+        call(
+            "backing-settings",
+            assertions=[
+                (
+                    "new backing inherits five-second refresh",
+                    lambda d: d[backing]["settings"]["index.refresh_interval"],
+                    "5s",
+                )
+            ],
+            verifies=["put-settings", "rollover", "dry-settings"],
+            semantic=True,
+        )
+        for name in ["all", "named"]:
+            call(
+                "stats." + name,
+                assertions=[
+                    (
+                        "fixture stats contain two backing indices",
+                        lambda d: next(
+                            row
+                            for row in d["data_streams"]
+                            if row["data_stream"] == values["stream"]
+                        )["backing_indices"],
+                        2,
+                    )
+                ],
+            )
+        call("put-lifecycle", {"data_retention": "7d", "enabled": True}, ack)
+        call(
+            "get-lifecycle",
+            assertions=[
+                (
+                    "seven-day retention configured",
+                    lambda d: stream(d)["lifecycle"]["data_retention"],
+                    "7d",
+                )
+            ],
+            verifies=["put-lifecycle"],
+            semantic=True,
+        )
+        call(
+            "explain-lifecycle",
+            assertions=[
+                ("backing lifecycle reported", lambda d: values["oldbacking"] in d["indices"], True)
+            ],
+        )
+        call(
+            "lifecycle-stats",
+            assertions=[("lifecycle stats object", lambda d: isinstance(d, dict), True)],
+        )
+        call("delete-lifecycle", assertions=ack)
+        call(
+            "lifecycle-removed",
+            assertions=[
+                (
+                    "retention removed",
+                    lambda d: "data_retention" in stream(d).get("lifecycle", {}),
+                    False,
+                )
+            ],
+            verifies=["delete-lifecycle"],
+            semantic=True,
+        )
+        call("put-options", {"failure_store": {"enabled": True}}, ack)
+        call(
+            "get-options",
+            assertions=[
+                (
+                    "failure store enabled",
+                    lambda d: stream(d)["options"]["failure_store"]["enabled"],
+                    True,
+                )
+            ],
+            verifies=["put-options"],
+            semantic=True,
+        )
+        call("delete-options", assertions=ack)
+        call(
+            "options-removed",
+            assertions=[
+                (
+                    "explicit enabled option removed",
+                    lambda d: stream(d)["options"].get("failure_store", {}).get("enabled") is True,
+                    False,
+                )
+            ],
+            verifies=["delete-options"],
+            semantic=True,
+        )
+        call(
+            "remove-backing",
+            {
+                "actions": [
+                    {
+                        "remove_backing_index": {
+                            "data_stream": values["stream"],
+                            "index": values["oldbacking"],
+                        }
+                    }
+                ]
+            },
+            ack,
+        )
+        call(
+            "removed-backing-readback",
+            assertions=[
+                (
+                    "old backing detached",
+                    lambda d: [i["index_name"] for i in stream(d)["indices"]],
+                    [backing],
+                )
+            ],
+            verifies=["remove-backing"],
+            semantic=True,
+        )
+        call(
+            "add-backing",
+            {
+                "actions": [
+                    {
+                        "add_backing_index": {
+                            "data_stream": values["stream"],
+                            "index": values["oldbacking"],
+                        }
+                    }
+                ]
+            },
+            ack,
+        )
+        call(
+            "added-backing-readback",
+            assertions=[
+                (
+                    "old backing reattached",
+                    lambda d: sorted(i["index_name"] for i in stream(d)["indices"]),
+                    sorted([backing, values["oldbacking"]]),
+                )
+            ],
+            verifies=["add-backing"],
+            semantic=True,
+        )
+        call("promote-regular")
+        call(
+            "migration-index",
+            {
+                "settings": {"number_of_shards": 1, "number_of_replicas": 0},
+                "mappings": {
+                    "properties": {"@timestamp": {"type": "date"}, "n": {"type": "integer"}}
+                },
+                "aliases": {values["migration_stream"]: {"is_write_index": True}},
+            },
+            ack,
+        )
+        call("migrate", assertions=ack)
+        call(
+            "migration-readback",
+            assertions=[
+                (
+                    "alias became stream using existing backing",
+                    lambda d: d["data_streams"][0]["indices"][0]["index_name"],
+                    values["migration_index"],
+                )
+            ],
+            verifies=["migrate"],
+            semantic=True,
+        )
+        call(
+            "migration-write",
+            document,
+            [("migrated write destination", lambda d: d["_index"], values["migration_index"])],
+        )
+        call(
+            "migration-count",
+            assertions=[("migrated stream has document", lambda d: d["count"], 1)],
+            verifies=["migration-write"],
+            semantic=True,
+        )
+    finally:
+        for name in ["main", "migration", "migration-index", "old-backing", "template"]:
+            call("cleanup-" + name)
