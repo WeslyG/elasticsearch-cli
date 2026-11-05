@@ -1,0 +1,737 @@
+{
+  "schema_version": 1,
+  "kind": "pinned-handler-query-extensions-not-runtime-support",
+  "releases": {
+    "6.0.0": {
+      "source_commit": "8f0685b924b9159807704ec2593b26e28105da44",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "4035f130f54e5f0fad6b1656ba50c330afdc641d37ebab4045ce38ac217b082c",
+            "line": 77,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition.",
+            "options": [
+              "nodes",
+              "parents"
+            ]
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Pinned handler directly consumes request.param(repository); the global route has no path value, so an explicit repository query is needed. Not a new guessed parameter or all-repositories default."
+          }
+        }
+      }
+    },
+    "6.0.1": {
+      "source_commit": "601be4afc4293b7b65327267bf6b91dde64bfc3e",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "4035f130f54e5f0fad6b1656ba50c330afdc641d37ebab4045ce38ac217b082c",
+            "line": 77,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition.",
+            "options": [
+              "nodes",
+              "parents"
+            ]
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Pinned handler directly consumes request.param(repository); the global route has no path value, so an explicit repository query is needed. Not a new guessed parameter or all-repositories default."
+          }
+        }
+      }
+    },
+    "7.17.29": {
+      "source_commit": "580aff1a0064ce4c93293aaab6fcc55e22c10d1c",
+      "query_params": {
+        "migration.get_feature_upgrade_status": {
+          "master_timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetFeatureUpgradeStatusAction.java",
+            "source_sha256": "62f4ec573705e878d9df0c9ba65d5f0dc0b46855efab06495d588cafc88275a5",
+            "line": 44,
+            "basis": "Pinned handler directly consumes master_timeout, absent from this exact release REST JSON definition; runtime support separately tested."
+          }
+        },
+        "migration.post_feature_upgrade": {
+          "master_timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestPostFeatureUpgradeAction.java",
+            "source_sha256": "21e7dd78d34977a53fc186d6f746953a85c9b814ca8e6d0c92a729b521b2f57e",
+            "line": 44,
+            "basis": "Pinned handler directly consumes master_timeout, absent from this exact release REST JSON definition; runtime support separately tested."
+          }
+        }
+      }
+    },
+    "6.1.4": {
+      "source_commit": "d838f2d7ce69a723e3e13d3aed146add28811e78",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "4035f130f54e5f0fad6b1656ba50c330afdc641d37ebab4045ce38ac217b082c",
+            "line": 77,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition.",
+            "options": [
+              "nodes",
+              "parents"
+            ]
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Pinned handler directly consumes request.param(repository); the global route has no path value, so an explicit repository query is needed. Not a new guessed parameter or all-repositories default."
+          }
+        }
+      }
+    },
+    "6.2.4": {
+      "source_commit": "ccec39f080c7c5d352378b73c507c1c334e6e27d",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+            "line": 77,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+            "line": 106,
+            "basis": "Exact handler none branch serializes flat tasks; live6.2.4 follow-up20261105T194439Z-72b4567a verifies actual running reindex identity in that list. Raw historical failed expectation is retained."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact cancel handler delegates to pinned listTasksResponseListener, whose source accepts nodes/parents/none. Enum is source evidence, not complete runtime value coverage.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+              "line": 106
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Pinned handler directly consumes request.param(repository); the global route has no path value, so an explicit repository query is needed. Not a new guessed parameter or all-repositories default."
+          }
+        }
+      }
+    },
+    "6.3.2": {
+      "source_commit": "053779d202567ea34577525eb622236c08da68cb",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact pinned handler consumption verified; JSON metadata may already contain this parameter. Static fact is not runtime support."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+            "line": 77,
+            "basis": "Exact pinned handler consumption verified; JSON metadata may already contain this parameter. Static fact is not runtime support."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+            "line": 66,
+            "basis": "Exact pinned handler consumption verified; JSON metadata may already contain this parameter. Static fact is not runtime support."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact cancel handler delegates to pinned listTasksResponseListener, whose source accepts nodes/parents/none. Enum is source evidence, not complete runtime value coverage.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+              "line": 106
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Exact pinned handler consumption verified; JSON metadata may already contain this parameter. Static fact is not runtime support."
+          }
+        }
+      }
+    },
+    "6.4.3": {
+      "source_commit": "fe40335c1e4fa7db9e38001fa99d19526f3bc5ce",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact pinned handler consumption verified; metadata may already contain the parameter.6.4 runtime verification is pending."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 77,
+            "basis": "Exact pinned handler consumption verified; metadata may already contain the parameter.6.4 runtime verification is pending."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 66,
+            "basis": "Exact pinned handler consumption verified; metadata may already contain the parameter.6.4 runtime verification is pending."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact pinned handler consumption verified; metadata may already contain the parameter.6.4 runtime verification is pending.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Exact pinned handler consumption verified; metadata may already contain the parameter.6.4 runtime verification is pending."
+          }
+        }
+      }
+    },
+    "6.5.4": {
+      "source_commit": "d2ef93dff175ba22406054bf78137679a0e7990c",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact6.5.4 pinned handler consumption reviewed; recipe prepared, runtime not inherited."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 77,
+            "basis": "Exact6.5.4 pinned handler consumption reviewed; recipe prepared, runtime not inherited."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 66,
+            "basis": "Exact6.5.4 pinned handler consumption reviewed; recipe prepared, runtime not inherited."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact6.5.4 pinned handler consumption reviewed; recipe prepared, runtime not inherited.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "bf706ab7e59e0229c740585cde48b062b79dccd5f445e00dbf9c724a14fbf822",
+            "line": 62,
+            "basis": "Exact6.5.4 pinned handler consumption reviewed; recipe prepared, runtime not inherited."
+          }
+        }
+      }
+    },
+    "6.6.2": {
+      "source_commit": "3bd3e59556628bb84c8d53b09b10c9ac8255e251",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact6.6.2 pinned handler consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 77,
+            "basis": "Exact6.6.2 pinned handler consumption reviewed; runtime not inherited."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 66,
+            "basis": "Exact6.6.2 pinned handler consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact6.6.2 pinned handler consumption reviewed; runtime not inherited.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "bf706ab7e59e0229c740585cde48b062b79dccd5f445e00dbf9c724a14fbf822",
+            "line": 62,
+            "basis": "Exact6.6.2 pinned handler consumption reviewed; runtime not inherited."
+          }
+        },
+        "search": {
+          "_source_include": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 113,
+            "basis": "Pinned6.6 parser retains deprecated singular alias and consumes it after plural name; recipe runtime not yet observed."
+          },
+          "_source_exclude": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 123,
+            "basis": "Pinned6.6 parser retains deprecated singular alias and consumes it after plural name; recipe runtime not yet observed."
+          }
+        }
+      }
+    },
+    "6.7.2": {
+      "source_commit": "56c6e4869ac8c10a89de1f31252f90fc3002a030",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 77,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 66,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "bf706ab7e59e0229c740585cde48b062b79dccd5f445e00dbf9c724a14fbf822",
+            "line": 62,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "search": {
+          "_source_include": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 113,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          },
+          "_source_exclude": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 123,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          }
+        }
+      }
+    },
+    "6.8.23": {
+      "source_commit": "4f67856884ff580d8b48a858411b8c17cb0f8cdb",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 77,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 66,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "bf706ab7e59e0229c740585cde48b062b79dccd5f445e00dbf9c724a14fbf822",
+            "line": 62,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "search": {
+          "_source_include": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 113,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          },
+          "_source_exclude": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 123,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          }
+        }
+      }
+    },
+    "7.0.1": {
+      "source_commit": "e4efcb53ec7a1f2138494c837def7c5a2aff0751",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact7.0.1 handler consumes group_by and delegates to pinned listTasksResponseListener; wait_for_completion is not consumed. Runtime not inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "02459fa964915eade3278a5c516f5ba19f479e2eaae6f50ec974fabf2ccdced2",
+            "line": 87,
+            "basis": "Pinned handler consumes index from RestRequest; explicit index query scopes global typed mapping paths to owned fixture. Default unfiltered global writes are a separate conflicting-type refusal probe, not inferred from scoped success."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "1b3f40eaff63a394495503925fd01e7066bb842aee390b8040ebf1a329f92790",
+            "line": 61,
+            "basis": "Pinned global CAT snapshot handler consumes repository from query when absent in path. Native missing selector400 retained separately; explicit owned repository positive fixture prepared."
+          }
+        }
+      }
+    },
+    "7.1.1": {
+      "source_commit": "7a013ded4033c6cc60ad2078f3e1f18666bec47a",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact7.1.1 primary source bytes verified, identical consumption to7.0.1; recipe reuse is not runtime evidence. Exact7.0.1 handler consumes group_by and delegates to pinned listTasksResponseListener; wait_for_completion is not consumed. Runtime not inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "02459fa964915eade3278a5c516f5ba19f479e2eaae6f50ec974fabf2ccdced2",
+            "line": 87,
+            "basis": "Exact7.1.1 primary source bytes verified, identical consumption to7.0.1; recipe reuse is not runtime evidence. Pinned handler consumes index from RestRequest; explicit index query scopes global typed mapping paths to owned fixture. Default unfiltered global writes are a separate conflicting-type refusal probe, not inferred from scoped success."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "1b3f40eaff63a394495503925fd01e7066bb842aee390b8040ebf1a329f92790",
+            "line": 61,
+            "basis": "Exact7.1.1 primary source bytes verified, identical consumption to7.0.1; recipe reuse is not runtime evidence. Pinned global CAT snapshot handler consumes repository from query when absent in path. Native missing selector400 retained separately; explicit owned repository positive fixture prepared."
+          }
+        }
+      }
+    }
+  }
+}
