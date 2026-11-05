@@ -787,6 +787,42 @@ async function showNativeTLS(run) {
     }
 }
 
+async function showFaults(run) {
+    const body = showDialog("Сетевые отказы · " + run.name), token = detailToken;
+    body.append(el("p", "", "Контролируемый прокси внутри worker и настоящий Elasticsearch. Ожидаемая ошибка клиентского запроса может быть успешной проверкой отказа. Эти проверки не увеличивают API-покрытие и не проверяют установленное ядро/CLI."));
+    try {
+        const raw = await getJSON(run.file);
+        if (token !== detailToken || !$("detail").open) return;
+        jsonBlock(body, "Сводка и ограничения", raw.summary);
+        const names = {"drop-write":"Запись завершена, ответ потерян", "socket-timeout":"Тайм-аут после записи",
+            "wall-deadline":"Общий deadline после записи", "short-length":"Обрыв тела с Content-Length",
+            "short-chunked":"Обрыв chunked тела", "response-limit":"Ограничение размера ответа",
+            "delayed-read":"Медленный ответ в допустимом интервале", "redirect":"Без скрытого redirect",
+            "connect-refused":"Отказ соединения"};
+        const list = el("div", "case-list");
+        for (const record of raw.records) {
+            const b = el("button", "", (names[record.case_id] || record.case_id) + " · " + record.state);
+            b.onclick = () => {
+                const detail = showDialog(names[record.case_id] || record.case_id);
+                jsonBlock(detail, "Проверки контракта", record.assertions);
+                jsonBlock(detail, "Фактический клиентский запрос и исход",
+                    raw.sessions[record.sample.session].find(row => row.scenario_id === record.sample.scenario_id));
+                if (record.resolution)
+                    jsonBlock(detail, "Независимая проверка на настоящем ES",
+                        raw.sessions[record.resolution.session].find(row => row.scenario_id === record.resolution.scenario_id));
+                jsonBlock(detail, "Что получил и переслал контролируемый прокси",
+                    raw.proxy_events.filter(row => row.path === "/" + record.case_id));
+                for (const source of raw.code_sources)
+                    detail.append(external(source.url, source.name + " · SHA-256 " + source.sha256));
+            };
+            list.append(b);
+        }
+        body.append(list);
+    } catch (error) {
+        if (token === detailToken) body.append(el("p", "", error.message));
+    }
+}
+
 function renderJournal(payloads) {
     const article = el("article", "methodology");
     for (const p of payloads) {
@@ -837,11 +873,17 @@ function renderJournal(payloads) {
         }
         for (const run of p.transport_runs || []) {
             const policy = run.summary.auth_policy === "required-basic" ? "обязательная Basic auth" : "без auth и Basic";
-            const b = el("button", "quiet", "Native TLS · " + policy + " · " + run.summary.probes + " проверок · отдельно от REST");
+            const b = el("button", "quiet", "Native TLS" + (run.summary.suite === "mtls-validity" ? " · mTLS / сроки сертификатов" : "") + " · " + policy + " · " + run.summary.probes + " проверок · отдельно от REST");
             b.onclick = () => showNativeTLS(run);
             article.append(b);
         }
+        for (const run of p.fault_runs || []) {
+            const b = el("button", "quiet", "Сетевые отказы · " + run.summary.probes + " проверок · отдельно от REST");
+            b.onclick = () => showFaults(run);
+            article.append(b);
+        }
         for (const [title, data] of [
+            ["Подготовка transport: ошибки стенда", p.transport_setup_failures],
             ["Пропуски fixture (не тесты)", p.applicability],
             ["Попытки и история", p.attempts],
             ["Неразобранные literal route candidates", p.route_candidates],
@@ -862,6 +904,8 @@ function renderJournal(payloads) {
         manifest: p.manifest,
         attempts: p.attempts,
         transport_runs: p.transport_runs,
+        fault_runs: p.fault_runs,
+        transport_setup_failures: p.transport_setup_failures,
         applicability: p.applicability,
         route_candidates: p.route_candidates,
     }));
