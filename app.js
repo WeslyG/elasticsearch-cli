@@ -298,12 +298,15 @@ async function showCase(row) {
             jsonBlock(body, "Реальный запрос (тело и байты сохранены явно)", record.request);
             jsonBlock(body, "Реальный ответ", record.response);
             jsonBlock(body, "Проверки ожиданий", record.assertions);
+            if (raw.fixture_evidence) jsonBlock(body, "Независимая подготовка и проверка fixture", raw.fixture_evidence);
             jsonBlock(body, "Связи и происхождение", {
                 scenario_id: record.scenario_id, run_id: record.run_id,
                 depends_on: record.depends_on, verifies: record.verifies,
                 blocked_by: record.blocked_by, reason: record.reason,
                 dimensions: record.dimensions, elapsed_seconds: record.elapsed_seconds,
-                source_jsonl_sha256: raw.source_jsonl_sha256, source_ref: raw.source_ref
+                timeouts: record.timeouts,
+                source_jsonl_sha256: raw.source_jsonl_sha256, source_ref: raw.source_ref,
+                fixture_context: raw.fixture_context, auxiliary_evidence_sha256: raw.auxiliary_evidence_sha256
             });
             for (const source of raw.code_sources || [])
                 body.append(external(source.url, source.name + " · SHA-256 " + source.sha256));
@@ -405,6 +408,7 @@ function showOperation(row) {
     });
     jsonBlock(body, "Типы, значения и основание классификации (только исходники)", {
         scope: row.scope_category, basis: row.scope_basis,
+        path_normalization_evidence: row.path_normalization_evidence,
         parameters: row.parameter_facts,
         open_dimensions: row.required_dimension_facts,
         note: "Наличие параметра в определении не подтверждает его семантику в живом кластере."
@@ -820,7 +824,8 @@ function renderJournal(payloads) {
             article.append(b);
         }
         for (const run of p.transport_runs || []) {
-            const b = el("button", "quiet", "Native TLS · " + run.summary.probes + " проверок · отдельно от REST");
+            const policy = run.summary.auth_policy === "required-basic" ? "обязательная Basic auth" : "без auth и Basic";
+            const b = el("button", "quiet", "Native TLS · " + policy + " · " + run.summary.probes + " проверок · отдельно от REST");
             b.onclick = () => showNativeTLS(run);
             article.append(b);
         }
