@@ -412,7 +412,8 @@ function showOperation(row) {
         body.append(el("p", "", "В исходнике этот API объявлен для REST compatibility media: " +
             compatibilityMedia.join(", ") + ". Доступность в default режиме из этого не следует."));
     jsonBlock(body, "Параметры из исходников (не все проверены)", {
-        query_parameters: row.params,
+        query_parameters: [...new Set([...row.params, ...Object.keys(row.query_parameter_source_facts || {})])],
+        additional_query_parameters_from_handlers: Object.keys(row.query_parameter_source_facts || {}),
         path_parameters: [...new Set(row.routes.flatMap((r) => r.parts || []))],
         body_encoding_hint: row.body_encoding_hint,
         request_media_types: row.request_media_type_facts || {},
@@ -421,6 +422,7 @@ function showOperation(row) {
     sourceFacts.append(el("summary", "", "Исходники и открытые проверки"));
     jsonBlock(sourceFacts, "Типы, значения и основание классификации (только исходники)", {
         scope: row.scope_category, basis: row.scope_basis,
+        upstream_visibility: row.upstream_visibility, scope_review: row.scope_review,
         path_normalization_evidence: row.path_normalization_evidence,
         parameters: row.parameter_facts,
         additional_parameters_from_pinned_handlers: row.query_parameter_source_facts,
@@ -428,6 +430,8 @@ function showOperation(row) {
         note: "Наличие параметра в определении не подтверждает его семантику в живом кластере."
     });
     body.append(sourceFacts);
+    if (row.scope_review)
+        body.append(external(row.scope_review.url, "Явный source-review · SHA-256 " + row.scope_review.sha256));
     body.append(
         external(
             sourceURL(row),
