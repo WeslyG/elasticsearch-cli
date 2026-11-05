@@ -27,6 +27,9 @@ const labels = {
     "not-tested": "Не проверено",
     passed: "Сценарий прошёл",
     failed: "Ожидание не совпало",
+    blocked: "Заблокирован зависимостью",
+    "infrastructure-error": "Ошибка транспорта / стенда",
+    incomplete: "Проверка не завершена",
 };
 const fmt = (n) => new Intl.NumberFormat("ru-RU").format(n);
 const semver = (a, b) => {
@@ -105,7 +108,7 @@ function syncControls() {
     $("status").replaceChildren();
     option($("status"), "", "Любое наблюдение");
     for (const value of state.tab === "scenarios"
-        ? ["passed", "failed"]
+        ? ["passed", "failed", "blocked", "infrastructure-error"]
         : ["partial", "mismatch", "not-tested"])
         option($("status"), value, labels[value]);
     state.status = [...$("status").options].some((o) => o.value === old)
@@ -135,7 +138,7 @@ function operationStatus(row) {
         : row.observations;
     return cases.some((r) => r.result === "failed")
         ? "mismatch"
-        : cases.length
+        : cases.some((r) => r.executed !== false)
           ? "partial"
           : "not-tested";
 }
@@ -176,7 +179,7 @@ function metrics(payloads) {
             "из " + payloads.length + " выбранных",
         ),
         metric(
-            cases.length,
+            cases.filter((r) => r.executed !== false).length,
             "Выполнений сценариев",
             "включая негативные и TLS",
         ),
@@ -284,6 +287,21 @@ async function showCase(row) {
         );
         if (token !== detailToken || !$("detail").open) return;
         const record = raw.results[row.row_index];
+        if (record.schema_version === 2) {
+            body.append(el("p", "", row.purpose || ""));
+            jsonBlock(body, "Реальный запрос (тело и байты сохранены явно)", record.request);
+            jsonBlock(body, "Реальный ответ", record.response);
+            jsonBlock(body, "Проверки ожиданий", record.assertions);
+            jsonBlock(body, "Связи и происхождение", {
+                scenario_id: record.scenario_id, run_id: record.run_id,
+                depends_on: record.depends_on, verifies: record.verifies,
+                dimensions: record.dimensions, elapsed_seconds: record.elapsed_seconds,
+                source_jsonl_sha256: raw.source_jsonl_sha256, source_ref: raw.source_ref
+            });
+            for (const source of raw.code_sources || [])
+                body.append(external(source.url, source.name + " · SHA-256 " + source.sha256));
+            return;
+        }
         if (record.method)
             jsonBlock(
                 body,
@@ -330,6 +348,16 @@ async function showCase(row) {
         body.append(el("p", "", error.message));
     }
 }
+function scopeLabel(row) {
+    return ({
+        "public-core-source": "Public core: определение + регистрация в исходниках",
+        "public-module-candidate": "Модуль: применимость требует проверки",
+        "excluded-xpack": "X-Pack: вне целевого охвата",
+        private: "Private: вне целевого охвата",
+        "example-metadata": "Пример, не API кластера",
+        unknown: "Область требует исследования",
+    })[row.scope_category] || "Область требует исследования";
+}
 function showOperation(row) {
     const body = showDialog(row.api),
         meta = el("div", "dialog-meta");
@@ -338,9 +366,7 @@ function showOperation(row) {
         el("span", "muted", row.version),
         badge(
             "",
-            row.owner === "all-routes-server"
-                ? "Найден обработчик core/server"
-                : "Область API не определена",
+            scopeLabel(row),
         ),
     );
     body.append(
@@ -369,6 +395,11 @@ function showOperation(row) {
         query_parameters: row.params,
         path_parameters: [...new Set(row.routes.flatMap((r) => r.parts || []))],
         body_encoding_hint: row.body_encoding_hint,
+    });
+    jsonBlock(body, "Типы, значения и основание классификации (только исходники)", {
+        scope: row.scope_category, basis: row.scope_basis,
+        parameters: row.parameter_facts,
+        note: "Наличие параметра в определении не подтверждает его семантику в живом кластере."
     });
     body.append(
         external(
@@ -440,9 +471,7 @@ function renderTable(rows) {
                 el(
                     "small",
                     "",
-                    row.owner === "all-routes-server"
-                        ? "Обработчик найден · доступность не подтверждена"
-                        : "Область API ещё не определена",
+                    scopeLabel(row),
                 ),
             );
         if (row.in_source_catalogue === false)
@@ -508,6 +537,8 @@ function renderTable(rows) {
 function methodology() {
     const article = el("article", "methodology");
     const sections = [
+        ["Граница старой статической проверки", "Старый извлекатель Java-маршрутов (до версии 3) мог принимать строковый префикс выражения за полный путь. Поэтому старые совпадения обработчиков и списки кандидатов не подтверждают область API. Сохранённые HTTP-запросы и ответы от этого не меняются. Новая классификация опирается на строгий разбор, visibility и регистрацию; неизвестное остаётся неизвестным."],
+        ["Новые проверки v2", "Записываются отдельные ожидания, точные байты, зависимости и независимое чтение результата. Ошибка стенда без HTTP не становится проверкой API; заблокированная зависимость не считается выполнением. Ссылка на код сценария закреплена SHA-256."],
         [
             "Что здесь считается доказательством",
             "Каталог исходников описывает объявленные маршруты и параметры. Literal match с Java handler указывает на исходник реализации, но не подтверждает публичность или лицензионную доступность. Живой сценарий фиксирует конкретный запрос, ответ и assertions на конкретном релизе.",
@@ -746,7 +777,7 @@ function renderJournal(payloads) {
         }
         for (const [title, data] of [
             ["Пропуски fixture (не тесты)", p.applicability],
-            ["Архивные попытки", p.attempts],
+            ["Попытки и история", p.attempts],
             ["Неразобранные literal route candidates", p.route_candidates],
         ]) {
             if (!data?.length) continue;
