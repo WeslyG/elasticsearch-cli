@@ -300,6 +300,10 @@ async function showCase(row) {
             jsonBlock(body, "Реальный ответ", record.response);
             jsonBlock(body, "Проверки ожиданий", record.assertions);
             if (raw.fixture_evidence) jsonBlock(body, "Независимая подготовка и проверка fixture", raw.fixture_evidence);
+            if (raw.fixture_archive) {
+                body.append(external(raw.fixture_archive.url, "Snapshot fixture · ZIP · " + raw.fixture_archive.bytes + " байт · SHA-256 " + raw.fixture_archive.sha256));
+                body.append(el("p", "", "Синтетический task snapshot, действительно созданный ES6. Для ручного повтора в отдельном временном исследовательском кластере."));
+            }
             jsonBlock(body, "Связи и происхождение", {
                 scenario_id: record.scenario_id, run_id: record.run_id,
                 depends_on: record.depends_on, verifies: record.verifies,

@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "kind": "pinned-handler-query-extensions-not-runtime-support",
+  "releases": {
+    "6.0.0": {
+      "source_commit": "8f0685b924b9159807704ec2593b26e28105da44",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "4035f130f54e5f0fad6b1656ba50c330afdc641d37ebab4045ce38ac217b082c",
+            "line": 77,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition.",
+            "options": [
+              "nodes",
+              "parents"
+            ]
+          }
+        }
+      }
+    },
+    "6.0.1": {
+      "source_commit": "601be4afc4293b7b65327267bf6b91dde64bfc3e",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "4035f130f54e5f0fad6b1656ba50c330afdc641d37ebab4045ce38ac217b082c",
+            "line": 77,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition.",
+            "options": [
+              "nodes",
+              "parents"
+            ]
+          }
+        }
+      }
+    },
+    "7.17.29": {
+      "source_commit": "580aff1a0064ce4c93293aaab6fcc55e22c10d1c",
+      "query_params": {
+        "migration.get_feature_upgrade_status": {
+          "master_timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetFeatureUpgradeStatusAction.java",
+            "source_sha256": "62f4ec573705e878d9df0c9ba65d5f0dc0b46855efab06495d588cafc88275a5",
+            "line": 44,
+            "basis": "Pinned handler directly consumes master_timeout, absent from this exact release REST JSON definition; runtime support separately tested."
+          }
+        },
+        "migration.post_feature_upgrade": {
+          "master_timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestPostFeatureUpgradeAction.java",
+            "source_sha256": "21e7dd78d34977a53fc186d6f746953a85c9b814ca8e6d0c92a729b521b2f57e",
+            "line": 44,
+            "basis": "Pinned handler directly consumes master_timeout, absent from this exact release REST JSON definition; runtime support separately tested."
+          }
+        }
+      }
+    }
+  }
+}
