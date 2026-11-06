@@ -34,8 +34,15 @@ def best_routes(method, path, routes, trailing_slash=False):
         if route["method"] != method:
             continue
         if re.fullmatch(route_pattern(route["path"], trailing_slash), path):
-            score = len(re.sub(r"\{[^{}]+\}", "", route["path"]))
-            candidates.append((score, number))
+            template = "/" + route["path"].lstrip("/")
+            canonical = (template.rstrip("/") or "/") if trailing_slash else template
+            specificity = len(re.sub(r"\{[^{}]+\}", "", canonical))
+            # Proven slash equivalence enables matching, but actual wire spelling
+            # selects between retained upstream and handler-extension aliases.
+            exact_spelling = (
+                int(template.endswith("/") == path.endswith("/")) if trailing_slash else 0
+            )
+            candidates.append(((specificity, exact_spelling), number))
     if not candidates:
         return []
     maximum = max(score for score, _ in candidates)
