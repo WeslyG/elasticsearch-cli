@@ -1,0 +1,2292 @@
+{
+  "schema_version": 1,
+  "kind": "pinned-handler-query-extensions-not-runtime-support",
+  "releases": {
+    "6.0.0": {
+      "source_commit": "8f0685b924b9159807704ec2593b26e28105da44",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "4035f130f54e5f0fad6b1656ba50c330afdc641d37ebab4045ce38ac217b082c",
+            "line": 77,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition.",
+            "options": [
+              "nodes",
+              "parents"
+            ]
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Pinned handler directly consumes request.param(repository); the global route has no path value, so an explicit repository query is needed. Not a new guessed parameter or all-repositories default."
+          }
+        }
+      }
+    },
+    "6.0.1": {
+      "source_commit": "601be4afc4293b7b65327267bf6b91dde64bfc3e",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "4035f130f54e5f0fad6b1656ba50c330afdc641d37ebab4045ce38ac217b082c",
+            "line": 77,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition.",
+            "options": [
+              "nodes",
+              "parents"
+            ]
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Pinned handler directly consumes request.param(repository); the global route has no path value, so an explicit repository query is needed. Not a new guessed parameter or all-repositories default."
+          }
+        }
+      }
+    },
+    "7.17.29": {
+      "source_commit": "580aff1a0064ce4c93293aaab6fcc55e22c10d1c",
+      "query_params": {
+        "migration.get_feature_upgrade_status": {
+          "master_timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetFeatureUpgradeStatusAction.java",
+            "source_sha256": "62f4ec573705e878d9df0c9ba65d5f0dc0b46855efab06495d588cafc88275a5",
+            "line": 44,
+            "basis": "Pinned handler directly consumes master_timeout, absent from this exact release REST JSON definition; runtime support separately tested."
+          }
+        },
+        "migration.post_feature_upgrade": {
+          "master_timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestPostFeatureUpgradeAction.java",
+            "source_sha256": "21e7dd78d34977a53fc186d6f746953a85c9b814ca8e6d0c92a729b521b2f57e",
+            "line": 44,
+            "basis": "Pinned handler directly consumes master_timeout, absent from this exact release REST JSON definition; runtime support separately tested."
+          }
+        }
+      }
+    },
+    "6.1.4": {
+      "source_commit": "d838f2d7ce69a723e3e13d3aed146add28811e78",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "4035f130f54e5f0fad6b1656ba50c330afdc641d37ebab4045ce38ac217b082c",
+            "line": 77,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition.",
+            "options": [
+              "nodes",
+              "parents"
+            ]
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "core/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Pinned handler directly consumes request.param(repository); the global route has no path value, so an explicit repository query is needed. Not a new guessed parameter or all-repositories default."
+          }
+        }
+      }
+    },
+    "6.2.4": {
+      "source_commit": "ccec39f080c7c5d352378b73c507c1c334e6e27d",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+            "line": 77,
+            "basis": "Pinned handler directly consumes this query parameter; it is absent from this release REST JSON definition."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+            "line": 106,
+            "basis": "Exact handler none branch serializes flat tasks; live6.2.4 follow-up20261105T194439Z-72b4567a verifies actual running reindex identity in that list. Raw historical failed expectation is retained."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact cancel handler delegates to pinned listTasksResponseListener, whose source accepts nodes/parents/none. Enum is source evidence, not complete runtime value coverage.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+              "line": 106
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Pinned handler directly consumes request.param(repository); the global route has no path value, so an explicit repository query is needed. Not a new guessed parameter or all-repositories default."
+          }
+        }
+      }
+    },
+    "6.3.2": {
+      "source_commit": "053779d202567ea34577525eb622236c08da68cb",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact pinned handler consumption verified; JSON metadata may already contain this parameter. Static fact is not runtime support."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+            "line": 77,
+            "basis": "Exact pinned handler consumption verified; JSON metadata may already contain this parameter. Static fact is not runtime support."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+            "line": 66,
+            "basis": "Exact pinned handler consumption verified; JSON metadata may already contain this parameter. Static fact is not runtime support."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact cancel handler delegates to pinned listTasksResponseListener, whose source accepts nodes/parents/none. Enum is source evidence, not complete runtime value coverage.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "78ffb51cb6b8a572453b7e0c60ffa218925efbec19836e472518bab0bae64d48",
+              "line": 106
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Exact pinned handler consumption verified; JSON metadata may already contain this parameter. Static fact is not runtime support."
+          }
+        }
+      }
+    },
+    "6.4.3": {
+      "source_commit": "fe40335c1e4fa7db9e38001fa99d19526f3bc5ce",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact pinned handler consumption verified; metadata may already contain the parameter.6.4 runtime verification is pending."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 77,
+            "basis": "Exact pinned handler consumption verified; metadata may already contain the parameter.6.4 runtime verification is pending."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 66,
+            "basis": "Exact pinned handler consumption verified; metadata may already contain the parameter.6.4 runtime verification is pending."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact pinned handler consumption verified; metadata may already contain the parameter.6.4 runtime verification is pending.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8310913e3d0d25cadbf0d2efb79570f837c5e39122d71f43c5c310d7c69abd85",
+            "line": 60,
+            "basis": "Exact pinned handler consumption verified; metadata may already contain the parameter.6.4 runtime verification is pending."
+          }
+        }
+      }
+    },
+    "6.5.4": {
+      "source_commit": "d2ef93dff175ba22406054bf78137679a0e7990c",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact6.5.4 pinned handler consumption reviewed; recipe prepared, runtime not inherited."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 77,
+            "basis": "Exact6.5.4 pinned handler consumption reviewed; recipe prepared, runtime not inherited."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 66,
+            "basis": "Exact6.5.4 pinned handler consumption reviewed; recipe prepared, runtime not inherited."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact6.5.4 pinned handler consumption reviewed; recipe prepared, runtime not inherited.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "bf706ab7e59e0229c740585cde48b062b79dccd5f445e00dbf9c724a14fbf822",
+            "line": 62,
+            "basis": "Exact6.5.4 pinned handler consumption reviewed; recipe prepared, runtime not inherited."
+          }
+        }
+      }
+    },
+    "6.6.2": {
+      "source_commit": "3bd3e59556628bb84c8d53b09b10c9ac8255e251",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact6.6.2 pinned handler consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 77,
+            "basis": "Exact6.6.2 pinned handler consumption reviewed; runtime not inherited."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 66,
+            "basis": "Exact6.6.2 pinned handler consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact6.6.2 pinned handler consumption reviewed; runtime not inherited.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "bf706ab7e59e0229c740585cde48b062b79dccd5f445e00dbf9c724a14fbf822",
+            "line": 62,
+            "basis": "Exact6.6.2 pinned handler consumption reviewed; runtime not inherited."
+          }
+        },
+        "search": {
+          "_source_include": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 113,
+            "basis": "Pinned6.6 parser retains deprecated singular alias and consumes it after plural name; recipe runtime not yet observed."
+          },
+          "_source_exclude": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 123,
+            "basis": "Pinned6.6 parser retains deprecated singular alias and consumes it after plural name; recipe runtime not yet observed."
+          }
+        }
+      }
+    },
+    "6.7.2": {
+      "source_commit": "56c6e4869ac8c10a89de1f31252f90fc3002a030",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 77,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 66,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "bf706ab7e59e0229c740585cde48b062b79dccd5f445e00dbf9c724a14fbf822",
+            "line": 62,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "search": {
+          "_source_include": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 113,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          },
+          "_source_exclude": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 123,
+            "basis": "Exact6.7.2 pinned parser consumption reviewed; runtime not inherited."
+          }
+        }
+      }
+    },
+    "6.8.23": {
+      "source_commit": "4f67856884ff580d8b48a858411b8c17cb0f8cdb",
+      "query_params": {
+        "tasks.get": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestGetTaskAction.java",
+            "source_sha256": "9ea51a99b520853765f90525a237dd870ed738ad247c20daec514c9a5c38c1e3",
+            "line": 51,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.list": {
+          "timeout": {
+            "type": "time",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 77,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          },
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+            "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+            "line": 66,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited.",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "bf706ab7e59e0229c740585cde48b062b79dccd5f445e00dbf9c724a14fbf822",
+            "line": 62,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          }
+        },
+        "search": {
+          "_source_include": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 113,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          },
+          "_source_exclude": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "bee7df24568df53d75fb4641f10a71c389b406552a2f1575f64177a25cb54656",
+            "line": 123,
+            "basis": "Exact6.8.23 pinned parser consumption reviewed; runtime not inherited."
+          }
+        }
+      }
+    },
+    "7.0.1": {
+      "source_commit": "e4efcb53ec7a1f2138494c837def7c5a2aff0751",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact7.0.1 handler consumes group_by and delegates to pinned listTasksResponseListener; wait_for_completion is not consumed. Runtime not inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "02459fa964915eade3278a5c516f5ba19f479e2eaae6f50ec974fabf2ccdced2",
+            "line": 87,
+            "basis": "Pinned handler consumes index from RestRequest; explicit index query scopes global typed mapping paths to owned fixture. Default unfiltered global writes are a separate conflicting-type refusal probe, not inferred from scoped success."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "1b3f40eaff63a394495503925fd01e7066bb842aee390b8040ebf1a329f92790",
+            "line": 61,
+            "basis": "Pinned global CAT snapshot handler consumes repository from query when absent in path. Native missing selector400 retained separately; explicit owned repository positive fixture prepared."
+          }
+        }
+      }
+    },
+    "7.1.1": {
+      "source_commit": "7a013ded4033c6cc60ad2078f3e1f18666bec47a",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact7.1.1 primary source bytes verified, identical consumption to7.0.1; recipe reuse is not runtime evidence. Exact7.0.1 handler consumes group_by and delegates to pinned listTasksResponseListener; wait_for_completion is not consumed. Runtime not inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "02459fa964915eade3278a5c516f5ba19f479e2eaae6f50ec974fabf2ccdced2",
+            "line": 87,
+            "basis": "Exact7.1.1 primary source bytes verified, identical consumption to7.0.1; recipe reuse is not runtime evidence. Pinned handler consumes index from RestRequest; explicit index query scopes global typed mapping paths to owned fixture. Default unfiltered global writes are a separate conflicting-type refusal probe, not inferred from scoped success."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "1b3f40eaff63a394495503925fd01e7066bb842aee390b8040ebf1a329f92790",
+            "line": 61,
+            "basis": "Exact7.1.1 primary source bytes verified, identical consumption to7.0.1; recipe reuse is not runtime evidence. Pinned global CAT snapshot handler consumes repository from query when absent in path. Native missing selector400 retained separately; explicit owned repository positive fixture prepared."
+          }
+        }
+      }
+    },
+    "7.2.1": {
+      "source_commit": "fe6cb20130087b7dcdeb3f1b97724a73a8581176",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact7.2.1 source bytes verified identical for this consumed parameter; no runtime inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "02459fa964915eade3278a5c516f5ba19f479e2eaae6f50ec974fabf2ccdced2",
+            "line": 87,
+            "basis": "Exact7.2.1 source bytes verified identical for this consumed parameter; no runtime inherited."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "1b3f40eaff63a394495503925fd01e7066bb842aee390b8040ebf1a329f92790",
+            "line": 61,
+            "basis": "Exact7.2.1 source bytes verified identical for this consumed parameter; no runtime inherited."
+          }
+        }
+      }
+    },
+    "7.3.2": {
+      "source_commit": "1c1faf179b40cccb785fb00bf32b2a91176d6c85",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e766ab691bd88863f8f2052acf871b3aeae05930a5a97538d1c1c6e06c738606",
+            "line": 60,
+            "basis": "Exact7.3.2 source bytes verified identical for this consumed parameter; no runtime inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "b60bd2b08b318d60bc8002add4cc6befb4de4a09e6ae97c340a08d2988d6e1b7",
+              "line": 116
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "02459fa964915eade3278a5c516f5ba19f479e2eaae6f50ec974fabf2ccdced2",
+            "line": 87,
+            "basis": "Exact7.3.2 source bytes verified identical for this consumed parameter; no runtime inherited."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "1b3f40eaff63a394495503925fd01e7066bb842aee390b8040ebf1a329f92790",
+            "line": 61,
+            "basis": "Exact7.3.2 source bytes verified identical for this consumed parameter; no runtime inherited."
+          }
+        }
+      }
+    },
+    "7.4.2": {
+      "source_commit": "2f90bbf7b93631e52bafb59b3b049cb44ec25e96",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "1c2763083eb3c26c7f62b6f77fa5fc69770bb64edd04536761f6606298875019",
+            "line": 58,
+            "basis": "Exact7.4.2 handler/helper diff reviewed: constructor Settings removed, consumption/enum branches unchanged. New exact source hashes; no runtime inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "06bb65fcad2ea0da2e71931384058a3b93f16f44b8eadd476cfe9e4e025a1b72",
+              "line": 64
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "3e6e72ca9b2d3a657d55a3674dd8c68aa847344c62135bce5b0d203b60db5dbc",
+            "line": 85,
+            "basis": "Exact7.4.2 handler/helper diff reviewed: constructor Settings removed, consumption/enum branches unchanged. New exact source hashes; no runtime inherited."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "7e7251673eb4eb53692be00bd165fafccad51f83db9202778072ad018e0df3a4",
+            "line": 60,
+            "basis": "Exact7.4.2 handler/helper diff reviewed: constructor Settings removed, consumption/enum branches unchanged. New exact source hashes; no runtime inherited."
+          }
+        }
+      }
+    },
+    "7.5.2": {
+      "source_commit": "8bec50e1e0ad29dad5653712cf3bb580cd1afcdf",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "1c2763083eb3c26c7f62b6f77fa5fc69770bb64edd04536761f6606298875019",
+            "line": 58,
+            "basis": "Exact7.5.2 handler/helper bytes identical to pinned7.4.2; hashes verified, no inherited runtime.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "06bb65fcad2ea0da2e71931384058a3b93f16f44b8eadd476cfe9e4e025a1b72",
+              "line": 64
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "3e6e72ca9b2d3a657d55a3674dd8c68aa847344c62135bce5b0d203b60db5dbc",
+            "line": 85,
+            "basis": "Exact7.5.2 handler/helper bytes identical to pinned7.4.2; hashes verified, no inherited runtime."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "7e7251673eb4eb53692be00bd165fafccad51f83db9202778072ad018e0df3a4",
+            "line": 60,
+            "basis": "Exact7.5.2 handler/helper bytes identical to pinned7.4.2; hashes verified, no inherited runtime."
+          }
+        }
+      }
+    },
+    "7.6.2": {
+      "source_commit": "ef48eb35cf30adf4db14086e8aabd07ef6fb113f",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "1c2763083eb3c26c7f62b6f77fa5fc69770bb64edd04536761f6606298875019",
+            "line": 58,
+            "basis": "Exact7.6.2 handler/helper bytes identical to pinned7.5.2; hashes verified, no runtime inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "06bb65fcad2ea0da2e71931384058a3b93f16f44b8eadd476cfe9e4e025a1b72",
+              "line": 64
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "3e6e72ca9b2d3a657d55a3674dd8c68aa847344c62135bce5b0d203b60db5dbc",
+            "line": 85,
+            "basis": "Exact7.6.2 handler/helper bytes identical to pinned7.5.2; hashes verified, no runtime inherited."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "7e7251673eb4eb53692be00bd165fafccad51f83db9202778072ad018e0df3a4",
+            "line": 60,
+            "basis": "Exact7.6.2 handler/helper bytes identical to pinned7.5.2; hashes verified, no runtime inherited."
+          }
+        }
+      }
+    },
+    "7.7.1": {
+      "source_commit": "ad56dce891c901a492bb1ee393f12dfff473a423",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "e6fce88fb292604b1f552691127f144b77c09da0769e3b21ece7e8921ddcaf12",
+            "line": 64,
+            "basis": "Exact7.7.1 routes() migration reviewed; consumed query key and enum branches unchanged, new pinned source hashes/lines. No inherited runtime.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "21b82449d3a113d4c6cea493c8200918823f351654e46d3aed354bbb2ab78a51",
+              "line": 119
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "51f759bb53f39628f06723f39a4dbe176dc076bbef12b834aae9028de3a861da",
+            "line": 85,
+            "basis": "Exact7.7.1 routes() migration reviewed; consumed query key and enum branches unchanged, new pinned source hashes/lines. No inherited runtime."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "45c26a46e7750ff93f028b1959746e1fd5d867e4152dd7c83dcb81d5f6f988a6",
+            "line": 64,
+            "basis": "Exact7.7.1 routes() migration reviewed; consumed query key and enum branches unchanged, new pinned source hashes/lines. No inherited runtime."
+          }
+        }
+      }
+    },
+    "7.8.1": {
+      "source_commit": "b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "65e97904b9bfdb0f40d34b347c5c4d97697176f41bd745d10a8ba02eefcefce5",
+            "line": 64,
+            "basis": "Exact7.8.1 source consumed key/enum branch reviewed; new source hash/line, no runtime inherited. Cancellation wait and response fields are separate capabilities.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "21b82449d3a113d4c6cea493c8200918823f351654e46d3aed354bbb2ab78a51",
+              "line": 119
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "51f759bb53f39628f06723f39a4dbe176dc076bbef12b834aae9028de3a861da",
+            "line": 85,
+            "basis": "Exact7.8.1 source consumed key/enum branch reviewed; new source hash/line, no runtime inherited. Cancellation wait and response fields are separate capabilities."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "45c26a46e7750ff93f028b1959746e1fd5d867e4152dd7c83dcb81d5f6f988a6",
+            "line": 64,
+            "basis": "Exact7.8.1 source consumed key/enum branch reviewed; new source hash/line, no runtime inherited. Cancellation wait and response fields are separate capabilities."
+          }
+        },
+        "cluster.post_voting_config_exclusions": {
+          "node_name": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestAddVotingConfigExclusionAction.java",
+            "source_sha256": "2ec97b2ac61fe61dbf3dc29ae6a64724e5bfaad3b7b8ddf59d621af4b035b26d",
+            "line": 76,
+            "basis": "Deprecated legacy selector consumed from request params, absent in REST JSON; not the newer absent-name accepting node_names mode. Native negative preservation probes prepared."
+          }
+        }
+      }
+    },
+    "7.9.3": {
+      "source_commit": "c4138e51121ef06a6404866cddc601906fe5c868",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "65e97904b9bfdb0f40d34b347c5c4d97697176f41bd745d10a8ba02eefcefce5",
+            "line": 64,
+            "basis": "Exact7.9.3 consumed parameter reviewed; pinned bytes/line, no inherited native support.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "21b82449d3a113d4c6cea493c8200918823f351654e46d3aed354bbb2ab78a51",
+              "line": 119
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "5bf3e3d23f2876eb3d38f13553cd8db20d7e75bbf87c53bb19d0ac8bd52427b1",
+            "line": 85,
+            "basis": "Exact7.9.3 consumed parameter reviewed; pinned bytes/line, no inherited native support."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "45c26a46e7750ff93f028b1959746e1fd5d867e4152dd7c83dcb81d5f6f988a6",
+            "line": 64,
+            "basis": "Exact7.9.3 consumed parameter reviewed; pinned bytes/line, no inherited native support."
+          }
+        },
+        "cluster.post_voting_config_exclusions": {
+          "node_name": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestAddVotingConfigExclusionAction.java",
+            "source_sha256": "2ec97b2ac61fe61dbf3dc29ae6a64724e5bfaad3b7b8ddf59d621af4b035b26d",
+            "line": 76,
+            "basis": "Exact7.9.3 consumed parameter reviewed; pinned bytes/line, no inherited native support."
+          }
+        }
+      }
+    },
+    "7.10.2": {
+      "source_commit": "747e1cc71def077253878a59143c1f785afa92b9",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "65e97904b9bfdb0f40d34b347c5c4d97697176f41bd745d10a8ba02eefcefce5",
+            "line": 64,
+            "basis": "Pinned7.10.2 consumed key/enum branch reviewed, bytes and lines rebound; no inherited HTTP.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "21b82449d3a113d4c6cea493c8200918823f351654e46d3aed354bbb2ab78a51",
+              "line": 119
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "cb06c762f62b08b09b76154d06820380f094d8b714e0306687dd7e0c46e142e1",
+            "line": 83,
+            "basis": "Pinned7.10.2 consumed key/enum branch reviewed, bytes and lines rebound; no inherited HTTP."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "45c26a46e7750ff93f028b1959746e1fd5d867e4152dd7c83dcb81d5f6f988a6",
+            "line": 64,
+            "basis": "Pinned7.10.2 consumed key/enum branch reviewed, bytes and lines rebound; no inherited HTTP."
+          }
+        },
+        "cluster.post_voting_config_exclusions": {
+          "node_name": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestAddVotingConfigExclusionAction.java",
+            "source_sha256": "2ec97b2ac61fe61dbf3dc29ae6a64724e5bfaad3b7b8ddf59d621af4b035b26d",
+            "line": 76,
+            "basis": "Pinned7.10.2 consumed key/enum branch reviewed, bytes and lines rebound; no inherited HTTP."
+          }
+        }
+      }
+    },
+    "7.11.2": {
+      "source_commit": "3e5a16cfec50876d20ea77b075070932c6464c7d",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "3b2eff87650a8ebd4fb79928d7b96349377cbbeeda462fccc93d65746134c85f",
+            "line": 53,
+            "basis": "Pinned7.11.2 consumption/enum branches reviewed; hashes/lines include new license notice, no native evidence inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "7410b3f53a3ebfa13ea3ede29ec239787a1f32bf0d99f2aacb6041f615d782e6",
+              "line": 108
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "ef12321b2d69339e2263ace303785fb4a675d73c58d351810d728682e721d80b",
+            "line": 72,
+            "basis": "Pinned7.11.2 consumption/enum branches reviewed; hashes/lines include new license notice, no native evidence inherited."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "b38db90dfe69888e28ea201dcaefa0974efdd123ddf0b0e208abb15c8431ae6f",
+            "line": 53,
+            "basis": "Pinned7.11.2 consumption/enum branches reviewed; hashes/lines include new license notice, no native evidence inherited."
+          }
+        },
+        "cluster.post_voting_config_exclusions": {
+          "node_name": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestAddVotingConfigExclusionAction.java",
+            "source_sha256": "7fc90aa5bb8092b813dfa015839766766bab956a2a975969eeb6d47126721102",
+            "line": 65,
+            "basis": "Pinned7.11.2 consumption/enum branches reviewed; hashes/lines include new license notice, no native evidence inherited."
+          }
+        }
+      }
+    },
+    "7.12.1": {
+      "source_commit": "3186837139b9c6b6d23c3200870651f10d3343b7",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "3b2eff87650a8ebd4fb79928d7b96349377cbbeeda462fccc93d65746134c85f",
+            "line": 53,
+            "basis": "Exact7.12.1 primary consumption/enum branch reviewed and hashed; no native support inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "7410b3f53a3ebfa13ea3ede29ec239787a1f32bf0d99f2aacb6041f615d782e6",
+              "line": 108
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "9471643c614886c8efb527916d315965953705716085fb01fb37fbb7e4596229",
+            "line": 73,
+            "basis": "Exact7.12.1 primary consumption/enum branch reviewed and hashed; no native support inherited."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "b38db90dfe69888e28ea201dcaefa0974efdd123ddf0b0e208abb15c8431ae6f",
+            "line": 53,
+            "basis": "Exact7.12.1 primary consumption/enum branch reviewed and hashed; no native support inherited."
+          }
+        },
+        "cluster.post_voting_config_exclusions": {
+          "node_name": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestAddVotingConfigExclusionAction.java",
+            "source_sha256": "7fc90aa5bb8092b813dfa015839766766bab956a2a975969eeb6d47126721102",
+            "line": 65,
+            "basis": "Exact7.12.1 primary consumption/enum branch reviewed and hashed; no native support inherited."
+          }
+        }
+      }
+    },
+    "7.13.4": {
+      "source_commit": "c5f60e894ca0c61cdbae4f5a686d9f08bcefc942",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "ecd13771e55a8bfca0731ce82d20b7cfaec0b6a82b8ed0db9ae872b40a57e3ad",
+            "line": 55,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "7410b3f53a3ebfa13ea3ede29ec239787a1f32bf0d99f2aacb6041f615d782e6",
+              "line": 108
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "9471643c614886c8efb527916d315965953705716085fb01fb37fbb7e4596229",
+            "line": 73,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "b38db90dfe69888e28ea201dcaefa0974efdd123ddf0b0e208abb15c8431ae6f",
+            "line": 53,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited."
+          }
+        },
+        "cluster.post_voting_config_exclusions": {
+          "node_name": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestAddVotingConfigExclusionAction.java",
+            "source_sha256": "6742cac7b9327325f77befd8fe590be2b443e38c3b7bb46f632702ca8182bfa6",
+            "line": 67,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited."
+          }
+        },
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "e9685fba1c1b52a91f191523de70a91e28c4fc917f758600ba7d6ae2c713e791",
+            "line": 41,
+            "basis": "Pinned core handler directly consumes request.param(index) for both routes; root route has no path index and requires an explicit index query. Native acceptance must be measured separately."
+          }
+        }
+      }
+    },
+    "7.14.2": {
+      "source_commit": "6bc13727ce758c0e943c3c21653b3da82f627f75",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "ecd13771e55a8bfca0731ce82d20b7cfaec0b6a82b8ed0db9ae872b40a57e3ad",
+            "line": 55,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "7410b3f53a3ebfa13ea3ede29ec239787a1f32bf0d99f2aacb6041f615d782e6",
+              "line": 108
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "9471643c614886c8efb527916d315965953705716085fb01fb37fbb7e4596229",
+            "line": 73,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "687f5e7d9fdba6f4995f06c0926b5aa5c0bb1e146653d23580ac397917e69cd8",
+            "line": 55,
+            "basis": "Pinned handler consumes paramAsStringArray(repository, default _all). Explicit query filters repository list; unlike13, omitted repository selects all. Native JSON/text nonempty snapshot probes required."
+          }
+        },
+        "cluster.post_voting_config_exclusions": {
+          "node_name": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestAddVotingConfigExclusionAction.java",
+            "source_sha256": "8ed945ef046f8a94a926ebd11f5f92df18c5556d5f42301d4719d18e0bffe97e",
+            "line": 67,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited."
+          }
+        },
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "ae1037b343a36a3adcb9b6012c2662a81871f22bd6f12a1b8fbab5a4c0046aae",
+            "line": 41,
+            "basis": "Pinned core handler directly consumes request.param(index) for both routes; root route has no path index and requires an explicit index query. Native acceptance must be measured separately."
+          }
+        }
+      }
+    },
+    "7.15.2": {
+      "source_commit": "93d5a7f6192e8a1a12e154a2b81bf6fa7309da0c",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "ecd13771e55a8bfca0731ce82d20b7cfaec0b6a82b8ed0db9ae872b40a57e3ad",
+            "line": 55,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "7410b3f53a3ebfa13ea3ede29ec239787a1f32bf0d99f2aacb6041f615d782e6",
+              "line": 108
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "9471643c614886c8efb527916d315965953705716085fb01fb37fbb7e4596229",
+            "line": 73,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "687f5e7d9fdba6f4995f06c0926b5aa5c0bb1e146653d23580ac397917e69cd8",
+            "line": 55,
+            "basis": "Pinned handler consumes paramAsStringArray(repository, default _all). Explicit query filters repository list; unlike13, omitted repository selects all. Native JSON/text nonempty snapshot probes required."
+          }
+        },
+        "cluster.post_voting_config_exclusions": {
+          "node_name": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestAddVotingConfigExclusionAction.java",
+            "source_sha256": "8ed945ef046f8a94a926ebd11f5f92df18c5556d5f42301d4719d18e0bffe97e",
+            "line": 67,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited."
+          }
+        },
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "ae1037b343a36a3adcb9b6012c2662a81871f22bd6f12a1b8fbab5a4c0046aae",
+            "line": 41,
+            "basis": "Pinned core handler directly consumes request.param(index) for both routes; root route has no path index and requires an explicit index query. Native acceptance must be measured separately."
+          }
+        }
+      }
+    },
+    "7.16.3": {
+      "source_commit": "4e6e4eab2297e949ec994e688dad46290d018022",
+      "query_params": {
+        "tasks.cancel": {
+          "group_by": {
+            "type": "enum",
+            "options": [
+              "nodes",
+              "parents",
+              "none"
+            ],
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestCancelTasksAction.java",
+            "source_sha256": "dd3349a5c78260c68159ba1d4b16ff72f31949cb415950c514b9b76979f90c94",
+            "line": 51,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited.",
+            "enum_source": {
+              "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestListTasksAction.java",
+              "source_sha256": "7410b3f53a3ebfa13ea3ede29ec239787a1f32bf0d99f2aacb6041f615d782e6",
+              "line": 108
+            }
+          }
+        },
+        "indices.put_mapping": {
+          "index": {
+            "type": "list",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestPutMappingAction.java",
+            "source_sha256": "5321d9d37c1812676edda0c38d40293dbed4e9595bcebcb78c5fd74011470d12",
+            "line": 75,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited."
+          }
+        },
+        "cat.snapshots": {
+          "repository": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/cat/RestSnapshotAction.java",
+            "source_sha256": "8ac95ce7190d17bc0d2c9f11a8198a5793962b56fc839fb7346deb17d1b65b5c",
+            "line": 53,
+            "basis": "Pinned handler consumes paramAsStringArray(repository, default _all). Explicit query filters repository list; unlike13, omitted repository selects all. Native JSON/text nonempty snapshot probes required."
+          }
+        },
+        "cluster.post_voting_config_exclusions": {
+          "node_name": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestAddVotingConfigExclusionAction.java",
+            "source_sha256": "6a0892a0fe21d8daad3c2c98d36da61f09a87b78f700b949513a97ba051a03cc",
+            "line": 69,
+            "basis": "Pinned7.13.4 consumed key/enum branch reviewed, exact bytes/lines; no native support inherited."
+          }
+        },
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "dea3dae42a96ca4450e0c950578577922f15e74a6e30653c2da6b6446390017c",
+            "line": 39,
+            "basis": "Pinned core handler directly consumes request.param(index) for both routes; root route has no path index and requires an explicit index query. Native acceptance must be measured separately."
+          }
+        }
+      }
+    },
+    "8.0.1": {
+      "source_commit": "801d9ccc7c2ee0f2cb121bbe22ab5af77a902372",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "b897f0ce53e9f83779b929952642154a735f4bbaccf01845a18a371a65d38207",
+            "line": 38,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          }
+        }
+      }
+    },
+    "8.1.3": {
+      "source_commit": "39afaa3c0fe7db4869a161985e240bd7182d7a07",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "4f9c423bfca95965fc76faa9dc827b45614df72eed43ecb99f14e7e1c7f8d916",
+            "line": 38,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          }
+        }
+      }
+    },
+    "8.2.3": {
+      "source_commit": "9905bfb62a3f0b044948376b4f607f70a8a151b4",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "4f9c423bfca95965fc76faa9dc827b45614df72eed43ecb99f14e7e1c7f8d916",
+            "line": 38,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          }
+        }
+      }
+    },
+    "8.3.3": {
+      "source_commit": "801fed82df74dbe537f89b71b098ccaff88d2c56",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "4f9c423bfca95965fc76faa9dc827b45614df72eed43ecb99f14e7e1c7f8d916",
+            "line": 38,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          }
+        }
+      }
+    },
+    "8.4.3": {
+      "source_commit": "42f05b9372a9a4a470db3b52817899b99a76ee73",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "4f9c423bfca95965fc76faa9dc827b45614df72eed43ecb99f14e7e1c7f8d916",
+            "line": 38,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          }
+        }
+      }
+    },
+    "8.5.3": {
+      "source_commit": "4ed5ee9afac63de92ec98f404ccbed7d3ba9584e",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "4f9c423bfca95965fc76faa9dc827b45614df72eed43ecb99f14e7e1c7f8d916",
+            "line": 38,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          }
+        }
+      }
+    },
+    "8.6.2": {
+      "source_commit": "2d58d0f136141f03239816a4e360a8d17b6d8f29",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "4f9c423bfca95965fc76faa9dc827b45614df72eed43ecb99f14e7e1c7f8d916",
+            "line": 38,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "9032d31160ba87f009332fef8858b2c049dc3a11afe27cd07477d3adfaaa360a",
+            "line": 374,
+            "basis": "Pinned RestOpenPointInTimeAction calls IndicesOptions.fromRequest; helper consumes allow_no_indices. Retained full primary IndicesOptions.java in source-analysis/8.6.2/empty-pit-source. Static parser fact, not runtime support."
+          }
+        }
+      }
+    },
+    "8.7.1": {
+      "source_commit": "f229ed3f893a515d590d0f39b05f68913e2d9b53",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "4f9c423bfca95965fc76faa9dc827b45614df72eed43ecb99f14e7e1c7f8d916",
+            "line": 38,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "9032d31160ba87f009332fef8858b2c049dc3a11afe27cd07477d3adfaaa360a",
+            "line": 374,
+            "basis": "Pinned RestOpenPointInTimeAction calls IndicesOptions.fromRequest; helper consumes allow_no_indices. Retained full primary IndicesOptions.java in source-analysis/8.7.1/prepared-wire-sources. Static parser fact, not runtime support."
+          }
+        }
+      }
+    },
+    "8.8.2": {
+      "source_commit": "98e1271edf932a480e4262a471281f1ee295ce6b",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "6772c63a30385fc8405f6f3a1a187d550071c44edc40463030b736810919dc1e",
+            "line": 41,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "4f188fe9161755c44a567fb7828f382633e8f4aec9b76e8d54bb302cc75df2ec",
+            "line": 378,
+            "basis": "Pinned RestOpenPointInTimeAction calls IndicesOptions.fromRequest; helper consumes allow_no_indices. Retained full primary IndicesOptions.java in source-analysis/8.8.2/prepared-wire-sources. Static parser fact, not runtime support."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "6772c63a30385fc8405f6f3a1a187d550071c44edc40463030b736810919dc1e",
+            "line": 49,
+            "basis": "Exact8.8 handler lines47-52 consumes/sets optional integer; request minimum1. Absent from pinned REST JSON; source-only until native0/1 probes."
+          }
+        }
+      }
+    },
+    "8.9.2": {
+      "source_commit": "e8179018838f55b8820685f92e245abef3bddc0f",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "6772c63a30385fc8405f6f3a1a187d550071c44edc40463030b736810919dc1e",
+            "line": 41,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "4f188fe9161755c44a567fb7828f382633e8f4aec9b76e8d54bb302cc75df2ec",
+            "line": 378,
+            "basis": "Pinned RestOpenPointInTimeAction calls IndicesOptions.fromRequest; helper consumes allow_no_indices. Retained full primary IndicesOptions.java in source-analysis/8.9.2/prepared-wire-sources. Static parser fact, not runtime support."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "6772c63a30385fc8405f6f3a1a187d550071c44edc40463030b736810919dc1e",
+            "line": 49,
+            "basis": "Exact8.9 handler lines47-52 consumes/sets optional integer; request minimum1. Absent from pinned REST JSON; source-only until native0/1 probes."
+          }
+        }
+      }
+    },
+    "8.10.4": {
+      "source_commit": "b4a62ac808e886ff032700c391f45f1408b2538c",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "6772c63a30385fc8405f6f3a1a187d550071c44edc40463030b736810919dc1e",
+            "line": 41,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "4f188fe9161755c44a567fb7828f382633e8f4aec9b76e8d54bb302cc75df2ec",
+            "line": 378,
+            "basis": "Pinned RestOpenPointInTimeAction calls IndicesOptions.fromRequest; helper consumes allow_no_indices. Retained full primary IndicesOptions.java in source-analysis/8.10.4/prepared-wire-sources. Static parser fact, not runtime support."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "6772c63a30385fc8405f6f3a1a187d550071c44edc40463030b736810919dc1e",
+            "line": 49,
+            "basis": "Exact8.10 handler lines47-52 consumes/sets optional integer; request minimum1. Absent from pinned REST JSON; source-only until native0/1 probes."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "3f833cc141ab964cb779bdcf2619cca73f4231b8ecb27c6befa33b75c2a1d111",
+            "line": 41,
+            "basis": "Exact8.10 literal parser resource/preview feeds request. Source presence only; native no-op/actual reload distinction required."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "3f833cc141ab964cb779bdcf2619cca73f4231b8ecb27c6befa33b75c2a1d111",
+            "line": 42,
+            "basis": "Exact8.10 literal parser resource/preview feeds request. Source presence only; native no-op/actual reload distinction required."
+          }
+        }
+      }
+    },
+    "8.11.4": {
+      "source_commit": "da06c53fd49b7e676ccf8a32d6655c5155c16d81",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "6772c63a30385fc8405f6f3a1a187d550071c44edc40463030b736810919dc1e",
+            "line": 41,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "4f188fe9161755c44a567fb7828f382633e8f4aec9b76e8d54bb302cc75df2ec",
+            "line": 378,
+            "basis": "Pinned RestOpenPointInTimeAction calls IndicesOptions.fromRequest; helper consumes allow_no_indices. Retained full primary IndicesOptions.java in source-analysis/8.11.4/prepared-wire-sources. Static parser fact, not runtime support."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "6772c63a30385fc8405f6f3a1a187d550071c44edc40463030b736810919dc1e",
+            "line": 49,
+            "basis": "Exact8.11 handler lines47-52 consumes/sets optional integer; request minimum1. Absent from pinned REST JSON; source-only until native0/1 probes."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "3f833cc141ab964cb779bdcf2619cca73f4231b8ecb27c6befa33b75c2a1d111",
+            "line": 41,
+            "basis": "Exact8.11 literal parser resource/preview feeds request. Source presence only; native no-op/actual reload distinction required."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "3f833cc141ab964cb779bdcf2619cca73f4231b8ecb27c6befa33b75c2a1d111",
+            "line": 42,
+            "basis": "Exact8.11 literal parser resource/preview feeds request. Source presence only; native no-op/actual reload distinction required."
+          }
+        }
+      }
+    },
+    "8.12.2": {
+      "source_commit": "48a287ab9497e852de30327444b0809e55d46466",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "b5b2c901fb6adb7adedb870932d3dbbaff275ed2e08fad6d4c0d2d2542fd0942",
+            "line": 44,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "4f188fe9161755c44a567fb7828f382633e8f4aec9b76e8d54bb302cc75df2ec",
+            "line": 378,
+            "basis": "Pinned RestOpenPointInTimeAction calls IndicesOptions.fromRequest; helper consumes allow_no_indices. Retained full primary IndicesOptions.java in source-analysis/8.12.4/prepared-wire-sources. Static parser fact, not runtime support."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "b5b2c901fb6adb7adedb870932d3dbbaff275ed2e08fad6d4c0d2d2542fd0942",
+            "line": 52,
+            "basis": "Exact8.12 handler lines47-52 consumes/sets optional integer; request minimum1. Absent from pinned REST JSON; source-only until native0/1 probes."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "3f833cc141ab964cb779bdcf2619cca73f4231b8ecb27c6befa33b75c2a1d111",
+            "line": 41,
+            "basis": "Exact8.12 literal parser resource/preview feeds request. Source presence only; native no-op/actual reload distinction required."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "3f833cc141ab964cb779bdcf2619cca73f4231b8ecb27c6befa33b75c2a1d111",
+            "line": 42,
+            "basis": "Exact8.12 literal parser resource/preview feeds request. Source presence only; native no-op/actual reload distinction required."
+          }
+        }
+      }
+    },
+    "8.13.4": {
+      "source_commit": "da95df118650b55a500dcc181889ac35c6d8da7c",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "b5b2c901fb6adb7adedb870932d3dbbaff275ed2e08fad6d4c0d2d2542fd0942",
+            "line": 44,
+            "basis": "Pinned root handler reads explicit index query. Source registration is not native support; no all-indices empty-index inference."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "4f9426d63dde711a07786d46e64ef9fb59bd7e9f567b9efacaa7f0aedf7d8b0a",
+            "line": 842,
+            "basis": "Pinned RestOpenPointInTimeAction calls IndicesOptions.fromRequest; helper consumes allow_no_indices. Retained full primary IndicesOptions.java in source-analysis/8.13.4/prepared-wire-sources. Static parser fact, not runtime support. Exact8.13 nested WildcardOptions.ALLOW_NO_INDICES literal line101 is consumed by fromRequest line842."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "b5b2c901fb6adb7adedb870932d3dbbaff275ed2e08fad6d4c0d2d2542fd0942",
+            "line": 52,
+            "basis": "Exact8.13 handler lines47-52 consumes/sets optional integer; request minimum1. Absent from pinned REST JSON; source-only until native0/1 probes."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "0efc87f1a01c42bf26d56c758e30846bb5746a35e8d0dd31341d5ae5280bbf8d",
+            "line": 41,
+            "basis": "Exact8.13 literal parser resource/preview feeds request. Source presence only; native no-op/actual reload distinction required."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "0efc87f1a01c42bf26d56c758e30846bb5746a35e8d0dd31341d5ae5280bbf8d",
+            "line": 42,
+            "basis": "Exact8.13 literal parser resource/preview feeds request. Source presence only; native no-op/actual reload distinction required."
+          }
+        }
+      }
+    },
+    "8.14.3": {
+      "source_commit": "d55f984299e0e88dee72ebd8255f7ff130859ad0",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "b5b2c901fb6adb7adedb870932d3dbbaff275ed2e08fad6d4c0d2d2542fd0942",
+            "line": 44,
+            "basis": "Exact8.14 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "58e7ab736e1d1b343688d38e4e74e813d3f0ac09ee218478d320d77b4aa61d41",
+            "line": 1110,
+            "basis": "Exact8.14 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "b5b2c901fb6adb7adedb870932d3dbbaff275ed2e08fad6d4c0d2d2542fd0942",
+            "line": 52,
+            "basis": "Exact8.14 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "0efc87f1a01c42bf26d56c758e30846bb5746a35e8d0dd31341d5ae5280bbf8d",
+            "line": 41,
+            "basis": "Exact8.14 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "0efc87f1a01c42bf26d56c758e30846bb5746a35e8d0dd31341d5ae5280bbf8d",
+            "line": 42,
+            "basis": "Exact8.14 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        }
+      }
+    },
+    "8.15.5": {
+      "source_commit": "b10896bcfe167cce44a84ba2771d101fb596d40d",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "b5b2c901fb6adb7adedb870932d3dbbaff275ed2e08fad6d4c0d2d2542fd0942",
+            "line": 44,
+            "basis": "Exact 8.15.5 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "7da47c1016acae2217595a733396ea10b66ddf752764858ba6607e8e83d1dd3f",
+            "line": 1189,
+            "basis": "Exact 8.15.5 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "b5b2c901fb6adb7adedb870932d3dbbaff275ed2e08fad6d4c0d2d2542fd0942",
+            "line": 52,
+            "basis": "Exact 8.15.5 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "0efc87f1a01c42bf26d56c758e30846bb5746a35e8d0dd31341d5ae5280bbf8d",
+            "line": 41,
+            "basis": "Exact 8.15.5 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "0efc87f1a01c42bf26d56c758e30846bb5746a35e8d0dd31341d5ae5280bbf8d",
+            "line": 42,
+            "basis": "Exact 8.15.5 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        }
+      }
+    },
+    "8.16.6": {
+      "source_commit": "2eabb32aee47ed0c4ba71c169f098d0379402efe",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "833143e0e73f4d12d01ab7b406ff0daf1a1a9f4bc8667c7b998cc54ee859d16d",
+            "line": 45,
+            "basis": "Exact 8.16.6 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "efcdcb220ead72559e647313eb05d3205882c647522e9bdab4504308717e2481",
+            "line": 1224,
+            "basis": "Exact 8.16.6 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "833143e0e73f4d12d01ab7b406ff0daf1a1a9f4bc8667c7b998cc54ee859d16d",
+            "line": 54,
+            "basis": "Exact 8.16.6 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 42,
+            "basis": "Exact 8.16.6 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 43,
+            "basis": "Exact 8.16.6 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        }
+      }
+    },
+    "8.17.10": {
+      "source_commit": "e5c4b2af120c131ea2885730f6693cb7d40a0a63",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "833143e0e73f4d12d01ab7b406ff0daf1a1a9f4bc8667c7b998cc54ee859d16d",
+            "line": 45,
+            "basis": "Exact 8.17.10 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "1cf643f9443b13c61513cb197a1c4894aa2e0065d341ca75b4d6ab91c891e3d3",
+            "line": 1203,
+            "basis": "Exact 8.17.10 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "833143e0e73f4d12d01ab7b406ff0daf1a1a9f4bc8667c7b998cc54ee859d16d",
+            "line": 54,
+            "basis": "Exact 8.17.10 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 42,
+            "basis": "Exact 8.17.10 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 43,
+            "basis": "Exact 8.17.10 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        }
+      }
+    },
+    "8.18.8": {
+      "source_commit": "c1310008a98b8bb63c9fc08e763de1d065b943ce",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "833143e0e73f4d12d01ab7b406ff0daf1a1a9f4bc8667c7b998cc54ee859d16d",
+            "line": 45,
+            "basis": "Exact 8.18.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "e25fd26ed848a6aa063b9d38efc80fa42e3f0cd59b8edc84c4abf1af1210cd18",
+            "line": 1131,
+            "basis": "Exact 8.18.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "833143e0e73f4d12d01ab7b406ff0daf1a1a9f4bc8667c7b998cc54ee859d16d",
+            "line": 54,
+            "basis": "Exact 8.18.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 42,
+            "basis": "Exact 8.18.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 43,
+            "basis": "Exact 8.18.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        }
+      }
+    },
+    "9.0.8": {
+      "source_commit": "936f7cf370e0d7952bb71a98629284c3c0e0d00e",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "833143e0e73f4d12d01ab7b406ff0daf1a1a9f4bc8667c7b998cc54ee859d16d",
+            "line": 45,
+            "basis": "Exact 9.0.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "e25fd26ed848a6aa063b9d38efc80fa42e3f0cd59b8edc84c4abf1af1210cd18",
+            "line": 1131,
+            "basis": "Exact 9.0.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "833143e0e73f4d12d01ab7b406ff0daf1a1a9f4bc8667c7b998cc54ee859d16d",
+            "line": 54,
+            "basis": "Exact 9.0.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 42,
+            "basis": "Exact 9.0.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 43,
+            "basis": "Exact 9.0.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "search": {
+          "min_compatible_shard_node": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/search/RestSearchAction.java",
+            "source_sha256": "5868b6e46f82623725b1b6c2895abfc504078d7cbc30ceea4c16b66917abaf9a",
+            "line": 103,
+            "basis": "Exact9 handler consumes and drops old-client BwC param without Version parsing. Absent REST JSON. Native current/future/invalid versus omitted effect probes required; not a version guarantee."
+          }
+        }
+      }
+    },
+    "9.1.10": {
+      "source_commit": "f2e019bd8110088070638ca779ec1543188c0f43",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "833143e0e73f4d12d01ab7b406ff0daf1a1a9f4bc8667c7b998cc54ee859d16d",
+            "line": 45,
+            "basis": "Exact 9.1.10 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "8d87e827bbaead94b462fbf384e9918388ec2e680beb639dda6abaed5e7a698b",
+            "line": 1092,
+            "basis": "Exact 9.1.10 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "833143e0e73f4d12d01ab7b406ff0daf1a1a9f4bc8667c7b998cc54ee859d16d",
+            "line": 54,
+            "basis": "Exact 9.1.10 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 42,
+            "basis": "Exact 9.1.10 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 43,
+            "basis": "Exact 9.1.10 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "search": {
+          "min_compatible_shard_node": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/search/RestSearchAction.java",
+            "source_sha256": "5868b6e46f82623725b1b6c2895abfc504078d7cbc30ceea4c16b66917abaf9a",
+            "line": 103,
+            "basis": "Exact 9.1.10 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        }
+      }
+    },
+    "9.2.8": {
+      "source_commit": "cdb2d7a7a46dfe4ef7c3f859b94fb86ba8e652e1",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "d3d2b460564ebf8da568ccb0856a64a76a7877574f0f8114ca4061ce48b4047f",
+            "line": 57,
+            "basis": "Exact 9.2.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "8d87e827bbaead94b462fbf384e9918388ec2e680beb639dda6abaed5e7a698b",
+            "line": 1092,
+            "basis": "Exact 9.2.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "d3d2b460564ebf8da568ccb0856a64a76a7877574f0f8114ca4061ce48b4047f",
+            "line": 66,
+            "basis": "Exact 9.2.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 42,
+            "basis": "Exact 9.2.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 43,
+            "basis": "Exact 9.2.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "search": {
+          "min_compatible_shard_node": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/search/RestSearchAction.java",
+            "source_sha256": "941a32c9d06699f8bcb2c224012d685998e1b6d032bdb0af2894d23e8678eb5a",
+            "line": 110,
+            "basis": "Exact 9.2.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "get": {
+          "_source_exclude_vectors": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "7bbc5260a5192ec2ec2655a03b27e47d137013feb5a4a35df58f65332918dcf2",
+            "line": 222,
+            "basis": "Exact9.2 RestGetAction line68 calls FetchSourceContext.parseFromRestRequest; helper consumes nullable boolean. Native omission/false/invalid probes required. Query fact not a lossless arbitrary vector precision guarantee."
+          }
+        }
+      }
+    },
+    "9.3.8": {
+      "source_commit": "171dd53e53c29b91f45d2d87857a3f74db48cca5",
+      "query_params": {
+        "open_point_in_time": {
+          "index": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "96b7b3a54c491e578c2ff889af58b5a7b917da325d97887d9926b7e75296cc81",
+            "line": 54,
+            "basis": "Exact 9.3.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "allow_no_indices": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/action/support/IndicesOptions.java",
+            "source_sha256": "8245f738d61d06b3aba0f1b16ec6a4e0fc77e7ed2cd1dd4617b0acab4527aab1",
+            "line": 1155,
+            "basis": "Exact 9.3.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "max_concurrent_shard_requests": {
+            "type": "integer",
+            "source": "server/src/main/java/org/elasticsearch/action/search/RestOpenPointInTimeAction.java",
+            "source_sha256": "96b7b3a54c491e578c2ff889af58b5a7b917da325d97887d9926b7e75296cc81",
+            "line": 68,
+            "basis": "Exact 9.3.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "indices.reload_search_analyzers": {
+          "resource": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 42,
+            "basis": "Exact 9.3.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          },
+          "preview": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/admin/indices/RestReloadAnalyzersAction.java",
+            "source_sha256": "79ec9860032f7ace62a684d8b1b00b1b2ca614a470b737351c155d656c39b67d",
+            "line": 43,
+            "basis": "Exact 9.3.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "search": {
+          "min_compatible_shard_node": {
+            "type": "string",
+            "source": "server/src/main/java/org/elasticsearch/rest/action/search/RestSearchAction.java",
+            "source_sha256": "c2a844a64819ae8fda0ec4e8158d24740be743d4889a02543d68b8e04125053b",
+            "line": 108,
+            "basis": "Exact 9.3.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        },
+        "get": {
+          "_source_exclude_vectors": {
+            "type": "boolean",
+            "source": "server/src/main/java/org/elasticsearch/search/fetch/subphase/FetchSourceContext.java",
+            "source_sha256": "275ac9307c253e05ee0747384506591546dd496c1b6c55351fe03a447bcb0787",
+            "line": 222,
+            "basis": "Exact 9.3.8 pinned primary parser read; absent REST JSON extension only, no runtime support inferred."
+          }
+        }
+      }
+    }
+  }
+}
