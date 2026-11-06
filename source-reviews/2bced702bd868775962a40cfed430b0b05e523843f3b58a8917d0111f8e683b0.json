@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "kind": "pinned-source-only-catalog-extension-not-runtime-support",
+  "release": "7.2.1",
+  "source_commit": "fe6cb20130087b7dcdeb3f1b97724a73a8581176",
+  "input_sha256": {
+    "docs/research/versions/7.2.1/inventory.json": "61e948d4bf87cc1dcda68dd83f7eb7d9ced73bc469cc4d86e175a84b15ad1495",
+    "docs/research/source-analysis/7.2.1/documentation-facts.json": "5c885311e63bf7bbdeaadd1de13a70a55461886b86497fc2dd618308d2358683",
+    "docs/research/source-analysis/7.2.1/route-scope-facts.json": "5e69e6cd48c7e3969ae93ce666dc98c7afd236ff59354ae9b0e9aec4277a1b7f"
+  },
+  "registration": {
+    "path": "server/src/main/java/org/elasticsearch/action/ActionModule.java",
+    "local_source": "docs/research/source-analysis/7.2.1/derived-catalog-sources/ActionModule.java",
+    "sha256": "49a7b6ee704f28d1779c4a781c2c873d76c7093e59f7352281d9c3a9bd07f541",
+    "git_blob": "590d0a690dc80a64d85e64dc90323f0b4e2cebc7"
+  },
+  "operations": [
+    {
+      "api_id": "cluster.post_voting_config_exclusions_with_node_name_part",
+      "definition": {
+        "documentation": {
+          "url": "https://github.com/elastic/elasticsearch/blob/fe6cb20130087b7dcdeb3f1b97724a73a8581176/docs/reference/cluster/voting-exclusions.asciidoc#L66",
+          "description": "Explicit source-only research catalog extension;not an upstream JSON definition or runtime claim."
+        },
+        "url": {
+          "paths": [
+            {
+              "path": "/_cluster/voting_config_exclusions/{node_name}",
+              "methods": [
+                "POST"
+              ],
+              "parts": {
+                "node_name": {
+                  "type": "string",
+                  "description": "Existing node description interpreted by pinned DiscoveryNodes resolver."
+                }
+              }
+            }
+          ]
+        },
+        "params": {
+          "timeout": {
+            "type": "time",
+            "description": "Read by the pinned REST handler;semantic/native matrix remains open."
+          }
+        }
+      },
+      "handler": {
+        "path": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestAddVotingConfigExclusionAction.java",
+        "local_source": "docs/research/source-analysis/7.2.1/derived-catalog-sources/RestAddVotingConfigExclusionAction.java",
+        "sha256": "8dde8a9ac8baa9df2736838e94f672dfc15c60189fd3f804aee2c1acae96ef27",
+        "git_blob": "c0d8c1cf698d674c1c3d2af341360a203ddbd6a1"
+      },
+      "documentation": {
+        "path": "docs/reference/cluster/voting-exclusions.asciidoc",
+        "local_source": "docs/research/source-analysis/7.2.1/derived-catalog-sources/voting-exclusions.asciidoc",
+        "sha256": "2ea1c8dd55f51d8880ab41db7fc71ad642b465d13bbf506fcc562ca8197f580c",
+        "git_blob": "fcef8113912c441249fcfb706645ea55edc0ebef",
+        "line": 66,
+        "request_fragment": "POST /_cluster/voting_config_exclusions/nodeId1"
+      },
+      "parameter_proofs": {
+        "timeout": {
+          "line": 63,
+          "fragment": "TimeValue.parseTimeValue(request.param(\"timeout\"), DEFAULT_TIMEOUT, getClass().getSimpleName() + \".timeout\")"
+        }
+      },
+      "runtime_support": "not-tested",
+      "scope_approval": false
+    },
+    {
+      "api_id": "cluster.delete_voting_config_exclusions",
+      "definition": {
+        "documentation": {
+          "url": "https://github.com/elastic/elasticsearch/blob/fe6cb20130087b7dcdeb3f1b97724a73a8581176/docs/reference/cluster/voting-exclusions.asciidoc#L15",
+          "description": "Explicit source-only research catalog extension;not an upstream JSON definition or runtime claim."
+        },
+        "url": {
+          "paths": [
+            {
+              "path": "/_cluster/voting_config_exclusions",
+              "methods": [
+                "DELETE"
+              ],
+              "parts": {}
+            }
+          ]
+        },
+        "params": {
+          "wait_for_removal": {
+            "type": "boolean",
+            "description": "Read by the pinned REST handler;semantic/native matrix remains open."
+          }
+        }
+      },
+      "handler": {
+        "path": "server/src/main/java/org/elasticsearch/rest/action/admin/cluster/RestClearVotingConfigExclusionsAction.java",
+        "local_source": "docs/research/source-analysis/7.2.1/derived-catalog-sources/RestClearVotingConfigExclusionsAction.java",
+        "sha256": "501a3cbedd69d5f5be2e7ff2aa2f3a7fefe362c79cb347957dad76303806d006",
+        "git_blob": "ee3ec532f8290f2f121c53751b76aaa7457d9c0e"
+      },
+      "documentation": {
+        "path": "docs/reference/cluster/voting-exclusions.asciidoc",
+        "local_source": "docs/research/source-analysis/7.2.1/derived-catalog-sources/voting-exclusions.asciidoc",
+        "sha256": "2ea1c8dd55f51d8880ab41db7fc71ad642b465d13bbf506fcc562ca8197f580c",
+        "git_blob": "fcef8113912c441249fcfb706645ea55edc0ebef",
+        "line": 15,
+        "request_fragment": "`DELETE _cluster/voting_config_exclusions`"
+      },
+      "parameter_proofs": {
+        "wait_for_removal": {
+          "line": 49,
+          "fragment": "req.setWaitForRemoval(request.paramAsBoolean(\"wait_for_removal\", true));"
+        }
+      },
+      "runtime_support": "not-tested",
+      "scope_approval": false
+    }
+  ],
+  "upstream_inventory_mutated": false,
+  "runtime_support_inferred": false,
+  "complete_api_coverage": false
+}
