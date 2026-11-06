@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "kind": "exact-rank-eval-initial-route-and-registration-review-not-native-support",
+  "release": "7.5.2",
+  "source_commit": "8bec50e1e0ad29dad5653712cf3bb580cd1afcdf",
+  "sources": [
+    {
+      "path": "modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RestRankEvalAction.java",
+      "local_source": "docs/research/source-analysis/7.5.2/rank-eval-sources/RestRankEvalAction.java",
+      "sha256": "cef142a095955aa91ec94e8d9ec63b78d2221a7ae90fc3369d43d046391c1959",
+      "git_blob": "b4876eafe937282091ea76e221afd2d212c38b0a",
+      "url": "https://github.com/elastic/elasticsearch/blob/8bec50e1e0ad29dad5653712cf3bb580cd1afcdf/modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RestRankEvalAction.java"
+    },
+    {
+      "path": "modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RankEvalPlugin.java",
+      "local_source": "docs/research/source-analysis/7.5.2/rank-eval-sources/RankEvalPlugin.java",
+      "sha256": "7f8ea5a9ffbafcad95ec47d9eb6d820770bb799c8ce10351dcb84b5409133726",
+      "git_blob": "48b4297378108e238bf16ac5c92d48f80f310622",
+      "url": "https://github.com/elastic/elasticsearch/blob/8bec50e1e0ad29dad5653712cf3bb580cd1afcdf/modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RankEvalPlugin.java"
+    },
+    {
+      "path": "docs/reference/search/rank-eval.asciidoc",
+      "local_source": "docs/research/source-analysis/7.5.2/rank-eval-sources/rank-eval.asciidoc",
+      "sha256": "97ec1ebcc2b3e203aa7ea8bc0ceef9819dea27344a8b2a159d1dd25d18ceb254",
+      "git_blob": "210c477dba5f0b53b9c18647bf587b22f7a303bc",
+      "url": "https://github.com/elastic/elasticsearch/blob/8bec50e1e0ad29dad5653712cf3bb580cd1afcdf/docs/reference/search/rank-eval.asciidoc"
+    }
+  ],
+  "analysis": {
+    "handler_routes": [
+      {
+        "method": "GET",
+        "source_expression": "\"/\" + ENDPOINT",
+        "line": 93,
+        "path": "/_rank_eval",
+        "resolution": "constant-expression"
+      },
+      {
+        "method": "GET",
+        "source_expression": "\"/{index}/\" + ENDPOINT",
+        "line": 95,
+        "path": "/{index}/_rank_eval",
+        "resolution": "constant-expression"
+      },
+      {
+        "method": "POST",
+        "source_expression": "\"/\" + ENDPOINT",
+        "line": 94,
+        "path": "/_rank_eval",
+        "resolution": "constant-expression"
+      },
+      {
+        "method": "POST",
+        "source_expression": "\"/{index}/\" + ENDPOINT",
+        "line": 96,
+        "path": "/{index}/_rank_eval",
+        "resolution": "constant-expression"
+      }
+    ],
+    "plugin_registration": {
+      "method": "getRestHandlers",
+      "constructor": "RestRankEvalAction"
+    },
+    "documentation_anchors": [
+      {
+        "line": 89,
+        "request": "GET /my_index/_rank_eval"
+      },
+      {
+        "line": 108,
+        "request": "GET /my_index/_rank_eval"
+      },
+      {
+        "line": 159,
+        "request": "GET /my_index/_rank_eval"
+      },
+      {
+        "line": 221,
+        "request": "GET /twitter/_rank_eval"
+      },
+      {
+        "line": 265,
+        "request": "GET /twitter/_rank_eval"
+      },
+      {
+        "line": 309,
+        "request": "GET /twitter/_rank_eval"
+      },
+      {
+        "line": 365,
+        "request": "GET /twitter/_rank_eval"
+      }
+    ],
+    "initializer_resolution": "reviewed-local-literal-initializer",
+    "initializer_is_runtime_immutable": false,
+    "external_mutation_absence_proved": false,
+    "declared_method_paths_without_handler_evidence": [],
+    "handler_method_paths_not_in_upstream_declarations": [],
+    "all_declared_routes_have_source_evidence": true,
+    "native_availability_verified": false
+  },
+  "new_native_http": 0,
+  "complete_api_coverage": false,
+  "limitations": [
+    "Initialized non-final field is not proved immutable at runtime",
+    "Source route/registration/reference evidence is separate from native availability",
+    "Unmatched declared method/paths remain explicit;upstream definitions are unchanged"
+  ]
+}

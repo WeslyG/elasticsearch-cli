@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "kind": "exact-rank-eval-initial-route-and-registration-review-not-native-support",
+  "release": "6.2.4",
+  "source_commit": "ccec39f080c7c5d352378b73c507c1c334e6e27d",
+  "sources": [
+    {
+      "path": "modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RestRankEvalAction.java",
+      "local_source": "docs/research/source-analysis/6.2.4/rank-eval-sources/RestRankEvalAction.java",
+      "sha256": "f752322123ca4a7266ff1e5c51bb7c41c58ae59af596d9da6177676a1957a9a3",
+      "git_blob": "1efe5b4e39b84109cff17ba6ee93196acf3cc903",
+      "url": "https://github.com/elastic/elasticsearch/blob/ccec39f080c7c5d352378b73c507c1c334e6e27d/modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RestRankEvalAction.java"
+    },
+    {
+      "path": "modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RankEvalPlugin.java",
+      "local_source": "docs/research/source-analysis/6.2.4/rank-eval-sources/RankEvalPlugin.java",
+      "sha256": "0f96128d1ce6c3823f152e88871577be76360ac3041acb77e1c092f327468adc",
+      "git_blob": "6b3a23d07d54f78cf1e209e9e5a1f85bc6c8f645",
+      "url": "https://github.com/elastic/elasticsearch/blob/ccec39f080c7c5d352378b73c507c1c334e6e27d/modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RankEvalPlugin.java"
+    },
+    {
+      "path": "docs/reference/search/rank-eval.asciidoc",
+      "local_source": "docs/research/source-analysis/6.2.4/rank-eval-sources/rank-eval.asciidoc",
+      "sha256": "40122a08a7de2f46ba0fff18c71e1c62a9d6436553c5619f18972553a15ee065",
+      "git_blob": "e696e54dd9e7bb02a9779b79c3191b03ecf38d3f",
+      "url": "https://github.com/elastic/elasticsearch/blob/ccec39f080c7c5d352378b73c507c1c334e6e27d/docs/reference/search/rank-eval.asciidoc"
+    }
+  ],
+  "analysis": {
+    "handler_routes": [
+      {
+        "method": "GET",
+        "source_expression": "\"/_rank_eval\"",
+        "line": 94,
+        "path": "/_rank_eval",
+        "resolution": "literal"
+      },
+      {
+        "method": "GET",
+        "source_expression": "\"/{index}/_rank_eval\"",
+        "line": 96,
+        "path": "/{index}/_rank_eval",
+        "resolution": "literal"
+      },
+      {
+        "method": "POST",
+        "source_expression": "\"/_rank_eval\"",
+        "line": 95,
+        "path": "/_rank_eval",
+        "resolution": "literal"
+      },
+      {
+        "method": "POST",
+        "source_expression": "\"/{index}/_rank_eval\"",
+        "line": 97,
+        "path": "/{index}/_rank_eval",
+        "resolution": "literal"
+      }
+    ],
+    "plugin_registration": {
+      "method": "getRestHandlers",
+      "constructor": "RestRankEvalAction"
+    },
+    "documentation_anchors": [
+      {
+        "line": 40,
+        "request": "GET /my_index/_rank_eval"
+      },
+      {
+        "line": 101,
+        "request": "GET /my_index/_rank_eval"
+      },
+      {
+        "line": 155,
+        "request": "GET /twitter/_rank_eval"
+      },
+      {
+        "line": 198,
+        "request": "GET /twitter/_rank_eval"
+      },
+      {
+        "line": 237,
+        "request": "GET /twitter/_rank_eval"
+      }
+    ],
+    "initializer_resolution": "literal-or-final-route",
+    "initializer_is_runtime_immutable": null,
+    "external_mutation_absence_proved": false,
+    "declared_method_paths_without_handler_evidence": [
+      {
+        "method": "POST",
+        "path": "/{index}/{type}/_rank_eval"
+      }
+    ],
+    "handler_method_paths_not_in_upstream_declarations": [
+      {
+        "method": "GET",
+        "path": "/_rank_eval"
+      },
+      {
+        "method": "GET",
+        "path": "/{index}/_rank_eval"
+      }
+    ],
+    "all_declared_routes_have_source_evidence": false,
+    "native_availability_verified": false
+  },
+  "new_native_http": 0,
+  "complete_api_coverage": false,
+  "limitations": [
+    "Initialized non-final field is not proved immutable at runtime",
+    "Source route/registration/reference evidence is separate from native availability",
+    "Unmatched declared method/paths remain explicit;upstream definitions are unchanged"
+  ]
+}

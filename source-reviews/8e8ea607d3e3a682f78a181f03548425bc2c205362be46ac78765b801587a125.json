@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "kind": "exact-rank-eval-initial-route-and-registration-review-not-native-support",
+  "release": "7.12.1",
+  "source_commit": "3186837139b9c6b6d23c3200870651f10d3343b7",
+  "sources": [
+    {
+      "path": "modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RestRankEvalAction.java",
+      "local_source": "docs/research/source-analysis/7.12.1/rank-eval-sources/RestRankEvalAction.java",
+      "sha256": "b7ab9ce1244c2229c7acdc5e1a16a957d6cc6126db90d7e742c97c9c6a588e94",
+      "git_blob": "b51bcd11a24e54e73d6243616f456ad5b97430e0",
+      "url": "https://github.com/elastic/elasticsearch/blob/3186837139b9c6b6d23c3200870651f10d3343b7/modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RestRankEvalAction.java"
+    },
+    {
+      "path": "modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RankEvalPlugin.java",
+      "local_source": "docs/research/source-analysis/7.12.1/rank-eval-sources/RankEvalPlugin.java",
+      "sha256": "9764c053712d758679d0927bd2341df9cefc4c7efcf4e6902249e9841600ba82",
+      "git_blob": "80edaec3ce1e9c208d26d0f682eb04c0c3b75681",
+      "url": "https://github.com/elastic/elasticsearch/blob/3186837139b9c6b6d23c3200870651f10d3343b7/modules/rank-eval/src/main/java/org/elasticsearch/index/rankeval/RankEvalPlugin.java"
+    },
+    {
+      "path": "docs/reference/search/rank-eval.asciidoc",
+      "local_source": "docs/research/source-analysis/7.12.1/rank-eval-sources/rank-eval.asciidoc",
+      "sha256": "f71261b6e29e7a31cda9339e75bc4ec7011aa17acafa169453f09b2ac97a821b",
+      "git_blob": "af9020d9bcd8a560861f1d4736f1ec392322adcb",
+      "url": "https://github.com/elastic/elasticsearch/blob/3186837139b9c6b6d23c3200870651f10d3343b7/docs/reference/search/rank-eval.asciidoc"
+    }
+  ],
+  "analysis": {
+    "handler_routes": [
+      {
+        "method": "GET",
+        "source_expression": "\"/\" + ENDPOINT",
+        "line": 87,
+        "path": "/_rank_eval",
+        "resolution": "constant-expression"
+      },
+      {
+        "method": "GET",
+        "source_expression": "\"/{index}/\" + ENDPOINT",
+        "line": 89,
+        "path": "/{index}/_rank_eval",
+        "resolution": "constant-expression"
+      },
+      {
+        "method": "POST",
+        "source_expression": "\"/\" + ENDPOINT",
+        "line": 88,
+        "path": "/_rank_eval",
+        "resolution": "constant-expression"
+      },
+      {
+        "method": "POST",
+        "source_expression": "\"/{index}/\" + ENDPOINT",
+        "line": 90,
+        "path": "/{index}/_rank_eval",
+        "resolution": "constant-expression"
+      }
+    ],
+    "plugin_registration": {
+      "method": "getRestHandlers",
+      "constructor": "RestRankEvalAction"
+    },
+    "documentation_anchors": [
+      {
+        "line": 104,
+        "request": "GET /my-index-000001/_rank_eval"
+      },
+      {
+        "line": 123,
+        "request": "GET /my-index-000001/_rank_eval"
+      },
+      {
+        "line": 176,
+        "request": "GET /my-index-000001/_rank_eval"
+      },
+      {
+        "line": 215,
+        "request": "GET /my_index/_rank_eval"
+      },
+      {
+        "line": 261,
+        "request": "GET /my-index-000001/_rank_eval"
+      },
+      {
+        "line": 316,
+        "request": "GET /my-index-000001/_rank_eval"
+      },
+      {
+        "line": 357,
+        "request": "GET /my-index-000001/_rank_eval"
+      },
+      {
+        "line": 401,
+        "request": "GET /my-index-000001/_rank_eval"
+      },
+      {
+        "line": 457,
+        "request": "GET /my-index-000001/_rank_eval"
+      }
+    ],
+    "initializer_resolution": "reviewed-local-literal-initializer",
+    "initializer_is_runtime_immutable": false,
+    "external_mutation_absence_proved": false,
+    "declared_method_paths_without_handler_evidence": [],
+    "handler_method_paths_not_in_upstream_declarations": [],
+    "all_declared_routes_have_source_evidence": true,
+    "native_availability_verified": false
+  },
+  "new_native_http": 0,
+  "complete_api_coverage": false,
+  "limitations": [
+    "Initialized non-final field is not proved immutable at runtime",
+    "Source route/registration/reference evidence is separate from native availability",
+    "Unmatched declared method/paths remain explicit;upstream definitions are unchanged"
+  ]
+}
