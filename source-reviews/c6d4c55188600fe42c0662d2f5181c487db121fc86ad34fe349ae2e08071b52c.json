@@ -1,31 +1,17 @@
 {
   "schema_version": 1,
   "kind": "explicit-legacy-public-documentation-review-not-runtime-support",
-  "release": "6.5.4",
-  "source_commit": "d2ef93dff175ba22406054bf78137679a0e7990c",
+  "release": "6.6.2",
+  "source_commit": "3bd3e59556628bb84c8d53b09b10c9ac8255e251",
   "core_source_root": "server",
   "reviewer": "Codex exact source review",
   "decision": "Only normative public REST documentation + all literal routes + exact registration. Upstream visibility remains unknown. No native support/completeness inferred.",
-  "basis": "Reviewed all corresponding REST reference headings/prose and request sections at exact6.5.4 commit;16 changed normative pages reviewed against6.4;two separate rethrottle API definitions checked against exact public request sections;reload-reference correction rebound to fresh bytes. All107 core IDs have every route in registered ActionModule handlers. Eleven module IDs have fresh plugin constructor + request fragment proof. Ghost PUT index/type,unresolved main/ping/upgrade docs and example stay unapproved.",
+  "basis": "Reviewed exact 6.6.2 normative REST/Painless pages, all declared routes and ActionModule/module registration. Original reloadable-secure-settings URL is valid in docs/reference/setup/secure-settings.asciidoc; the prior collector omitted this guide. No upstream-link defect, no runtime support inferred.",
   "input_sha256": {
-    "docs/research/versions/6.5.4/inventory.json": "0f9ea72bc9816fa430c67dbfc4dfc2313bddf5f55aef4ed8354202b2f20102e0",
-    "docs/research/source-analysis/6.5.4/route-scope-facts.json": "c50035759a730e6c3354b56257179de6eadd3596de44a1436a99b3593ca1d392",
-    "docs/research/source-analysis/6.5.4/documentation-facts.json": "11975c34427fd8600a7d058624b2864a8c12e8ce65977215750d270eda183ff2",
-    "docs/research/source-analysis/6.5.4/module-public-review.json": "cefb383052c419757a4404b7663c39f5573bd3208100737ab8dbd164391f004a",
-    "docs/research/source-analysis/6.5.4/documentation-overrides/nodes-reload-secure-settings.asciidoc": "fda11a4fb33078335558c24898f132434a9c2c063e9a2cfe61af757d3c182143"
-  },
-  "documentation_anchor_overrides": {
-    "nodes.reload_secure_settings": {
-      "source": "docs/reference/cluster/nodes-reload-secure-settings.asciidoc",
-      "local_source": "docs/research/source-analysis/6.5.4/documentation-overrides/nodes-reload-secure-settings.asciidoc",
-      "sha256": "fda11a4fb33078335558c24898f132434a9c2c063e9a2cfe61af757d3c182143",
-      "line": 1,
-      "anchor": "cluster-nodes-reload-secure-settings",
-      "request_fragment": "POST _nodes/reload_secure_settings",
-      "original_url": "https://www.elastic.co/guide/en/elasticsearch/reference/6.5/secure-settings.html#reloadable-secure-settings",
-      "original_target_anchor": "reloadable-secure-settings",
-      "basis": "Upstream secure-settings reloadable-secure-settings anchor is absent. Exact normative cluster reference documents both literal POST paths. Metadata preserved,explicit pinned correction only."
-    }
+    "docs/research/versions/6.6.2/inventory.json": "8556fc12c09101482cfc4e9a394628e1ab3b2b2265a1b36bb7f5bda218d4a92a",
+    "docs/research/source-analysis/6.6.2/route-scope-facts.json": "2f36ba33d517850d35629bdf46401da56229bba852051ef28976bdc79775a73f",
+    "docs/research/source-analysis/6.6.2/documentation-facts.json": "8077d4c2e6b7118b2d0a0fa13e7aa1f99d5310da8b097b764d1b7acf8550707c",
+    "docs/research/source-analysis/6.6.2/module-public-review.json": "861ad08171dedea50ea4b440ee845718c2849b3e32fc2f9908acf5299c49162f"
   },
   "approved_public_api_ids": [
     "bulk",
@@ -191,12 +177,60 @@
       "reason": "Existing excluded scope retained."
     },
     {
+      "api_id": "ilm.delete_lifecycle",
+      "reason": "Existing excluded scope retained."
+    },
+    {
+      "api_id": "ilm.explain_lifecycle",
+      "reason": "Existing excluded scope retained."
+    },
+    {
+      "api_id": "ilm.get_lifecycle",
+      "reason": "Existing excluded scope retained."
+    },
+    {
+      "api_id": "ilm.get_status",
+      "reason": "Existing excluded scope retained."
+    },
+    {
+      "api_id": "ilm.move_to_step",
+      "reason": "Existing excluded scope retained."
+    },
+    {
+      "api_id": "ilm.put_lifecycle",
+      "reason": "Existing excluded scope retained."
+    },
+    {
+      "api_id": "ilm.remove_policy",
+      "reason": "Existing excluded scope retained."
+    },
+    {
+      "api_id": "ilm.retry",
+      "reason": "Existing excluded scope retained."
+    },
+    {
+      "api_id": "ilm.start",
+      "reason": "Existing excluded scope retained."
+    },
+    {
+      "api_id": "ilm.stop",
+      "reason": "Existing excluded scope retained."
+    },
+    {
       "api_id": "index",
       "reason": "Unresolved documentation or at least one unproven literal route;rank_eval uses mutable ENDPOINT field and is not promoted by this strict literal proof."
     },
     {
+      "api_id": "indices.freeze",
+      "reason": "Existing excluded scope retained."
+    },
+    {
       "api_id": "indices.get_upgrade",
       "reason": "Unresolved documentation or at least one unproven literal route;rank_eval uses mutable ENDPOINT field and is not promoted by this strict literal proof."
+    },
+    {
+      "api_id": "indices.unfreeze",
+      "reason": "Existing excluded scope retained."
     },
     {
       "api_id": "indices.upgrade",

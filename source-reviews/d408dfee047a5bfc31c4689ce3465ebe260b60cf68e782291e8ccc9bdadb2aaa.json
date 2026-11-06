@@ -1,34 +1,17 @@
 {
   "schema_version": 1,
   "kind": "explicit-legacy-public-documentation-review-not-runtime-support",
-  "release": "6.7.2",
-  "source_commit": "56c6e4869ac8c10a89de1f31252f90fc3002a030",
+  "release": "6.5.4",
+  "source_commit": "d2ef93dff175ba22406054bf78137679a0e7990c",
   "core_source_root": "server",
   "reviewer": "Codex exact source review",
   "decision": "Only normative public REST documentation + all literal routes + exact registration. Upstream visibility remains unknown. No native support/completeness inferred.",
-  "basis": "Reviewed all corresponding REST reference headings/prose and request sections at exact6.7.2 commit;30 changed normative pages reviewed against6.6,including include_type_name transition and moved Grok reference;trailing-slash dispatch/trie proof and exact rethrottle/reload proofs bound to fresh bytes. All107 core IDs have every route in registered ActionModule handlers. Eleven module IDs have fresh plugin constructor + request fragment proof. Ghost PUT index/type,unresolved main/ping/upgrade docs and example stay unapproved.",
+  "basis": "Reviewed exact 6.5.4 normative REST/Painless pages, all declared routes and ActionModule/module registration. Original reloadable-secure-settings URL is valid in docs/reference/setup/secure-settings.asciidoc; the prior collector omitted this guide. No upstream-link defect, no runtime support inferred.",
   "input_sha256": {
-    "docs/research/versions/6.7.2/inventory.json": "ceb46237eff5413978708158458f6c84b1a39098fcc4bc10bdefa30c3a3ec3a5",
-    "docs/research/source-analysis/6.7.2/route-scope-facts.json": "5009aa24b9014ce0c46a870d3c301cc62c0b0203d21afe2f1b37b5dbbedaea8e",
-    "docs/research/source-analysis/6.7.2/documentation-facts.json": "6738acb5c81f3e4c6e4246da916af086b61d00368d11c5dcd91d742627edd65c",
-    "docs/research/source-analysis/6.7.2/module-public-review.json": "35761caa46093dbf202368d9409458c5c214bdb55f8a0d890be30f5d7e606ba6",
-    "docs/research/source-analysis/6.7.2/documentation-overrides/nodes-reload-secure-settings.asciidoc": "53fd7ed22ad6bab7983bf1ded851e42314c9f88babbe4425b818d8e2e56387fe",
-    "docs/research/source-analysis/6.7.2/path-normalization.json": "85e8346337ff82b78ac94ad0633c09ba88a829f33b0bcacb1eacd4463a5d2546",
-    "docs/research/source-analysis/6.7.2/path-normalization-sources/RestController.java": "f2600dc8c349da4872e75e71c70fc6b9f44e518df1c61615ed3324149b6122be",
-    "docs/research/source-analysis/6.7.2/path-normalization-sources/PathTrie.java": "241efb6281aaadc4bdc934fcea8524be802bdfd5a6be9dcdb1a049f861fb8d6e"
-  },
-  "documentation_anchor_overrides": {
-    "nodes.reload_secure_settings": {
-      "source": "docs/reference/cluster/nodes-reload-secure-settings.asciidoc",
-      "local_source": "docs/research/source-analysis/6.7.2/documentation-overrides/nodes-reload-secure-settings.asciidoc",
-      "sha256": "53fd7ed22ad6bab7983bf1ded851e42314c9f88babbe4425b818d8e2e56387fe",
-      "line": 1,
-      "anchor": "cluster-nodes-reload-secure-settings",
-      "request_fragment": "POST _nodes/reload_secure_settings",
-      "original_url": "https://www.elastic.co/guide/en/elasticsearch/reference/6.x/secure-settings.html#reloadable-secure-settings",
-      "original_target_anchor": "reloadable-secure-settings",
-      "basis": "Upstream secure-settings reloadable-secure-settings anchor is absent. Exact normative cluster reference documents both literal POST paths. Metadata preserved,explicit pinned correction only."
-    }
+    "docs/research/versions/6.5.4/inventory.json": "0f9ea72bc9816fa430c67dbfc4dfc2313bddf5f55aef4ed8354202b2f20102e0",
+    "docs/research/source-analysis/6.5.4/route-scope-facts.json": "c50035759a730e6c3354b56257179de6eadd3596de44a1436a99b3593ca1d392",
+    "docs/research/source-analysis/6.5.4/documentation-facts.json": "eeadb0f819ae59b65fbea5a703bbf3f6d2c7b0fd2a55ef7821a27e46901e41f9",
+    "docs/research/source-analysis/6.5.4/module-public-review.json": "cefb383052c419757a4404b7663c39f5573bd3208100737ab8dbd164391f004a"
   },
   "approved_public_api_ids": [
     "bulk",
@@ -166,15 +149,7 @@
       "reason": "Existing excluded scope retained."
     },
     {
-      "api_id": "ccr.follow_info",
-      "reason": "Existing excluded scope retained."
-    },
-    {
       "api_id": "ccr.follow_stats",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "ccr.forget_follower",
       "reason": "Existing excluded scope retained."
     },
     {
@@ -202,60 +177,12 @@
       "reason": "Existing excluded scope retained."
     },
     {
-      "api_id": "ilm.delete_lifecycle",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "ilm.explain_lifecycle",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "ilm.get_lifecycle",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "ilm.get_status",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "ilm.move_to_step",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "ilm.put_lifecycle",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "ilm.remove_policy",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "ilm.retry",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "ilm.start",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "ilm.stop",
-      "reason": "Existing excluded scope retained."
-    },
-    {
       "api_id": "index",
       "reason": "Unresolved documentation or at least one unproven literal route;rank_eval uses mutable ENDPOINT field and is not promoted by this strict literal proof."
     },
     {
-      "api_id": "indices.freeze",
-      "reason": "Existing excluded scope retained."
-    },
-    {
       "api_id": "indices.get_upgrade",
       "reason": "Unresolved documentation or at least one unproven literal route;rank_eval uses mutable ENDPOINT field and is not promoted by this strict literal proof."
-    },
-    {
-      "api_id": "indices.unfreeze",
-      "reason": "Existing excluded scope retained."
     },
     {
       "api_id": "indices.upgrade",
@@ -272,18 +199,6 @@
     {
       "api_id": "rank_eval",
       "reason": "Unresolved documentation or at least one unproven literal route;rank_eval uses mutable ENDPOINT field and is not promoted by this strict literal proof."
-    },
-    {
-      "api_id": "security.create_api_key",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "security.get_api_key",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "security.invalidate_api_key",
-      "reason": "Existing excluded scope retained."
     },
     {
       "api_id": "xpack.graph.explore",
@@ -479,10 +394,6 @@
     },
     {
       "api_id": "xpack.ml.revert_model_snapshot",
-      "reason": "Existing excluded scope retained."
-    },
-    {
-      "api_id": "xpack.ml.set_upgrade_mode",
       "reason": "Existing excluded scope retained."
     },
     {
