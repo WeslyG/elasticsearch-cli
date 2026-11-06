@@ -1,0 +1,559 @@
+{
+  "schema_version": 1,
+  "kind": "pinned-normative-request-bindings-not-runtime-or-scope-approval",
+  "release": "7.9.3",
+  "source_commit": "c4138e51121ef06a6404866cddc601906fe5c868",
+  "input_sha256": {
+    "docs/research/versions/7.9.3/inventory.json": "2920f3f30f8afd8d17c38b2a0483d1b73bce8cd8b8103baa035e52061500d41d",
+    "docs/research/source-analysis/7.9.3/documentation-facts.json": "1b784c58d26065cb2e6c9a881728e80e77495e4388e007d33a74e4a5991fcd25",
+    "docs/research/source-analysis/7.9.3/route-scope-facts.json": "b0d8da9f87bc92212d2ca731a68a244abb87e324a188a1b7ca95d1d572dd3619"
+  },
+  "bindings": [
+    {
+      "api_id": "snapshot.cleanup_repository",
+      "method": "POST",
+      "path": "/_snapshot/{repository}/_cleanup",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/clean-up-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/clean-up-repo-api.asciidoc",
+        "line": 26,
+        "request_fragment": "POST /_snapshot/my_repository/_cleanup",
+        "sha256": "2cdb1548e43a51148b1cb4558b512498a4867c85a9ed88c5a3bfd49e5970ec55",
+        "git_blob": "4c0184945fae84148145912791fb002f7056ce60",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/clean-up-repo-api.asciidoc#L26"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.create",
+      "method": "PUT",
+      "path": "/_snapshot/{repository}/{snapshot}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/create-snapshot-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/create-snapshot-api.asciidoc",
+        "line": 26,
+        "request_fragment": "PUT /_snapshot/my_repository/my_snapshot",
+        "sha256": "b3122881c6aaa36187ea01563c1d8275db6588bea05960a0f195c981b1db9394",
+        "git_blob": "e6e05f83bf3bed2099d9f06367b6469a5d9db937",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/create-snapshot-api.asciidoc#L26"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.create",
+      "method": "POST",
+      "path": "/_snapshot/{repository}/{snapshot}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/create-snapshot-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/create-snapshot-api.asciidoc",
+        "line": 35,
+        "request_fragment": "`POST /_snapshot/<repository>/<snapshot>`",
+        "sha256": "b3122881c6aaa36187ea01563c1d8275db6588bea05960a0f195c981b1db9394",
+        "git_blob": "e6e05f83bf3bed2099d9f06367b6469a5d9db937",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/create-snapshot-api.asciidoc#L35"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.create_repository",
+      "method": "PUT",
+      "path": "/_snapshot/{repository}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/put-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/put-repo-api.asciidoc",
+        "line": 11,
+        "request_fragment": "PUT /_snapshot/my_repository",
+        "sha256": "58eaf2c72de89a89fbfb4df30eb7cabba19cc7c9adc3ee3255996c1dac521835",
+        "git_blob": "afab92b5a92027ad56c710d38067d561a758a60f",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/put-repo-api.asciidoc#L11"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.create_repository",
+      "method": "POST",
+      "path": "/_snapshot/{repository}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/put-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/put-repo-api.asciidoc",
+        "line": 25,
+        "request_fragment": "`POST /_snapshot/<repository>`",
+        "sha256": "58eaf2c72de89a89fbfb4df30eb7cabba19cc7c9adc3ee3255996c1dac521835",
+        "git_blob": "afab92b5a92027ad56c710d38067d561a758a60f",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/put-repo-api.asciidoc#L25"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.delete",
+      "method": "DELETE",
+      "path": "/_snapshot/{repository}/{snapshot}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/delete-snapshot-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/delete-snapshot-api.asciidoc",
+        "line": 31,
+        "request_fragment": "DELETE /_snapshot/my_repository/my_snapshot",
+        "sha256": "5ccd4ebea3d7af11a4300039923aa9f7fdf354a89d38f412a4259c06548c7a19",
+        "git_blob": "bac76f7c82ff08a6804c91cfdeef136d05e46212",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/delete-snapshot-api.asciidoc#L31"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.delete_repository",
+      "method": "DELETE",
+      "path": "/_snapshot/{repository}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/delete-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/delete-repo-api.asciidoc",
+        "line": 28,
+        "request_fragment": "DELETE /_snapshot/my_repository",
+        "sha256": "051dd272aeb7452d4baf33560a81a2db508d9037d77d23c73f3e9d35ef43cc2c",
+        "git_blob": "5b518db7e82b1b5b3f3202887008a6e95862291d",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/delete-repo-api.asciidoc#L28"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.get",
+      "method": "GET",
+      "path": "/_snapshot/{repository}/{snapshot}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/get-snapshot-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/get-snapshot-api.asciidoc",
+        "line": 29,
+        "request_fragment": "GET /_snapshot/my_repository/my_snapshot",
+        "sha256": "c7f74cc9e763803f6a15531c42c4a674ae3970fa446d2b12a2c1eec674f5294d",
+        "git_blob": "c65aa57419374241c2e91649354ea116083e7322",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/get-snapshot-api.asciidoc#L29"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.get_repository",
+      "method": "GET",
+      "path": "/_snapshot",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/get-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/get-repo-api.asciidoc",
+        "line": 34,
+        "request_fragment": "`GET /_snapshot`",
+        "sha256": "afb51407cf5c5fab8008e0b74b40aa13c310709c91cc7a0f39805982f50ffa95",
+        "git_blob": "6d34ce600d990cc4073ce02bfbce25d80b029d6d",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/get-repo-api.asciidoc#L34"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.get_repository",
+      "method": "GET",
+      "path": "/_snapshot/{repository}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/get-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/get-repo-api.asciidoc",
+        "line": 26,
+        "request_fragment": "GET /_snapshot/my_repository",
+        "sha256": "afb51407cf5c5fab8008e0b74b40aa13c310709c91cc7a0f39805982f50ffa95",
+        "git_blob": "6d34ce600d990cc4073ce02bfbce25d80b029d6d",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/get-repo-api.asciidoc#L26"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.restore",
+      "method": "POST",
+      "path": "/_snapshot/{repository}/{snapshot}/_restore",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/restore-snapshot-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/restore-snapshot-api.asciidoc",
+        "line": 55,
+        "request_fragment": "POST /_snapshot/my_repository/my_snapshot/_restore",
+        "sha256": "8df5918d70dffdafafb5371a8ee89dd6f23c212c4fecd61e32f030bf8c75c7f5",
+        "git_blob": "e72bf5ea11c012826801c0295045a001cbb70f82",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/restore-snapshot-api.asciidoc#L55"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.status",
+      "method": "GET",
+      "path": "/_snapshot/{repository}/{snapshot}/_status",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/get-snapshot-status-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/get-snapshot-status-api.asciidoc",
+        "line": 76,
+        "request_fragment": "GET /_snapshot/my_repository/my_snapshot/_status",
+        "sha256": "1717949b41a3ff545375e03799263aa41f72db6d604faa351423e830d0333359",
+        "git_blob": "90977c7479ed1861683c090db38a0c6ff1b39085",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/get-snapshot-status-api.asciidoc#L76"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.verify_repository",
+      "method": "POST",
+      "path": "/_snapshot/{repository}/_verify",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/verify-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/apis/verify-repo-api.asciidoc",
+        "line": 25,
+        "request_fragment": "POST /_snapshot/my_repository/_verify",
+        "sha256": "449d39d2116e08fa6d5eae4766b07fdf653d28f6c07f55f70e5e97f0ffcae5f3",
+        "git_blob": "4574c21655e7a3c5f31fa328f248d1ddd7838423",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/snapshot-restore/apis/verify-repo-api.asciidoc#L25"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "indices.put_template",
+      "method": "PUT",
+      "path": "/_template/{name}",
+      "documentation": {
+        "path": "docs/reference/indices/put-index-template-v1.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/put-index-template-v1.asciidoc",
+        "line": 15,
+        "request_fragment": "PUT _template/template_1",
+        "sha256": "30d030ff8366217e9f6ee0f6a2fc7ddf881d0bf783e09aff76e3bbb1a43ba417",
+        "git_blob": "4085433db4ef097ae32a8aa3b90e309e64575b90",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/put-index-template-v1.asciidoc#L15"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "indices.get_template",
+      "method": "GET",
+      "path": "/_template",
+      "documentation": {
+        "path": "docs/reference/indices/get-index-template-v1.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/get-index-template-v1.asciidoc",
+        "line": 92,
+        "request_fragment": "GET /_template",
+        "sha256": "30f6b06366649235218bec01faa20e6d043e21e674d46b05fe988b9375cc26db",
+        "git_blob": "c7c389f49c4a3426b79b7a84a928c37217acd180",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/get-index-template-v1.asciidoc#L92"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "indices.get_template",
+      "method": "GET",
+      "path": "/_template/{name}",
+      "documentation": {
+        "path": "docs/reference/indices/get-index-template-v1.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/get-index-template-v1.asciidoc",
+        "line": 36,
+        "request_fragment": "GET /_template/template_1",
+        "sha256": "30f6b06366649235218bec01faa20e6d043e21e674d46b05fe988b9375cc26db",
+        "git_blob": "c7c389f49c4a3426b79b7a84a928c37217acd180",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/get-index-template-v1.asciidoc#L36"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "indices.delete_template",
+      "method": "DELETE",
+      "path": "/_template/{name}",
+      "documentation": {
+        "path": "docs/reference/indices/delete-index-template-v1.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/delete-index-template-v1.asciidoc",
+        "line": 30,
+        "request_fragment": "DELETE /_template/my-legacy-index-template",
+        "sha256": "bc3d46992c299f3be0afcffedcdcbe18286a9fcbec9f413a8cf2c7aeb58aa2e2",
+        "git_blob": "e9e517625fb6792367be9cd15924937cde9d6cdb",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/delete-index-template-v1.asciidoc#L30"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "indices.exists_template",
+      "method": "HEAD",
+      "path": "/_template/{name}",
+      "documentation": {
+        "path": "docs/reference/indices/template-exists.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/template-exists.asciidoc",
+        "line": 13,
+        "request_fragment": "HEAD /_template/template_1",
+        "sha256": "e6f973ed62a9c2c49442aee43eff3254416de59192f6f5021f732ef789d3a980",
+        "git_blob": "7c1258638005751d088b5f54bd95f61492da0c6b",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/template-exists.asciidoc#L13"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "indices.put_index_template",
+      "method": "PUT",
+      "path": "/_index_template/{name}",
+      "documentation": {
+        "path": "docs/reference/indices/put-index-template.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/put-index-template.asciidoc",
+        "line": 13,
+        "request_fragment": "PUT /_index_template/template_1",
+        "sha256": "4e58807910a8dc362c307bbf5a8d22ebf9bc58c8a12952980a63b9ef8c4e8656",
+        "git_blob": "03748258d5576e831ec4b1287a2dce8c769aec35",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/put-index-template.asciidoc#L13"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "indices.get_index_template",
+      "method": "GET",
+      "path": "/_index_template",
+      "documentation": {
+        "path": "docs/reference/indices/get-index-template.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/get-index-template.asciidoc",
+        "line": 83,
+        "request_fragment": "GET /_index_template",
+        "sha256": "931eb895f65dd75316a7ca203139c7178ec5182bc2da1716682556815c961184",
+        "git_blob": "f38d237c38e4396ea4629842ac7d90e69f5803dc",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/get-index-template.asciidoc#L83"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "indices.get_index_template",
+      "method": "GET",
+      "path": "/_index_template/{name}",
+      "documentation": {
+        "path": "docs/reference/indices/get-index-template.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/get-index-template.asciidoc",
+        "line": 36,
+        "request_fragment": "GET /_index_template/template_1",
+        "sha256": "931eb895f65dd75316a7ca203139c7178ec5182bc2da1716682556815c961184",
+        "git_blob": "f38d237c38e4396ea4629842ac7d90e69f5803dc",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/get-index-template.asciidoc#L36"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "indices.delete_index_template",
+      "method": "DELETE",
+      "path": "/_index_template/{name}",
+      "documentation": {
+        "path": "docs/reference/indices/delete-index-template.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/delete-index-template.asciidoc",
+        "line": 27,
+        "request_fragment": "DELETE /_index_template/my-index-template",
+        "sha256": "981acd9b836b59e4f36461faf4f5995ed9a17fde1a0b858a2cd3545b3db2f3ae",
+        "git_blob": "65516d828bb7ecf369cda2f9d4ed8044e1e4ef76",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/delete-index-template.asciidoc#L27"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "indices.simulate_index_template",
+      "method": "POST",
+      "path": "/_index_template/_simulate_index/{name}",
+      "documentation": {
+        "path": "docs/reference/indices/simulate-multi-component-templates.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/simulate-multi-component-templates.asciidoc",
+        "line": 36,
+        "request_fragment": "POST /_index_template/_simulate_index/my-index-000001",
+        "sha256": "ae89fecde880021f90188cfb0d3d9b6862e5feb961c978cc5d4b0b45c17e4f20",
+        "git_blob": "e3371634caa55432723baa5d3c45627161598a96",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/simulate-multi-component-templates.asciidoc#L36"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "indices.simulate_template",
+      "method": "POST",
+      "path": "/_index_template/_simulate",
+      "documentation": {
+        "path": "docs/reference/indices/simulate-template.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/simulate-template.asciidoc",
+        "line": 257,
+        "request_fragment": "POST /_index_template/_simulate",
+        "sha256": "ef2f9d9fc04573fe72cf62fdb58eade3155b7afe9bd9a9840e2b064feba7ed0a",
+        "git_blob": "dbef5cfbe93e03e01f670ce54f8078b7a4e0c2ce",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/simulate-template.asciidoc#L257"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "indices.simulate_template",
+      "method": "POST",
+      "path": "/_index_template/_simulate/{name}",
+      "documentation": {
+        "path": "docs/reference/indices/simulate-template.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/simulate-template.asciidoc",
+        "line": 59,
+        "request_fragment": "POST /_index_template/_simulate/template_1",
+        "sha256": "ef2f9d9fc04573fe72cf62fdb58eade3155b7afe9bd9a9840e2b064feba7ed0a",
+        "git_blob": "dbef5cfbe93e03e01f670ce54f8078b7a4e0c2ce",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/simulate-template.asciidoc#L59"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "scroll",
+      "method": "GET",
+      "path": "/_search/scroll",
+      "documentation": {
+        "path": "docs/reference/search/scroll-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/search/scroll-api.asciidoc",
+        "line": 26,
+        "request_fragment": "GET /_search/scroll",
+        "sha256": "a1d90e87a89fcde55f7c295b7422f55f4b205703f8a8c75a4a9cb609e2cffb5f",
+        "git_blob": "253b2d94bf5a46e1d0c9f454384ed58b528338af",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/search/scroll-api.asciidoc#L26"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "scroll",
+      "method": "POST",
+      "path": "/_search/scroll",
+      "documentation": {
+        "path": "docs/reference/search/scroll-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/search/scroll-api.asciidoc",
+        "line": 45,
+        "request_fragment": "`POST /_search/scroll`",
+        "sha256": "a1d90e87a89fcde55f7c295b7422f55f4b205703f8a8c75a4a9cb609e2cffb5f",
+        "git_blob": "253b2d94bf5a46e1d0c9f454384ed58b528338af",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/search/scroll-api.asciidoc#L45"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "scroll",
+      "method": "GET",
+      "path": "/_search/scroll/{scroll_id}",
+      "documentation": {
+        "path": "docs/reference/search/scroll-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/search/scroll-api.asciidoc",
+        "line": 37,
+        "request_fragment": "`GET /_search/scroll/<scroll_id>`",
+        "sha256": "a1d90e87a89fcde55f7c295b7422f55f4b205703f8a8c75a4a9cb609e2cffb5f",
+        "git_blob": "253b2d94bf5a46e1d0c9f454384ed58b528338af",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/search/scroll-api.asciidoc#L37"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "scroll",
+      "method": "POST",
+      "path": "/_search/scroll/{scroll_id}",
+      "documentation": {
+        "path": "docs/reference/search/scroll-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/search/scroll-api.asciidoc",
+        "line": 42,
+        "request_fragment": "`POST /_search/scroll/<scroll_id>`",
+        "sha256": "a1d90e87a89fcde55f7c295b7422f55f4b205703f8a8c75a4a9cb609e2cffb5f",
+        "git_blob": "253b2d94bf5a46e1d0c9f454384ed58b528338af",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/search/scroll-api.asciidoc#L42"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "clear_scroll",
+      "method": "DELETE",
+      "path": "/_search/scroll",
+      "documentation": {
+        "path": "docs/reference/search/clear-scroll-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/search/clear-scroll-api.asciidoc",
+        "line": 26,
+        "request_fragment": "DELETE /_search/scroll",
+        "sha256": "7f79410526c855c2b8baa90e215d90fd1149ececa158bd3cdf0e1d3eda9054d7",
+        "git_blob": "a494db6bb41e195d90f0d0d5dfbf405b52777a97",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/search/clear-scroll-api.asciidoc#L26"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "clear_scroll",
+      "method": "DELETE",
+      "path": "/_search/scroll/{scroll_id}",
+      "documentation": {
+        "path": "docs/reference/search/clear-scroll-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/search/clear-scroll-api.asciidoc",
+        "line": 37,
+        "request_fragment": "`DELETE /_search/scroll/<scroll_id>`",
+        "sha256": "7f79410526c855c2b8baa90e215d90fd1149ececa158bd3cdf0e1d3eda9054d7",
+        "git_blob": "a494db6bb41e195d90f0d0d5dfbf405b52777a97",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/search/clear-scroll-api.asciidoc#L37"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "dangling_indices.list_dangling_indices",
+      "method": "GET",
+      "path": "/_dangling",
+      "documentation": {
+        "path": "docs/reference/indices/dangling-indices-list.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/dangling-indices-list.asciidoc",
+        "line": 14,
+        "request_fragment": "GET /_dangling",
+        "sha256": "79a14f93a2334c34e072b3629b1322fd2bb2abef1f1ca31a9c9516ca10d20009",
+        "git_blob": "863a4d8ac7fbc93652ccd3fe36a8a48c4429e250",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/dangling-indices-list.asciidoc#L14"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "dangling_indices.import_dangling_index",
+      "method": "POST",
+      "path": "/_dangling/{index_uuid}",
+      "documentation": {
+        "path": "docs/reference/indices/dangling-index-import.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/dangling-index-import.asciidoc",
+        "line": 14,
+        "request_fragment": "POST /_dangling/<index-uuid>?accept_data_loss=true",
+        "sha256": "169eea4087e26b11f001b9f54915d02e6774f8baff56e37d01aa0c9c252f05c9",
+        "git_blob": "c905748216ff6a9c9d15fc74498783726f26f43b",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/dangling-index-import.asciidoc#L14"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    },
+    {
+      "api_id": "dangling_indices.delete_dangling_index",
+      "method": "DELETE",
+      "path": "/_dangling/{index_uuid}",
+      "documentation": {
+        "path": "docs/reference/indices/dangling-index-delete.asciidoc",
+        "local_source": "docs/research/source-analysis/7.9.3/normative-reference-sources/indices/dangling-index-delete.asciidoc",
+        "line": 14,
+        "request_fragment": "DELETE /_dangling/<index-uuid>?accept_data_loss=true",
+        "sha256": "b72c1c753acb8b4715024bedf4baec5038a35b1364b2e97cc34f0b1019252a52",
+        "git_blob": "3e3a74c456f7cac5034df0b99904edd61674cebf",
+        "url": "https://github.com/elastic/elasticsearch/blob/c4138e51121ef06a6404866cddc601906fe5c868/docs/reference/indices/dangling-index-delete.asciidoc#L14"
+      },
+      "scope_note": "Exact normative request binding only;no scope promotion or runtime support inferred."
+    }
+  ],
+  "remaining_method_paths": [
+    {
+      "api_id": "snapshot.status",
+      "method": "GET",
+      "path": "/_snapshot/_status",
+      "reason": "No exact request signature/example in the reviewed normative documents;not unsupported."
+    },
+    {
+      "api_id": "snapshot.status",
+      "method": "GET",
+      "path": "/_snapshot/{repository}/_status",
+      "reason": "No exact request signature/example in the reviewed normative documents;not unsupported."
+    },
+    {
+      "api_id": "indices.put_template",
+      "method": "POST",
+      "path": "/_template/{name}",
+      "reason": "No exact request signature/example in these reviewed normative references;not unsupported."
+    },
+    {
+      "api_id": "indices.put_index_template",
+      "method": "POST",
+      "path": "/_index_template/{name}",
+      "reason": "No exact request signature/example in these reviewed normative references;not unsupported."
+    },
+    {
+      "api_id": "indices.exists_index_template",
+      "method": "HEAD",
+      "path": "/_index_template/{name}",
+      "reason": "No exact request signature/example in these reviewed normative references;not unsupported."
+    }
+  ],
+  "original_upstream_links_preserved": true,
+  "scope_approval": false,
+  "runtime_support_inferred": false,
+  "complete_api_coverage": false
+}
