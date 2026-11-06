@@ -443,6 +443,11 @@ function showOperation(row) {
             "Любое наблюдение здесь частичное: не все методы, пути, параметры и ошибки проверены.",
         ),
     );
+    if (row.definition_origin === "reviewed-source-only-catalog-extension") {
+        body.append(el("p", "", "Этой записи нет в upstream REST JSON. Она отдельно выведена из закреплённого обработчика и документации; выполнение на кластере проверяется независимо."));
+        body.append(external(row.derived_catalog_evidence.url, "Происхождение записи · JSON · SHA-256 " + row.derived_catalog_evidence.sha256));
+        body.append(external(row.catalog_extension.documentation_url, "Нормативный запрос в закреплённой документации ↗"));
+    }
     if (row.contract_matrix) {
         const matrixButton = el("button", "evidence-button", "Матрица методов, путей и query-параметров");
         matrixButton.onclick = () => showContractMatrix(row);
