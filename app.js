@@ -474,6 +474,25 @@ function showOperation(row) {
         body_encoding_hint: row.body_encoding_hint,
         request_media_types: row.request_media_type_facts || {},
     });
+    const references = row.normative_request_evidence;
+    if (references) {
+        const section = el("details", "source-facts");
+        section.append(el("summary", "", "Документация: проверенные строки запросов · " + references.bindings.length));
+        section.append(el("p", "", "Точные запросы из документации этой версии. Они не подтверждают выполнение на кластере или полноту API."));
+        for (const binding of references.bindings) {
+            const line = el("p");
+            line.append(method(binding.method), el("code", "route", binding.path));
+            section.append(line);
+            section.append(el("pre", "", binding.documentation.request_fragment));
+            section.append(external(binding.documentation.url, "Строка " + binding.documentation.line + " в закреплённом upstream ↗"));
+            section.append(el("p", "muted", "SHA-256: " + binding.retained_document.sha256));
+            section.append(external(binding.retained_document.file, "Сохранённый исходный документ"));
+        }
+        if (references.remaining_method_paths.length)
+            jsonBlock(section, "Варианты без точной привязки в просмотренных документах", references.remaining_method_paths);
+        section.append(external(references.manifest.file, "Все привязки версии · JSON · SHA-256 " + references.manifest.sha256));
+        body.append(section);
+    }
     const sourceFacts = el("details", "source-facts");
     sourceFacts.append(el("summary", "", "Исходники и открытые проверки"));
     jsonBlock(sourceFacts, "Типы, значения и основание классификации (только исходники)", {

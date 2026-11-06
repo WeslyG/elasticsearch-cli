@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "kind": "pinned-normative-request-bindings-not-runtime-or-scope-approval",
+  "release": "7.8.1",
+  "source_commit": "b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89",
+  "input_sha256": {
+    "docs/research/versions/7.8.1/inventory.json": "35fb9aa2a1b3cef2fee81be4be0ea8634506118190390baeac6684a12806d76d",
+    "docs/research/source-analysis/7.8.1/documentation-facts.json": "82886145fd9a5a7fad2d92d14af7d31ad76855c9a6542aaac2f94e2e1d31afcf",
+    "docs/research/source-analysis/7.8.1/route-scope-facts.json": "1696766f8d5298cfb8da982a21670c981db1f57b27be8156688a6f7d53ad62b5"
+  },
+  "bindings": [
+    {
+      "api_id": "snapshot.cleanup_repository",
+      "method": "POST",
+      "path": "/_snapshot/{repository}/_cleanup",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/clean-up-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/clean-up-repo-api.asciidoc",
+        "line": 26,
+        "request_fragment": "POST /_snapshot/my_repository/_cleanup",
+        "sha256": "2cdb1548e43a51148b1cb4558b512498a4867c85a9ed88c5a3bfd49e5970ec55",
+        "git_blob": "4c0184945fae84148145912791fb002f7056ce60",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/clean-up-repo-api.asciidoc#L26"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.create",
+      "method": "PUT",
+      "path": "/_snapshot/{repository}/{snapshot}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/create-snapshot-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/create-snapshot-api.asciidoc",
+        "line": 26,
+        "request_fragment": "PUT /_snapshot/my_repository/my_snapshot",
+        "sha256": "38cb5eedcff0e5d289419f37f4ca03d1ef89cc302cdca898f9da51d0f4b4dc46",
+        "git_blob": "51923488627f9f2c4823204aa5b316974cb63e96",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/create-snapshot-api.asciidoc#L26"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.create",
+      "method": "POST",
+      "path": "/_snapshot/{repository}/{snapshot}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/create-snapshot-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/create-snapshot-api.asciidoc",
+        "line": 35,
+        "request_fragment": "`POST /_snapshot/<repository>/<snapshot>`",
+        "sha256": "38cb5eedcff0e5d289419f37f4ca03d1ef89cc302cdca898f9da51d0f4b4dc46",
+        "git_blob": "51923488627f9f2c4823204aa5b316974cb63e96",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/create-snapshot-api.asciidoc#L35"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.create_repository",
+      "method": "PUT",
+      "path": "/_snapshot/{repository}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/put-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/put-repo-api.asciidoc",
+        "line": 11,
+        "request_fragment": "PUT /_snapshot/my_repository",
+        "sha256": "e6526fc52041248e1e73807b23f4a8951708a030ea4d67492852ae44065ef275",
+        "git_blob": "d9169a7cf69f33caad33b72e4c9ae997fd091c23",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/put-repo-api.asciidoc#L11"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.create_repository",
+      "method": "POST",
+      "path": "/_snapshot/{repository}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/put-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/put-repo-api.asciidoc",
+        "line": 25,
+        "request_fragment": "`POST /_snapshot/<repository>`",
+        "sha256": "e6526fc52041248e1e73807b23f4a8951708a030ea4d67492852ae44065ef275",
+        "git_blob": "d9169a7cf69f33caad33b72e4c9ae997fd091c23",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/put-repo-api.asciidoc#L25"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.delete",
+      "method": "DELETE",
+      "path": "/_snapshot/{repository}/{snapshot}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/delete-snapshot-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/delete-snapshot-api.asciidoc",
+        "line": 31,
+        "request_fragment": "DELETE /_snapshot/my_repository/my_snapshot",
+        "sha256": "5ccd4ebea3d7af11a4300039923aa9f7fdf354a89d38f412a4259c06548c7a19",
+        "git_blob": "bac76f7c82ff08a6804c91cfdeef136d05e46212",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/delete-snapshot-api.asciidoc#L31"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.delete_repository",
+      "method": "DELETE",
+      "path": "/_snapshot/{repository}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/delete-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/delete-repo-api.asciidoc",
+        "line": 28,
+        "request_fragment": "DELETE /_snapshot/my_repository",
+        "sha256": "051dd272aeb7452d4baf33560a81a2db508d9037d77d23c73f3e9d35ef43cc2c",
+        "git_blob": "5b518db7e82b1b5b3f3202887008a6e95862291d",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/delete-repo-api.asciidoc#L28"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.get",
+      "method": "GET",
+      "path": "/_snapshot/{repository}/{snapshot}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/get-snapshot-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/get-snapshot-api.asciidoc",
+        "line": 29,
+        "request_fragment": "GET /_snapshot/my_repository/my_snapshot",
+        "sha256": "f18c0f3ab7a3162612fd3399c4d3c9eb1b89764960c8767319978d2c2d23e5e3",
+        "git_blob": "97f714b5ae32d6c2c7e85f4051703b68e79c6c36",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/get-snapshot-api.asciidoc#L29"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.get_repository",
+      "method": "GET",
+      "path": "/_snapshot",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/get-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/get-repo-api.asciidoc",
+        "line": 34,
+        "request_fragment": "`GET /_snapshot`",
+        "sha256": "afb51407cf5c5fab8008e0b74b40aa13c310709c91cc7a0f39805982f50ffa95",
+        "git_blob": "6d34ce600d990cc4073ce02bfbce25d80b029d6d",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/get-repo-api.asciidoc#L34"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.get_repository",
+      "method": "GET",
+      "path": "/_snapshot/{repository}",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/get-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/get-repo-api.asciidoc",
+        "line": 26,
+        "request_fragment": "GET /_snapshot/my_repository",
+        "sha256": "afb51407cf5c5fab8008e0b74b40aa13c310709c91cc7a0f39805982f50ffa95",
+        "git_blob": "6d34ce600d990cc4073ce02bfbce25d80b029d6d",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/get-repo-api.asciidoc#L26"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.restore",
+      "method": "POST",
+      "path": "/_snapshot/{repository}/{snapshot}/_restore",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/restore-snapshot.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/restore-snapshot.asciidoc",
+        "line": 29,
+        "request_fragment": "POST /_snapshot/my_backup/snapshot_1/_restore",
+        "sha256": "d3237eb23ad6d32d1343ee9672b3a95e74a96f70a74e095116e9d2cb68d29c65",
+        "git_blob": "5f5a160f5177a8a88325f446644a2b3a55304d93",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/restore-snapshot.asciidoc#L29"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.status",
+      "method": "GET",
+      "path": "/_snapshot/{repository}/{snapshot}/_status",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/get-snapshot-status-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/get-snapshot-status-api.asciidoc",
+        "line": 76,
+        "request_fragment": "GET /_snapshot/my_repository/my_snapshot/_status",
+        "sha256": "96daac5550d84131aca1b21ff172d152b962254c0c550e8ae0b18bea4eb76bd2",
+        "git_blob": "aa7250e0e49d605ed42d9a24827e52d1b0c99a8d",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/get-snapshot-status-api.asciidoc#L76"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    },
+    {
+      "api_id": "snapshot.verify_repository",
+      "method": "POST",
+      "path": "/_snapshot/{repository}/_verify",
+      "documentation": {
+        "path": "docs/reference/snapshot-restore/apis/verify-repo-api.asciidoc",
+        "local_source": "docs/research/source-analysis/7.8.1/normative-reference-sources/apis/verify-repo-api.asciidoc",
+        "line": 25,
+        "request_fragment": "POST /_snapshot/my_repository/_verify",
+        "sha256": "449d39d2116e08fa6d5eae4766b07fdf653d28f6c07f55f70e5e97f0ffcae5f3",
+        "git_blob": "4574c21655e7a3c5f31fa328f248d1ddd7838423",
+        "url": "https://github.com/elastic/elasticsearch/blob/b5ca9c58fb664ca8bf9e4057fc229b3396bf3a89/docs/reference/snapshot-restore/apis/verify-repo-api.asciidoc#L25"
+      },
+      "scope_note": "Literal core request binding only;no paid repository section/consumer support inferred."
+    }
+  ],
+  "remaining_method_paths": [
+    {
+      "api_id": "snapshot.status",
+      "method": "GET",
+      "path": "/_snapshot/_status",
+      "reason": "No exact request signature/example in the reviewed normative documents;not unsupported."
+    },
+    {
+      "api_id": "snapshot.status",
+      "method": "GET",
+      "path": "/_snapshot/{repository}/_status",
+      "reason": "No exact request signature/example in the reviewed normative documents;not unsupported."
+    }
+  ],
+  "original_upstream_links_preserved": true,
+  "scope_approval": false,
+  "runtime_support_inferred": false,
+  "complete_api_coverage": false
+}
