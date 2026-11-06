@@ -247,6 +247,22 @@ def attributed_routes(api, method, path, routes, trailing_slash=False, proof=Non
     return selected
 
 
+def preserve_generation_commit(previous, candidate):
+    """Keep the original artifact provenance when every other byte input is equal."""
+    if previous is None:
+        return candidate
+    old_commit = previous.get("generator_git_sha", "")
+    old_content = {key: value for key, value in previous.items() if key != "generator_git_sha"}
+    new_content = {key: value for key, value in candidate.items() if key != "generator_git_sha"}
+    if (
+        isinstance(old_commit, str)
+        and re.fullmatch(r"[0-9a-f]{40}", old_commit)
+        and old_content == new_content
+    ):
+        return dict(previous)
+    return candidate
+
+
 def build(version):
     folder = ROOT / "docs/research/versions" / version
     backlog_path = folder / "contract-backlog.json"
@@ -461,7 +477,11 @@ def build(version):
             "Body/header/error/async/state/platform obligations remain open; no overall coverage percentage.",
         ],
     }
-    (folder / "contract-matrix.json").write_text(json.dumps(result, separators=(",", ":")) + "\n")
+    destination = folder / "contract-matrix.json"
+    previous = json.loads(destination.read_text()) if destination.exists() else None
+    result = preserve_generation_commit(previous, result)
+    if previous != result:
+        destination.write_text(json.dumps(result, separators=(",", ":")) + "\n")
     lines = [
         f"# {version}: observed method/path obligations",
         "",
