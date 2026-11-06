@@ -1,0 +1,1716 @@
+"""Pinned7.9 core additions: write block effects, name resolution, absent dangling IDs."""
+
+from analyze_limit_contracts import declare as declare_analyze_limits
+from analyze_limit_contracts import execute as execute_analyze_limits
+from evidence_runner import OMITTED
+
+PREPARED_VERSIONS = {
+    "7.9.3",
+    "7.10.2",
+    "7.11.2",
+    "7.12.1",
+    "7.13.4",
+    "7.14.2",
+    "7.15.2",
+    "7.16.3",
+    "7.17.29",
+    "8.0.1",
+    "8.1.3",
+    "8.2.3",
+    "8.3.3",
+    "8.4.3",
+    "8.5.3",
+    "8.6.2",
+    "8.7.1",
+    "8.8.2",
+    "8.9.2",
+    "8.10.4",
+    "8.11.4",
+    "8.12.2",
+    "8.13.4",
+    "8.14.3",
+    "8.15.5",
+    "8.16.6",
+    "8.17.10",
+    "8.18.8",
+    "8.19.24",
+    "9.0.8",
+    "9.1.10",
+    "9.2.8",
+    "9.3.8",
+    "9.4.9",
+    "9.5.6",
+}
+
+
+def declare(add, version):
+    if version not in PREPARED_VERSIONS:
+        return {}
+    specs = [
+        ("create", "indices.create", "PUT", "/{index}", (), (200,)),
+        ("write", "index", "PUT", "/{index}/_doc/one?refresh=true", ("create",), (201,)),
+        (
+            "resolve-index",
+            "indices.resolve_index",
+            "GET",
+            "/_resolve/index/{index}",
+            ("write",),
+            (200,),
+        ),
+        (
+            "resolve-alias",
+            "indices.resolve_index",
+            "GET",
+            "/_resolve/index/{alias}",
+            ("resolve-index",),
+            (200,),
+        ),
+        (
+            "invalid-block",
+            "indices.add_block",
+            "PUT",
+            "/{index}/_block/not-a-block",
+            ("resolve-alias",),
+            (400,),
+        ),
+        ("block", "indices.add_block", "PUT", "/{index}/_block/write", ("invalid-block",), (200,)),
+        ("blocked-write", "index", "PUT", "/{index}/_doc/two?refresh=true", ("block",), (403,)),
+        ("unchanged", "count", "GET", "/{index}/_count", ("blocked-write",), (200,)),
+        (
+            "settings",
+            "indices.get_settings",
+            "GET",
+            "/{index}/_settings?flat_settings=true",
+            ("block",),
+            (200,),
+        ),
+        ("unblock", "indices.put_settings", "PUT", "/{index}/_settings", ("unchanged",), (200,)),
+        ("write-after", "index", "PUT", "/{index}/_doc/two?refresh=true", ("unblock",), (201,)),
+        ("read-after", "get", "GET", "/{index}/_doc/two", ("write-after",), (200,)),
+        (
+            "dangling-list",
+            "dangling_indices.list_dangling_indices",
+            "GET",
+            "/_dangling",
+            ("read-after",),
+            (200,),
+        ),
+        (
+            "import-default",
+            "dangling_indices.import_dangling_index",
+            "POST",
+            "/_dangling/{missing_uuid}",
+            ("dangling-list",),
+            (400,),
+        ),
+        (
+            "import-accept",
+            "dangling_indices.import_dangling_index",
+            "POST",
+            "/_dangling/{missing_uuid}?accept_data_loss=true",
+            ("import-default",),
+            (400,),
+        ),
+        (
+            "delete-default",
+            "dangling_indices.delete_dangling_index",
+            "DELETE",
+            "/_dangling/{missing_uuid}",
+            ("import-accept",),
+            (400,),
+        ),
+        (
+            "delete-accept",
+            "dangling_indices.delete_dangling_index",
+            "DELETE",
+            "/_dangling/{missing_uuid}?accept_data_loss=true",
+            ("delete-default",),
+            (400,),
+        ),
+        (
+            "dangling-unchanged",
+            "dangling_indices.list_dangling_indices",
+            "GET",
+            "/_dangling",
+            ("delete-accept",),
+            (200,),
+        ),
+        ("data-preserved", "count", "GET", "/{index}/_count", ("dangling-unchanged",), (200,)),
+        ("cleanup", "indices.delete", "DELETE", "/{index}", (), (200, 404)),
+    ]
+    if version in {
+        "7.12.1",
+        "7.13.4",
+        "7.14.2",
+        "7.15.2",
+        "7.16.3",
+        "7.17.29",
+        "8.0.1",
+        "8.1.3",
+        "8.2.3",
+        "8.3.3",
+        "8.4.3",
+        "8.5.3",
+        "8.6.2",
+        "8.7.1",
+        "8.8.2",
+        "8.9.2",
+        "8.10.4",
+        "8.11.4",
+        "8.12.2",
+        "8.13.4",
+        "8.14.3",
+        "8.15.5",
+        "8.16.6",
+        "8.17.10",
+        "8.18.8",
+        "8.19.24",
+        "9.0.8",
+        "9.1.10",
+        "9.2.8",
+        "9.3.8",
+        "9.4.9",
+        "9.5.6",
+    }:
+        specs.extend(
+            [
+                (
+                    "search-compatible",
+                    "search",
+                    "GET",
+                    "/{index}/_search?min_compatible_shard_node=" + version,
+                    ("data-preserved",),
+                    (200,),
+                ),
+                (
+                    "search-bad-version",
+                    "search",
+                    "GET",
+                    "/{index}/_search?min_compatible_shard_node=es-cli-invalid",
+                    ("search-compatible",),
+                    (200,)
+                    if version in {"9.0.8", "9.1.10", "9.2.8", "9.3.8", "9.4.9", "9.5.6"}
+                    else (400,),
+                ),
+            ]
+        )
+    if version in {
+        "7.12.1",
+        "7.13.4",
+        "7.14.2",
+        "7.15.2",
+        "7.16.3",
+        "7.17.29",
+        "8.0.1",
+        "8.1.3",
+        "8.2.3",
+        "8.3.3",
+        "8.4.3",
+        "8.5.3",
+        "8.6.2",
+        "8.7.1",
+        "8.8.2",
+        "8.9.2",
+        "8.10.4",
+        "8.11.4",
+        "8.12.2",
+        "8.13.4",
+        "8.14.3",
+        "8.15.5",
+        "8.16.6",
+        "8.17.10",
+        "8.18.8",
+        "8.19.24",
+        "9.0.8",
+        "9.1.10",
+        "9.2.8",
+        "9.3.8",
+        "9.4.9",
+        "9.5.6",
+    }:
+        specs.extend(
+            [
+                (
+                    "features",
+                    "features.get_features",
+                    "GET",
+                    "/_features",
+                    ("data-preserved",),
+                    (200,),
+                ),
+                (
+                    "features-body",
+                    "features.get_features",
+                    "GET",
+                    "/_features",
+                    ("features",),
+                    (400,),
+                ),
+                (
+                    "features-after",
+                    "features.get_features",
+                    "GET",
+                    "/_features",
+                    ("features-body",),
+                    (200,),
+                ),
+            ]
+        )
+    if version in {
+        "7.16.3",
+        "7.17.29",
+        "8.0.1",
+        "8.1.3",
+        "8.2.3",
+        "8.3.3",
+        "8.4.3",
+        "8.5.3",
+        "8.6.2",
+        "8.7.1",
+        "8.8.2",
+        "8.9.2",
+        "8.10.4",
+        "8.11.4",
+        "8.12.2",
+        "8.13.4",
+        "8.14.3",
+        "8.15.5",
+        "8.16.6",
+        "8.17.10",
+        "8.18.8",
+        "8.19.24",
+        "9.0.8",
+        "9.1.10",
+        "9.2.8",
+        "9.3.8",
+        "9.4.9",
+        "9.5.6",
+    }:
+        specs.extend(
+            [
+                (
+                    "modify-empty",
+                    "indices.modify_data_stream",
+                    "POST",
+                    "/_data_stream/_modify",
+                    ("data-preserved",),
+                    (400,),
+                ),
+                (
+                    "modify-add-absent",
+                    "indices.modify_data_stream",
+                    "POST",
+                    "/_data_stream/_modify",
+                    ("modify-empty",),
+                    (400,)
+                    if version
+                    in {
+                        "7.17.29",
+                        "8.2.3",
+                        "8.3.3",
+                        "8.4.3",
+                        "8.5.3",
+                        "8.6.2",
+                        "8.7.1",
+                        "8.8.2",
+                        "8.9.2",
+                        "8.10.4",
+                        "8.11.4",
+                        "8.12.2",
+                        "8.13.4",
+                        "8.14.3",
+                        "8.15.5",
+                        "8.16.6",
+                        "8.17.10",
+                        "8.18.8",
+                        "8.19.24",
+                        "9.0.8",
+                        "9.1.10",
+                        "9.2.8",
+                        "9.3.8",
+                        "9.4.9",
+                        "9.5.6",
+                    }
+                    else (404,),
+                ),
+                (
+                    "modify-remove-absent",
+                    "indices.modify_data_stream",
+                    "POST",
+                    "/_data_stream/_modify",
+                    ("modify-add-absent",),
+                    (400,)
+                    if version
+                    in {
+                        "7.17.29",
+                        "8.2.3",
+                        "8.3.3",
+                        "8.4.3",
+                        "8.5.3",
+                        "8.6.2",
+                        "8.7.1",
+                        "8.8.2",
+                        "8.9.2",
+                        "8.10.4",
+                        "8.11.4",
+                        "8.12.2",
+                        "8.13.4",
+                        "8.14.3",
+                        "8.15.5",
+                        "8.16.6",
+                        "8.17.10",
+                        "8.18.8",
+                        "8.19.24",
+                        "9.0.8",
+                        "9.1.10",
+                        "9.2.8",
+                        "9.3.8",
+                        "9.4.9",
+                        "9.5.6",
+                    }
+                    else (404,),
+                ),
+                (
+                    "modify-data-preserved",
+                    "count",
+                    "GET",
+                    "/{index}/_count",
+                    ("modify-remove-absent",),
+                    (200,),
+                ),
+            ]
+        )
+    graph = {}
+    if version in {
+        "8.14.3",
+        "8.15.5",
+        "8.16.6",
+        "8.17.10",
+        "8.18.8",
+        "8.19.24",
+        "9.0.8",
+        "9.1.10",
+        "9.2.8",
+        "9.3.8",
+        "9.4.9",
+        "9.5.6",
+        "8.13.4",
+    }:
+        for name, path in [
+            ("cluster-index", "/_resolve/cluster/{index}"),
+            ("cluster-alias", "/_resolve/cluster/{alias}"),
+            ("cluster-missing", "/_resolve/cluster/{missing_uuid}"),
+            ("cluster-wildcard", "/_resolve/cluster/{missing_uuid}*?allow_no_indices=true"),
+        ]:
+            specs.append((name, "indices.resolve_cluster", "GET", path, ("resolve-alias",), (200,)))
+        specs.append(
+            (
+                "cluster-count",
+                "count",
+                "GET",
+                "/{index}/_count",
+                ("cluster-index", "cluster-alias", "cluster-missing", "cluster-wildcard"),
+                (200,),
+            )
+        )
+    if version in {"9.0.8", "9.1.10", "9.2.8", "9.3.8", "9.4.9", "9.5.6"}:
+        specs.extend(
+            [
+                (
+                    "search-min-omitted",
+                    "search",
+                    "GET",
+                    "/{index}/_search",
+                    ("data-preserved",),
+                    (200,),
+                ),
+                (
+                    "search-min-future",
+                    "search",
+                    "GET",
+                    "/{index}/_search?min_compatible_shard_node=99.0.0",
+                    ("search-bad-version",),
+                    (200,),
+                ),
+            ]
+        )
+    if version in {"8.18.8", "8.19.24", "9.0.8", "9.1.10", "9.2.8", "9.3.8", "9.4.9", "9.5.6"}:
+        specs.extend(
+            [
+                (
+                    "cluster-remotes-empty",
+                    "cluster.remote_info",
+                    "GET",
+                    "/_remote/info",
+                    ("resolve-alias",),
+                    (200,),
+                ),
+                (
+                    "cluster-all",
+                    "indices.resolve_cluster",
+                    "GET",
+                    "/_resolve/cluster",
+                    ("cluster-remotes-empty",),
+                    (200,),
+                ),
+                (
+                    "cluster-all-timeout",
+                    "indices.resolve_cluster",
+                    "GET",
+                    "/_resolve/cluster?timeout=1s",
+                    ("cluster-all",),
+                    (200,),
+                ),
+                (
+                    "cluster-all-bad-timeout",
+                    "indices.resolve_cluster",
+                    "GET",
+                    "/_resolve/cluster?timeout=garbage",
+                    ("cluster-all-timeout",),
+                    (400,),
+                ),
+                (
+                    "cluster-all-body",
+                    "indices.resolve_cluster",
+                    "GET",
+                    "/_resolve/cluster",
+                    ("cluster-all",),
+                    (400,),
+                ),
+                (
+                    "cluster-all-after",
+                    "indices.resolve_cluster",
+                    "GET",
+                    "/_resolve/cluster",
+                    ("cluster-all-body",),
+                    (200,),
+                ),
+                (
+                    "cluster-all-count",
+                    "count",
+                    "GET",
+                    "/{index}/_count",
+                    ("cluster-all-after",),
+                    (200,),
+                ),
+            ]
+        )
+        for param, value in [
+            ("expand_wildcards", "open"),
+            ("allow_no_indices", "true"),
+            ("ignore_unavailable", "true"),
+        ]:
+            specs.append(
+                (
+                    "cluster-all-option-" + param,
+                    "indices.resolve_cluster",
+                    "GET",
+                    "/_resolve/cluster?" + param + "=" + value,
+                    ("cluster-all",),
+                    (400,),
+                )
+            )
+    if version in {"9.5.6", "9.4.9"}:
+        specs.extend(
+            [
+                (
+                    "analyze-limit",
+                    "indices.put_settings",
+                    "PUT",
+                    "/{index}/_settings",
+                    ("write",),
+                    (200,),
+                ),
+                (
+                    "analyze-over-limit",
+                    "indices.analyze",
+                    "POST",
+                    "/{index}/_analyze",
+                    ("analyze-limit",),
+                    (400,),
+                ),
+                (
+                    "analyze-limit-reset",
+                    "indices.put_settings",
+                    "PUT",
+                    "/{index}/_settings",
+                    ("analyze-limit",),
+                    (200,),
+                ),
+                (
+                    "analyze-after-reset",
+                    "indices.analyze",
+                    "POST",
+                    "/{index}/_analyze",
+                    ("analyze-limit-reset",),
+                    (200,),
+                ),
+                ("search-seqno", "search", "POST", "/{index}/_search", ("read-after",), (200,)),
+                (
+                    "search-repeat-size",
+                    "search",
+                    "GET",
+                    "/{index}/_search?size=0&size=1",
+                    ("read-after",),
+                    (200,),
+                ),
+                (
+                    "search-repeat-size-reversed",
+                    "search",
+                    "GET",
+                    "/{index}/_search?size=1&size=0",
+                    ("read-after",),
+                    (200,),
+                ),
+            ]
+        )
+        for context in ["filter", "score", "boolean_field"]:
+            specs.append(
+                (
+                    "painless-no-setup-" + context,
+                    "scripts_painless_execute",
+                    "POST",
+                    "/_scripts/painless/_execute",
+                    ("read-after",),
+                    (400,),
+                )
+            )
+    if version == "9.5.6":
+        specs.extend(
+            [
+                (
+                    "reindex-start",
+                    "reindex",
+                    "POST",
+                    "/_reindex?wait_for_completion=false&requests_per_second=0.1",
+                    ("read-after",),
+                    (200,),
+                ),
+                (
+                    "reindex-get",
+                    "reindex_get",
+                    "GET",
+                    "/_reindex/{reindex_task}",
+                    ("reindex-start",),
+                    (200,),
+                ),
+                (
+                    "reindex-list",
+                    "reindex_list",
+                    "GET",
+                    "/_reindex?detailed=true",
+                    ("reindex-get",),
+                    (200,),
+                ),
+                (
+                    "reindex-cancel",
+                    "reindex_cancel",
+                    "POST",
+                    "/_reindex/{reindex_task}/_cancel?wait_for_completion=true",
+                    ("reindex-list",),
+                    (200,),
+                ),
+                (
+                    "reindex-completed",
+                    "reindex_get",
+                    "GET",
+                    "/_reindex/{reindex_task}?wait_for_completion=true&timeout=5s",
+                    ("reindex-cancel",),
+                    (200,),
+                ),
+                (
+                    "reindex-list-after",
+                    "reindex_list",
+                    "GET",
+                    "/_reindex",
+                    ("reindex-completed",),
+                    (200,),
+                ),
+                (
+                    "reindex-source-count",
+                    "count",
+                    "GET",
+                    "/{index}/_count",
+                    ("reindex-cancel",),
+                    (200,),
+                ),
+                (
+                    "reindex-get-absent",
+                    "reindex_get",
+                    "GET",
+                    "/_reindex/{reindex_missing}",
+                    (),
+                    (404,),
+                ),
+                (
+                    "reindex-cancel-absent",
+                    "reindex_cancel",
+                    "POST",
+                    "/_reindex/{reindex_missing}/_cancel",
+                    (),
+                    (404,),
+                ),
+                ("reindex-cleanup", "indices.delete", "DELETE", "/{reindex_dest}", (), (200, 404)),
+            ]
+        )
+    if version == "9.5.6":
+        specs.extend(
+            [
+                (
+                    "analyze-limit-inputs",
+                    "indices.analyze",
+                    "POST",
+                    "/{index}/_analyze",
+                    ("analyze-limit",),
+                    (200,),
+                ),
+                (
+                    "analyze-expanded",
+                    "indices.analyze",
+                    "POST",
+                    "/{index}/_analyze",
+                    ("analyze-limit",),
+                    (400,),
+                ),
+                (
+                    "analyze-expanded-explain",
+                    "indices.analyze",
+                    "POST",
+                    "/{index}/_analyze",
+                    ("analyze-limit",),
+                    (400,),
+                ),
+                ("sort-create", "indices.create", "PUT", "/{sort_index}", (), (200,)),
+                (
+                    "sort-seed",
+                    "index",
+                    "PUT",
+                    "/{sort_index}/_doc/one?refresh=true",
+                    ("sort-create",),
+                    (201,),
+                ),
+                (
+                    "sort-shadow",
+                    "indices.put_mapping",
+                    "PUT",
+                    "/{sort_index}/_mapping",
+                    ("sort-seed",),
+                    (400,),
+                ),
+                (
+                    "sort-mapping",
+                    "indices.get_mapping",
+                    "GET",
+                    "/{sort_index}/_mapping",
+                    ("sort-shadow",),
+                    (200,),
+                ),
+                (
+                    "sort-runtime",
+                    "indices.put_mapping",
+                    "PUT",
+                    "/{sort_index}/_mapping",
+                    ("sort-mapping",),
+                    (200,),
+                ),
+                (
+                    "sort-search",
+                    "search",
+                    "POST",
+                    "/{sort_index}/_search",
+                    ("sort-runtime",),
+                    (200,),
+                ),
+                ("sort-cleanup", "indices.delete", "DELETE", "/{sort_index}", (), (200, 404)),
+            ]
+        )
+    if version == "7.17.29":
+        specs.extend(
+            [
+                (
+                    "pit-concurrency",
+                    "open_point_in_time",
+                    "POST",
+                    "/{index}/_pit?keep_alive=1m&max_concurrent_shard_requests=1",
+                    ("read-after",),
+                    (200,),
+                ),
+                (
+                    "pit-concurrency-search",
+                    "search",
+                    "POST",
+                    "/_search",
+                    ("pit-concurrency",),
+                    (200,),
+                ),
+                (
+                    "pit-concurrency-zero",
+                    "open_point_in_time",
+                    "POST",
+                    "/{index}/_pit?keep_alive=1m&max_concurrent_shard_requests=0",
+                    ("read-after",),
+                    (400,),
+                ),
+                (
+                    "pit-concurrency-close",
+                    "close_point_in_time",
+                    "DELETE",
+                    "/_pit",
+                    ("pit-concurrency",),
+                    (200,),
+                ),
+            ]
+        )
+    if version in {"7.17.29", "8.19.24"}:
+        specs.extend(
+            [
+                (
+                    "pit-root",
+                    "open_point_in_time",
+                    "POST",
+                    "/_pit?index={index}&keep_alive=1m",
+                    ("read-after",),
+                    (200,),
+                ),
+                ("pit-root-search", "search", "POST", "/_search", ("pit-root",), (200,)),
+                ("pit-root-close", "close_point_in_time", "DELETE", "/_pit", ("pit-root",), (200,)),
+            ]
+        )
+    for name, api, method, path, deps, expected in specs:
+        identifier = "core79." + name
+        add(
+            identifier,
+            api,
+            method,
+            path,
+            expected=expected,
+            purpose="fixture-cleanup" if name == "cleanup" else "api-contract",
+        )
+        graph[identifier] = tuple("core79." + d for d in deps)
+    graph.update(declare_analyze_limits(add, version))
+    return graph
+
+
+def execute(run, catalog, prefix):
+    if catalog.version not in PREPARED_VERSIONS:
+        raise ValueError("Core additions not prepared for exact release")
+    values = {
+        "index": prefix + "-core79",
+        "alias": prefix + "-core79-alias",
+        "missing_uuid": prefix + "-absent-uuid",
+    }
+
+    def call(name, body=OMITTED, assertions=(), verifies=()):
+        case = catalog.cases["core79." + name]
+        result = catalog.execute(
+            run,
+            case.id,
+            values=values,
+            body=body,
+            assertions=assertions,
+            depends_on=case.dependency_plan,
+            semantic=bool(assertions),
+            verifies=["core79." + d for d in verifies],
+        )
+        print(case.id, result.state, result.status, flush=True)
+        return result
+
+    ack = [("acknowledged", lambda d: d["acknowledged"], True)]
+    try:
+        call(
+            "create",
+            {
+                "settings": {"number_of_shards": 1, "number_of_replicas": 0},
+                "aliases": {values["alias"]: {}},
+            },
+            ack,
+        )
+        call("write", {"n": 1})
+        call(
+            "resolve-index",
+            assertions=[
+                (
+                    "resolved exact index",
+                    lambda d: [i["name"] for i in d["indices"]],
+                    [values["index"]],
+                ),
+                ("index advertises alias", lambda d: d["indices"][0]["aliases"], [values["alias"]]),
+                ("not a data stream", lambda d: d["data_streams"], []),
+            ],
+            verifies=("create",),
+        )
+        call(
+            "resolve-alias",
+            assertions=[
+                (
+                    "resolved exact alias",
+                    lambda d: [i["name"] for i in d["aliases"]],
+                    [values["alias"]],
+                ),
+                (
+                    "alias targets owned index",
+                    lambda d: d["aliases"][0]["indices"],
+                    [values["index"]],
+                ),
+            ],
+            verifies=("create",),
+        )
+        if catalog.version in {
+            "8.14.3",
+            "8.15.5",
+            "8.16.6",
+            "8.17.10",
+            "8.18.8",
+            "8.19.24",
+            "9.0.8",
+            "9.1.10",
+            "9.2.8",
+            "9.3.8",
+            "9.4.9",
+            "9.5.6",
+            "8.13.4",
+        }:
+            for name in ["cluster-index", "cluster-alias", "cluster-wildcard"]:
+                call(
+                    name,
+                    assertions=[
+                        ("only local cluster", lambda d: sorted(d), ["(local)"]),
+                        ("local connected", lambda d: d["(local)"]["connected"], True),
+                        ("local never skipped", lambda d: d["(local)"]["skip_unavailable"], False),
+                        (
+                            "actual matching state",
+                            lambda d: d["(local)"]["matching_indices"],
+                            name != "cluster-wildcard",
+                        ),
+                        (
+                            "exact local release",
+                            lambda d: d["(local)"]["version"]["number"],
+                            catalog.version,
+                        ),
+                    ],
+                )
+            call(
+                "cluster-missing",
+                assertions=[
+                    (
+                        "local exact missing is embedded error",
+                        lambda d: values["missing_uuid"] in d["(local)"]["error"],
+                        True,
+                    ),
+                    (
+                        "local stays connected despite missing index",
+                        lambda d: d["(local)"]["connected"],
+                        True,
+                    ),
+                    (
+                        "matching flag absent on error",
+                        lambda d: "matching_indices" in d["(local)"],
+                        False,
+                    ),
+                ],
+            )
+            call(
+                "cluster-count",
+                assertions=[("resolution writes no documents", lambda d: d["count"], 1)],
+                verifies=("cluster-index", "cluster-alias", "cluster-missing", "cluster-wildcard"),
+            )
+        if catalog.version in {
+            "8.18.8",
+            "8.19.24",
+            "9.0.8",
+            "9.1.10",
+            "9.2.8",
+            "9.3.8",
+            "9.4.9",
+            "9.5.6",
+        }:
+            empty = [("no configured remote clusters, no implicit local entry", lambda d: d, {})]
+            call(
+                "cluster-remotes-empty",
+                assertions=[("isolated lab remote configuration empty", lambda d: d, {})],
+            )
+            call("cluster-all", assertions=empty)
+            call("cluster-all-timeout", assertions=empty)
+            call(
+                "cluster-all-bad-timeout",
+                assertions=[
+                    (
+                        "timeout must parse",
+                        lambda d: "timeout" in str(d["error"]) and "garbage" in str(d["error"]),
+                        True,
+                    )
+                ],
+            )
+            for param in ["expand_wildcards", "allow_no_indices", "ignore_unavailable"]:
+                call(
+                    "cluster-all-option-" + param,
+                    assertions=[
+                        (
+                            "index options forbidden without index expression",
+                            lambda d, param=param: (
+                                "No index options are allowed" in str(d["error"])
+                                and param in str(d["error"])
+                            ),
+                            True,
+                        )
+                    ],
+                )
+            call(
+                "cluster-all-body",
+                {"unused": True},
+                [
+                    (
+                        "unused body refused",
+                        lambda d: "does not support having a body" in str(d["error"]),
+                        True,
+                    )
+                ],
+            )
+            call(
+                "cluster-all-after",
+                assertions=empty,
+                verifies=("cluster-all-body", "cluster-all-bad-timeout"),
+            )
+            call(
+                "cluster-all-count",
+                assertions=[("resolve-only calls preserve ordinary data", lambda d: d["count"], 1)],
+                verifies=("cluster-all", "cluster-all-timeout", "cluster-all-body"),
+            )
+        call(
+            "invalid-block",
+            assertions=[
+                (
+                    "invalid block argument",
+                    lambda d: d["error"]["type"],
+                    "illegal_argument_exception",
+                )
+            ],
+        )
+        call("block", assertions=ack)
+        call(
+            "blocked-write",
+            {"n": 2},
+            [("write blocked", lambda d: d["error"]["type"], "cluster_block_exception")],
+        )
+        call(
+            "unchanged",
+            assertions=[("failed write adds no doc", lambda d: d["count"], 1)],
+            verifies=("blocked-write",),
+        )
+        call(
+            "settings",
+            assertions=[
+                (
+                    "write block stored",
+                    lambda d: d[values["index"]]["settings"]["index.blocks.write"],
+                    "true",
+                )
+            ],
+            verifies=("block",),
+        )
+        call("unblock", {"index.blocks.write": False}, ack)
+        call("write-after", {"n": 2})
+        call(
+            "read-after",
+            assertions=[("write works again", lambda d: d["_source"], {"n": 2})],
+            verifies=("unblock", "write-after"),
+        )
+        empty = [("no dangling indices in owned node", lambda d: d["dangling_indices"], [])]
+        call("dangling-list", assertions=empty)
+        for name in ["import-default", "import-accept", "delete-default", "delete-accept"]:
+            call(
+                name,
+                assertions=[
+                    (
+                        "absent UUID before acceptance guard",
+                        lambda d: "No dangling index found for UUID" in str(d["error"]),
+                        True,
+                    ),
+                    ("argument error", lambda d: d["error"]["type"], "illegal_argument_exception"),
+                ],
+            )
+        call(
+            "dangling-unchanged",
+            assertions=empty,
+            verifies=("import-default", "import-accept", "delete-default", "delete-accept"),
+        )
+        call("data-preserved", assertions=[("existing index unaffected", lambda d: d["count"], 2)])
+        if catalog.version in {
+            "7.16.3",
+            "7.17.29",
+            "8.0.1",
+            "8.1.3",
+            "8.2.3",
+            "8.3.3",
+            "8.4.3",
+            "8.5.3",
+            "8.6.2",
+            "8.7.1",
+            "8.8.2",
+            "8.9.2",
+            "8.10.4",
+            "8.11.4",
+            "8.12.2",
+            "8.13.4",
+            "8.14.3",
+            "8.15.5",
+            "8.16.6",
+            "8.17.10",
+            "8.18.8",
+            "8.19.24",
+            "9.0.8",
+            "9.1.10",
+            "9.2.8",
+            "9.3.8",
+            "9.4.9",
+            "9.5.6",
+        }:
+            call(
+                "modify-empty",
+                {"actions": []},
+                [
+                    (
+                        "empty action list refused",
+                        lambda d: d["error"]["reason"],
+                        "no data stream actions specified, at least one must be specified",
+                    )
+                ],
+            )
+            for name, action in [
+                ("modify-add-absent", "add_backing_index"),
+                ("modify-remove-absent", "remove_backing_index"),
+            ]:
+                missing = prefix + "-absent-stream"
+                call(
+                    name,
+                    {"actions": [{action: {"data_stream": missing, "index": values["index"]}}]},
+                    [
+                        (
+                            "absent data stream rejected",
+                            lambda d, missing=missing: d["error"]["reason"],
+                            (
+                                "data stream [" + missing + "] not found"
+                                if catalog.version
+                                in {
+                                    "7.17.29",
+                                    "8.2.3",
+                                    "8.3.3",
+                                    "8.4.3",
+                                    "8.5.3",
+                                    "8.6.2",
+                                    "8.7.1",
+                                    "8.8.2",
+                                    "8.9.2",
+                                    "8.10.4",
+                                    "8.11.4",
+                                    "8.12.2",
+                                    "8.13.4",
+                                    "8.14.3",
+                                    "8.15.5",
+                                    "8.16.6",
+                                    "8.17.10",
+                                    "8.18.8",
+                                    "8.19.24",
+                                    "9.0.8",
+                                    "9.1.10",
+                                    "9.2.8",
+                                    "9.3.8",
+                                    "9.4.9",
+                                    "9.5.6",
+                                }
+                                else "no such index [" + missing + "]"
+                            ),
+                        ),
+                        (
+                            "error identifies actual rejection stage",
+                            lambda d: d["error"]["type"],
+                            "illegal_argument_exception"
+                            if catalog.version
+                            in {
+                                "7.17.29",
+                                "8.2.3",
+                                "8.3.3",
+                                "8.4.3",
+                                "8.5.3",
+                                "8.6.2",
+                                "8.7.1",
+                                "8.8.2",
+                                "8.9.2",
+                                "8.10.4",
+                                "8.11.4",
+                                "8.12.2",
+                                "8.13.4",
+                                "8.14.3",
+                                "8.15.5",
+                                "8.16.6",
+                                "8.17.10",
+                                "8.18.8",
+                                "8.19.24",
+                                "9.0.8",
+                                "9.1.10",
+                                "9.2.8",
+                                "9.3.8",
+                                "9.4.9",
+                                "9.5.6",
+                            }
+                            else "index_not_found_exception",
+                        ),
+                    ],
+                )
+            call(
+                "modify-data-preserved",
+                assertions=[("both ordinary docs survive refusal", lambda d: d["count"], 2)],
+                verifies=("modify-empty", "modify-add-absent", "modify-remove-absent"),
+            )
+
+        if catalog.version in {
+            "7.12.1",
+            "7.13.4",
+            "7.14.2",
+            "7.15.2",
+            "7.16.3",
+            "7.17.29",
+            "8.0.1",
+            "8.1.3",
+            "8.2.3",
+            "8.3.3",
+            "8.4.3",
+            "8.5.3",
+            "8.6.2",
+            "8.7.1",
+            "8.8.2",
+            "8.9.2",
+            "8.10.4",
+            "8.11.4",
+            "8.12.2",
+            "8.13.4",
+            "8.14.3",
+            "8.15.5",
+            "8.16.6",
+            "8.17.10",
+            "8.18.8",
+            "8.19.24",
+            "9.0.8",
+            "9.1.10",
+            "9.2.8",
+            "9.3.8",
+            "9.4.9",
+            "9.5.6",
+        }:
+            if catalog.version in {"9.0.8", "9.1.10", "9.2.8", "9.3.8", "9.4.9", "9.5.6"}:
+                call(
+                    "search-min-omitted",
+                    assertions=[
+                        (
+                            "omitted old-client parameter baseline",
+                            lambda d: sorted(h["_id"] for h in d["hits"]["hits"]),
+                            ["one", "two"],
+                        )
+                    ],
+                )
+            call(
+                "search-compatible",
+                assertions=[
+                    (
+                        "current-version minimum still finds both owned docs",
+                        lambda d: sorted(h["_id"] for h in d["hits"]["hits"]),
+                        ["one", "two"],
+                    )
+                ],
+            )
+            if catalog.version in {"9.0.8", "9.1.10", "9.2.8", "9.3.8", "9.4.9", "9.5.6"}:
+                for name in ["search-bad-version", "search-min-future"]:
+                    call(
+                        name,
+                        assertions=[
+                            (
+                                "old-client min parameter consumed and ignored",
+                                lambda d: sorted(h["_id"] for h in d["hits"]["hits"]),
+                                ["one", "two"],
+                            )
+                        ],
+                        verifies=("search-min-omitted",),
+                    )
+            else:
+                call(
+                    "search-bad-version",
+                    assertions=[
+                        (
+                            "invalid version string refused",
+                            lambda d: d["error"]["type"],
+                            "illegal_argument_exception",
+                        ),
+                        (
+                            "error retains supplied version",
+                            lambda d: "es-cli-invalid" in str(d["error"]),
+                            True,
+                        ),
+                    ],
+                )
+        if catalog.version in {
+            "7.12.1",
+            "7.13.4",
+            "7.14.2",
+            "7.15.2",
+            "7.16.3",
+            "7.17.29",
+            "8.0.1",
+            "8.1.3",
+            "8.2.3",
+            "8.3.3",
+            "8.4.3",
+            "8.5.3",
+            "8.6.2",
+            "8.7.1",
+            "8.8.2",
+            "8.9.2",
+            "8.10.4",
+            "8.11.4",
+            "8.12.2",
+            "8.13.4",
+            "8.14.3",
+            "8.15.5",
+            "8.16.6",
+            "8.17.10",
+            "8.18.8",
+            "8.19.24",
+            "9.0.8",
+            "9.1.10",
+            "9.2.8",
+            "9.3.8",
+            "9.4.9",
+            "9.5.6",
+        }:
+            result = call(
+                "features",
+                assertions=[
+                    (
+                        "distinct named features",
+                        lambda d: len({f["name"] for f in d["features"]}) == len(d["features"]) > 0,
+                        True,
+                    ),
+                    (
+                        "feature descriptions",
+                        lambda d: all(
+                            isinstance(f["description"], str) and f["description"]
+                            for f in d["features"]
+                        ),
+                        True,
+                    ),
+                    (
+                        "core tasks feature present",
+                        lambda d: "tasks" in {f["name"] for f in d["features"]},
+                        True,
+                    ),
+                ],
+            )
+            call(
+                "features-body",
+                {"unused": True},
+                [
+                    (
+                        "unused feature body rejected",
+                        lambda d: d["error"]["type"],
+                        "illegal_argument_exception",
+                    ),
+                    (
+                        "specific feature body refusal",
+                        lambda d: d["error"]["reason"],
+                        "request [GET /_features] does not support having a body",
+                    ),
+                ],
+            )
+            names = sorted(f["name"] for f in result.data["features"]) if result.passed else None
+            call(
+                "features-after",
+                assertions=[
+                    (
+                        "registry unchanged by body refusal",
+                        lambda d: sorted(f["name"] for f in d["features"]),
+                        names,
+                    )
+                ],
+                verifies=("features-body",),
+            )
+        if catalog.version in {"9.5.6", "9.4.9"}:
+            call("analyze-limit", {"index.analyze.max_char_count": 10}, ack)
+            call(
+                "analyze-over-limit",
+                {"analyzer": "standard", "text": "alpha beta gamma delta"},
+                [
+                    (
+                        "character limit rejected",
+                        lambda d: (
+                            "limit" in str(d["error"]).lower()
+                            or "max_char_count" in str(d["error"])
+                        ),
+                        True,
+                    )
+                ],
+            )
+            if catalog.version == "9.5.6":
+                call(
+                    "analyze-limit-inputs",
+                    {"analyzer": "standard", "text": ["alpha beta", "gamma zeta"]},
+                    [
+                        (
+                            "limit applies per input reader",
+                            lambda d: [t["token"] for t in d["tokens"]],
+                            ["alpha", "beta", "gamma", "zeta"],
+                        )
+                    ],
+                )
+                for name, explain in [
+                    ("analyze-expanded", False),
+                    ("analyze-expanded-explain", True),
+                ]:
+                    call(
+                        name,
+                        {
+                            "tokenizer": "standard",
+                            "char_filter": [
+                                {
+                                    "type": "pattern_replace",
+                                    "pattern": "a",
+                                    "replacement": "abcdefghijkl",
+                                }
+                            ],
+                            "text": "a",
+                            "explain": explain,
+                        },
+                        [
+                            (
+                                "expanded characters bounded",
+                                lambda d: (
+                                    "limit" in str(d["error"]).lower()
+                                    or "max_char_count" in str(d["error"])
+                                ),
+                                True,
+                            )
+                        ],
+                    )
+            call("analyze-limit-reset", {"index.analyze.max_char_count": None}, ack)
+            call(
+                "analyze-after-reset",
+                {"analyzer": "standard", "text": "alpha beta gamma delta"},
+                [
+                    (
+                        "analysis restored",
+                        lambda d: [t["token"] for t in d["tokens"]],
+                        ["alpha", "beta", "gamma", "delta"],
+                    )
+                ],
+                verifies=("analyze-limit-reset",),
+            )
+            call(
+                "search-seqno",
+                {"query": {"match_all": {}}, "seq_no_primary_term": True, "size": 10},
+                [
+                    (
+                        "both actual documents",
+                        lambda d: sorted(h["_id"] for h in d["hits"]["hits"]),
+                        ["one", "two"],
+                    ),
+                    (
+                        "sequence metadata serialized",
+                        lambda d: all(
+                            isinstance(h["_seq_no"], int)
+                            and h["_seq_no"] >= 0
+                            and h["_primary_term"] >= 1
+                            for h in d["hits"]["hits"]
+                        ),
+                        True,
+                    ),
+                ],
+            )
+            for name, size in [("search-repeat-size", 1), ("search-repeat-size-reversed", 0)]:
+                call(
+                    name,
+                    assertions=[
+                        ("last size value used", lambda d: len(d["hits"]["hits"]), size),
+                        ("both documents remain", lambda d: d["hits"]["total"]["value"], 2),
+                    ],
+                )
+            for context in ["filter", "score", "boolean_field"]:
+                call(
+                    "painless-no-setup-" + context,
+                    {"script": {"source": "true"}, "context": context},
+                    [
+                        (
+                            "validation error instead of null dereference",
+                            lambda d: d["error"]["type"],
+                            "action_request_validation_exception",
+                        ),
+                        (
+                            "missing setup named",
+                            lambda d: (
+                                "context_setup is a required parameter" in d["error"]["reason"]
+                            ),
+                            True,
+                        ),
+                    ],
+                )
+        if catalog.version == "9.5.6":
+            values["reindex_dest"] = prefix + "-core79-reindex"
+            values["reindex_missing"] = "es-cli-absent-node:999999999"
+            try:
+                result = call(
+                    "reindex-start",
+                    {
+                        "source": {"index": values["index"], "size": 1},
+                        "dest": {"index": values["reindex_dest"]},
+                    },
+                    [
+                        (
+                            "actual async task id",
+                            lambda d: isinstance(d["task"], str) and ":" in d["task"],
+                            True,
+                        )
+                    ],
+                )
+                if result.passed:
+                    values["reindex_task"] = result.data["task"]
+                    call(
+                        "reindex-get",
+                        assertions=[
+                            ("same original task", lambda d: d["id"], values["reindex_task"]),
+                            ("task still active", lambda d: d["completed"], False),
+                            ("not cancelled initially", lambda d: d["cancelled"], False),
+                        ],
+                    )
+                    call(
+                        "reindex-list",
+                        assertions=[
+                            (
+                                "actual task listed",
+                                lambda d: values["reindex_task"] in [t["id"] for t in d["reindex"]],
+                                True,
+                            )
+                        ],
+                    )
+                    call(
+                        "reindex-cancel",
+                        assertions=[
+                            ("cancel waited to completion", lambda d: d["completed"], True),
+                            ("cancelled actual task", lambda d: d["cancelled"], True),
+                            ("same cancelled task", lambda d: d["id"], values["reindex_task"]),
+                        ],
+                    )
+                    call(
+                        "reindex-completed",
+                        assertions=[
+                            ("completed persisted task", lambda d: d["completed"], True),
+                            ("same persisted id", lambda d: d["id"], values["reindex_task"]),
+                        ],
+                    )
+                    call(
+                        "reindex-list-after",
+                        assertions=[
+                            (
+                                "cancelled task no longer active",
+                                lambda d: (
+                                    values["reindex_task"] not in [t["id"] for t in d["reindex"]]
+                                ),
+                                True,
+                            )
+                        ],
+                        verifies=("reindex-cancel",),
+                    )
+                    call(
+                        "reindex-source-count",
+                        assertions=[("source unchanged", lambda d: d["count"], 2)],
+                    )
+                for name in ["reindex-get-absent", "reindex-cancel-absent"]:
+                    call(
+                        name,
+                        assertions=[
+                            (
+                                "missing reindex is explicit",
+                                lambda d: d["error"]["type"],
+                                "resource_not_found_exception",
+                            )
+                        ],
+                    )
+            finally:
+                call("reindex-cleanup")
+        if catalog.version == "9.5.6":
+            values["sort_index"] = prefix + "-core79-sorted"
+            try:
+                call(
+                    "sort-create",
+                    {
+                        "settings": {
+                            "number_of_shards": 1,
+                            "number_of_replicas": 0,
+                            "index.sort.field": "rank",
+                            "index.sort.order": "asc",
+                        },
+                        "mappings": {"properties": {"rank": {"type": "long"}}},
+                    },
+                    ack,
+                )
+                call("sort-seed", {"rank": 7})
+                call(
+                    "sort-shadow",
+                    {"runtime": {"rank": {"type": "long", "script": {"source": "emit(999L)"}}}},
+                    [
+                        (
+                            "sort runtime shadow rejected",
+                            lambda d: "sort" in str(d["error"]).lower(),
+                            True,
+                        )
+                    ],
+                )
+                call(
+                    "sort-mapping",
+                    assertions=[
+                        (
+                            "indexed sort mapping preserved",
+                            lambda d: d[values["sort_index"]]["mappings"]["properties"]["rank"][
+                                "type"
+                            ],
+                            "long",
+                        ),
+                        (
+                            "rejected runtime field not installed",
+                            lambda d: (
+                                "rank" not in d[values["sort_index"]]["mappings"].get("runtime", {})
+                            ),
+                            True,
+                        ),
+                    ],
+                    verifies=("sort-shadow",),
+                )
+                call(
+                    "sort-runtime",
+                    {
+                        "runtime": {
+                            "doubled": {
+                                "type": "long",
+                                "script": {"source": "emit(doc['rank'].value * 2L)"},
+                            }
+                        }
+                    },
+                    ack,
+                )
+                call(
+                    "sort-search",
+                    {
+                        "query": {"match_all": {}},
+                        "sort": [{"rank": "asc"}],
+                        "fields": ["rank", "doubled"],
+                    },
+                    [
+                        (
+                            "real indexed source preserved",
+                            lambda d: [h["_source"] for h in d["hits"]["hits"]],
+                            [{"rank": 7}],
+                        ),
+                        ("indexed sort still seven", lambda d: d["hits"]["hits"][0]["sort"], [7]),
+                        (
+                            "unrelated runtime field computes actual value",
+                            lambda d: d["hits"]["hits"][0]["fields"]["doubled"],
+                            [14],
+                        ),
+                    ],
+                    verifies=("sort-shadow", "sort-runtime"),
+                )
+            finally:
+                call("sort-cleanup")
+        if catalog.version == "7.17.29":
+            result = call(
+                "pit-concurrency",
+                assertions=[
+                    (
+                        "actual PIT opened",
+                        lambda d: isinstance(d["id"], str) and bool(d["id"]),
+                        True,
+                    )
+                ],
+            )
+            if result.passed:
+                pit_id = result.data["id"]
+                try:
+                    found = call(
+                        "pit-concurrency-search",
+                        {
+                            "pit": {"id": pit_id, "keep_alive": "1m"},
+                            "query": {"match_all": {}},
+                            "size": 10,
+                        },
+                        [
+                            (
+                                "PIT returns actual two documents",
+                                lambda d: sorted(h["_id"] for h in d["hits"]["hits"]),
+                                ["one", "two"],
+                            )
+                        ],
+                        verifies=("pit-concurrency",),
+                    )
+                    if found.passed:
+                        pit_id = found.data.get("pit_id", pit_id)
+                    call(
+                        "pit-concurrency-zero",
+                        assertions=[
+                            (
+                                "zero concurrency invalid",
+                                lambda d: d["error"]["type"],
+                                "illegal_argument_exception",
+                            ),
+                            (
+                                "lower bound named",
+                                lambda d: "maxConcurrentShardRequests" in d["error"]["reason"],
+                                True,
+                            ),
+                        ],
+                    )
+                finally:
+                    call(
+                        "pit-concurrency-close",
+                        {"id": pit_id},
+                        [
+                            ("actual context freed", lambda d: d["num_freed"] > 0, True),
+                            ("close succeeded", lambda d: d["succeeded"], True),
+                        ],
+                    )
+        if catalog.version in {"7.17.29", "8.19.24"}:
+            result = call(
+                "pit-root",
+                assertions=[
+                    (
+                        "root opens actual PIT",
+                        lambda d: isinstance(d["id"], str) and bool(d["id"]),
+                        True,
+                    )
+                ],
+            )
+            if result.passed:
+                root_pit = result.data["id"]
+                try:
+                    found = call(
+                        "pit-root-search",
+                        {
+                            "pit": {"id": root_pit, "keep_alive": "1m"},
+                            "query": {"match_all": {}},
+                            "size": 10,
+                        },
+                        [
+                            (
+                                "root PIT resolves explicit index",
+                                lambda d: sorted(h["_id"] for h in d["hits"]["hits"]),
+                                ["one", "two"],
+                            )
+                        ],
+                        verifies=("pit-root",),
+                    )
+                    if found.passed:
+                        root_pit = found.data.get("pit_id", root_pit)
+                finally:
+                    call(
+                        "pit-root-close",
+                        {"id": root_pit},
+                        [("root PIT freed", lambda d: d["succeeded"] and d["num_freed"] > 0, True)],
+                    )
+        execute_analyze_limits(run, catalog, prefix)
+    finally:
+        call("cleanup")
