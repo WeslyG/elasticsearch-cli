@@ -1,0 +1,892 @@
+{
+  "schema_version": 1,
+  "kind": "explicit-legacy-public-documentation-review-not-runtime-support",
+  "release": "7.5.2",
+  "source_commit": "8bec50e1e0ad29dad5653712cf3bb580cd1afcdf",
+  "core_source_root": "server",
+  "reviewer": "Codex exact source review",
+  "decision": "Source classification only. Upstream visibility remains unknown;no new native support/completeness inferred.",
+  "basis": "Reviewed75 changed normative reference page deltas against7.4.2 plus five relocated snapshot reference files. Exact upstream snapshot spec links still target modules-snapshots while original reference now uses snapshot-restore and per-operation anchors;those10 IDs remain unresolved pending independent reference-link contract,not absent APIs. Noted corrected flush/count paths,split multiple and index op_type defaults. Every approved core route matches exact server ActionModule registration,with separate bounded trailing-slash proof. All11 module IDs have fresh exact constructor/request proofs;Git blob identity of retained plugin sources verified.",
+  "input_sha256": {
+    "docs/research/versions/7.5.2/inventory.json": "c5558a09f96658b484ddb4f895889922b67572f721da130710a375aa99ef3911",
+    "docs/research/source-analysis/7.5.2/route-scope-facts.json": "ad2f949ce50592ffc17da2cd426e4654a22138ff7a8413ebe5ab320779ee219d",
+    "docs/research/source-analysis/7.5.2/documentation-facts.json": "835d01d053c4c49ceae98853121ad06f5855e1d767656f372f21c496b3ddc059",
+    "docs/research/source-analysis/7.5.2/module-public-review.json": "edd739119a389bea3d568d983230d810c5824ab06a9d6e5c598f7653e475735c",
+    "docs/research/source-analysis/7.5.2/path-normalization.json": "67392a387c4129b9a8c001efb503c75ffb1e527328d8e2d498b8ca7c5a37cc38",
+    "docs/research/source-analysis/7.5.2/path-normalization-sources/RestController.java": "dd461ea5e8bc73172bac6e1f22cc8d62eded3a35f8f8d2e57d6259cbc4de0932",
+    "docs/research/source-analysis/7.5.2/path-normalization-sources/PathTrie.java": "c2de0b6140c542754a90b25092c77b7bbf5cba82f8e989bbf55f807be03a7dba"
+  },
+  "approved_public_api_ids": [
+    "bulk",
+    "cat.aliases",
+    "cat.allocation",
+    "cat.count",
+    "cat.fielddata",
+    "cat.health",
+    "cat.help",
+    "cat.indices",
+    "cat.master",
+    "cat.nodeattrs",
+    "cat.nodes",
+    "cat.pending_tasks",
+    "cat.plugins",
+    "cat.recovery",
+    "cat.repositories",
+    "cat.segments",
+    "cat.shards",
+    "cat.snapshots",
+    "cat.tasks",
+    "cat.templates",
+    "cat.thread_pool",
+    "cluster.allocation_explain",
+    "cluster.get_settings",
+    "cluster.health",
+    "cluster.pending_tasks",
+    "cluster.put_settings",
+    "cluster.remote_info",
+    "cluster.reroute",
+    "cluster.state",
+    "cluster.stats",
+    "count",
+    "create",
+    "delete",
+    "delete_script",
+    "exists",
+    "exists_source",
+    "explain",
+    "field_caps",
+    "get",
+    "get_script",
+    "get_source",
+    "index",
+    "indices.analyze",
+    "indices.clear_cache",
+    "indices.clone",
+    "indices.close",
+    "indices.create",
+    "indices.delete",
+    "indices.delete_alias",
+    "indices.delete_template",
+    "indices.exists",
+    "indices.exists_alias",
+    "indices.exists_template",
+    "indices.exists_type",
+    "indices.flush",
+    "indices.flush_synced",
+    "indices.forcemerge",
+    "indices.get",
+    "indices.get_alias",
+    "indices.get_field_mapping",
+    "indices.get_mapping",
+    "indices.get_settings",
+    "indices.get_template",
+    "indices.open",
+    "indices.put_alias",
+    "indices.put_mapping",
+    "indices.put_settings",
+    "indices.put_template",
+    "indices.recovery",
+    "indices.refresh",
+    "indices.rollover",
+    "indices.segments",
+    "indices.shard_stores",
+    "indices.shrink",
+    "indices.split",
+    "indices.stats",
+    "indices.update_aliases",
+    "indices.validate_query",
+    "ingest.delete_pipeline",
+    "ingest.get_pipeline",
+    "ingest.put_pipeline",
+    "ingest.simulate",
+    "mget",
+    "msearch",
+    "mtermvectors",
+    "nodes.hot_threads",
+    "nodes.info",
+    "nodes.reload_secure_settings",
+    "nodes.stats",
+    "nodes.usage",
+    "put_script",
+    "scroll",
+    "search",
+    "search_shards",
+    "tasks.cancel",
+    "tasks.get",
+    "tasks.list",
+    "termvectors",
+    "update"
+  ],
+  "approved_public_module_api_ids": [
+    "delete_by_query",
+    "ingest.processor_grok",
+    "msearch_template",
+    "reindex",
+    "reindex_rethrottle",
+    "render_search_template",
+    "search_template",
+    "update_by_query",
+    "scripts_painless_execute",
+    "delete_by_query_rethrottle",
+    "update_by_query_rethrottle"
+  ],
+  "not_approved": [
+    {
+      "api_id": "cat.example",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.delete_auto_follow_pattern",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.follow",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.follow_info",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.follow_stats",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.forget_follower",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.get_auto_follow_pattern",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.pause_auto_follow_pattern",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.pause_follow",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.put_auto_follow_pattern",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.resume_auto_follow_pattern",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.resume_follow",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.stats",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ccr.unfollow",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "clear_scroll",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "data_frame_transform_deprecated.delete_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "data_frame_transform_deprecated.get_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "data_frame_transform_deprecated.get_transform_stats",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "data_frame_transform_deprecated.preview_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "data_frame_transform_deprecated.put_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "data_frame_transform_deprecated.start_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "data_frame_transform_deprecated.stop_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "data_frame_transform_deprecated.update_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "enrich.delete_policy",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "enrich.execute_policy",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "enrich.get_policy",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "enrich.put_policy",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "enrich.stats",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "graph.explore",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ilm.delete_lifecycle",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ilm.explain_lifecycle",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ilm.get_lifecycle",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ilm.get_status",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ilm.move_to_step",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ilm.put_lifecycle",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ilm.remove_policy",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ilm.retry",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ilm.start",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ilm.stop",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "indices.freeze",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "indices.get_upgrade",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "indices.reload_search_analyzers",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "indices.unfreeze",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "indices.upgrade",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "info",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "license.delete",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "license.get",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "license.get_basic_status",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "license.get_trial_status",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "license.post",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "license.post_start_basic",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "license.post_start_trial",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "migration.deprecations",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.close_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.delete_calendar",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.delete_calendar_event",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.delete_calendar_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.delete_data_frame_analytics",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.delete_datafeed",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.delete_expired_data",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.delete_filter",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.delete_forecast",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.delete_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.delete_model_snapshot",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.estimate_memory_usage",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.evaluate_data_frame",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.find_file_structure",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.flush_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.forecast",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_buckets",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_calendar_events",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_calendars",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_categories",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_data_frame_analytics",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_data_frame_analytics_stats",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_datafeed_stats",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_datafeeds",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_filters",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_influencers",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_job_stats",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_jobs",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_model_snapshots",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_overall_buckets",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.get_records",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.info",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.open_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.post_calendar_events",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.post_data",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.preview_datafeed",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.put_calendar",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.put_calendar_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.put_data_frame_analytics",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.put_datafeed",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.put_filter",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.put_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.revert_model_snapshot",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.set_upgrade_mode",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.start_data_frame_analytics",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.start_datafeed",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.stop_data_frame_analytics",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.stop_datafeed",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.update_datafeed",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.update_filter",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.update_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.update_model_snapshot",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.validate",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ml.validate_detector",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "monitoring.bulk",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ping",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "rank_eval",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "rollup.delete_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "rollup.get_jobs",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "rollup.get_rollup_caps",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "rollup.get_rollup_index_caps",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "rollup.put_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "rollup.rollup_search",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "rollup.start_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "rollup.stop_job",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "scripts_painless_context",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "security.authenticate",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.change_password",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.clear_cached_realms",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.clear_cached_roles",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.create_api_key",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.delete_privileges",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.delete_role",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.delete_role_mapping",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.delete_user",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.disable_user",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.enable_user",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.get_api_key",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.get_builtin_privileges",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.get_privileges",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.get_role",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.get_role_mapping",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.get_token",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.get_user",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.get_user_privileges",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.has_privileges",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.invalidate_api_key",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.invalidate_token",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.put_privileges",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.put_role",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.put_role_mapping",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "security.put_user",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "slm.delete_lifecycle",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "slm.execute_lifecycle",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "slm.execute_retention",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "slm.get_lifecycle",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "slm.get_stats",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "slm.get_status",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "slm.put_lifecycle",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "slm.start",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "slm.stop",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "snapshot.cleanup_repository",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "snapshot.create",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "snapshot.create_repository",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "snapshot.delete",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "snapshot.delete_repository",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "snapshot.get",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "snapshot.get_repository",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "snapshot.restore",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "snapshot.status",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "snapshot.verify_repository",
+      "reason": "Ghost literal route,mutable rank-eval ENDPOINT,or unresolved bounded public-reference proof."
+    },
+    {
+      "api_id": "sql.clear_cursor",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "sql.query",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "sql.translate",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "ssl.certificates",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "transform.delete_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "transform.get_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "transform.get_transform_stats",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "transform.preview_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "transform.put_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "transform.start_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "transform.stop_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "transform.update_transform",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "watcher.ack_watch",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "watcher.activate_watch",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "watcher.deactivate_watch",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "watcher.delete_watch",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "watcher.execute_watch",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "watcher.get_watch",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "watcher.put_watch",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "watcher.start",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "watcher.stats",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "watcher.stop",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "xpack.info",
+      "reason": "Existing excluded/example scope retained."
+    },
+    {
+      "api_id": "xpack.usage",
+      "reason": "Existing excluded/example scope retained."
+    }
+  ],
+  "known_reference_limitations": [
+    "Two documented registered voting-exclusion routes are absent upstream JSON;retained separately as source-only candidates,not new native support."
+  ],
+  "runtime_observations_inherited": false,
+  "complete_api_coverage": false
+}
