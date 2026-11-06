@@ -1,0 +1,2881 @@
+{
+  "schema_version": 1,
+  "kind": "pinned-documentation-facts-not-scope-or-runtime-proof",
+  "release": "7.3.2",
+  "source_commit": "1c1faf179b40cccb785fb00bf32b2a91176d6c85",
+  "input_sha256": {
+    "docs/research/versions/7.3.2/inventory.json": "4d76f86a7d33bac2a1717c23b800f9bfb30c002d09bec7c797a908ac62a533f6",
+    "docs/research/versions/7.3.2/contract-backlog.json": "cceb06bbc236b781be25dfbbef1bca8858cbb8ad6b7ef34daacd54ad78bc2f9b"
+  },
+  "collector_sha256": "541031288b3085c1f1ae0c41916e6a29756eacf82d3072d16d57126963ba215b",
+  "sources": [
+    {
+      "path": "docs/painless/painless-guide/painless-execute-script.asciidoc",
+      "git_blob": "fc5a6bf71d14acbb6aaa9af7a7d81031c10acbcf",
+      "sha256": "d89e773c7b42c75b17270556f0c2d43130c49222975023ba29b134bfb877f68f"
+    },
+    {
+      "path": "docs/reference/administering.asciidoc",
+      "git_blob": "0a3901cf7ed303ac55a0857a414137929bbfb3b8",
+      "sha256": "86fe6f4a48892a90e0884d718c29eb8e9ebc10d2ac711ba3281a9fdb781bbc78"
+    },
+    {
+      "path": "docs/reference/aggregations.asciidoc",
+      "git_blob": "472b87b72fe67a5e5271d2fc9319f676617cea4b",
+      "sha256": "0d80c48dd4ac2c0c81c05dc46aa31b263eefd3a97f939ff9ef489a4881ee4ac0"
+    },
+    {
+      "path": "docs/reference/analysis.asciidoc",
+      "git_blob": "e3b6aa46dd8d473983ba3d522a2de33b3cb1356d",
+      "sha256": "ded1ff814e983e4cc7c75f3913de130b0a1a4f188d2e5c4e0975dfb4e83be408"
+    },
+    {
+      "path": "docs/reference/api-conventions.asciidoc",
+      "git_blob": "6a75df02c5f639ba9b36a6048da45ec763478cb0",
+      "sha256": "66d1e5b72210b7b3f8b087dfcc315341395d276ae89d51a6cf21ac95f1c4ffab"
+    },
+    {
+      "path": "docs/reference/cat.asciidoc",
+      "git_blob": "20e6a53a61284cfc39b8be2898ca0cde848ceabf",
+      "sha256": "366c0ade7344d45a464f8cf6f3e54d26dccee22dcb1a70744121387ab4a74320"
+    },
+    {
+      "path": "docs/reference/cat/alias.asciidoc",
+      "git_blob": "532187d9f2ffb46a5af73dc1413dbacced8a3fbd",
+      "sha256": "2b0f653ccc9a040c30575a52714f9962f176a674c50221dac17337acc7bbaa32"
+    },
+    {
+      "path": "docs/reference/cat/allocation.asciidoc",
+      "git_blob": "a02e4ba24d5833da1799436e45d7b9832ae3327d",
+      "sha256": "2995b0c200b945f31b2b8d01fb733ddb485acce476b30380fd85b8bd62d43ac6"
+    },
+    {
+      "path": "docs/reference/cat/count.asciidoc",
+      "git_blob": "f10e758a4c81f1b3325ec973fff544b3f17ad421",
+      "sha256": "b89f4fd624693346331df7bb9b5f3fa038c22a8944754cdfe912eed73a71cbb7"
+    },
+    {
+      "path": "docs/reference/cat/fielddata.asciidoc",
+      "git_blob": "e261e6919eb4628f2cf1c26289874e6866e5a19f",
+      "sha256": "ca28cb9dc1b8b8272c974bbc47a1ecea38a1fc113a34fadcda4790434b54fe07"
+    },
+    {
+      "path": "docs/reference/cat/health.asciidoc",
+      "git_blob": "bea8d6b695dc5d59357f7813e437d3f4faa2cb98",
+      "sha256": "36e63c1588fb687b0472f0c2bc8ea52ab4d81541c7dd30eace526729dbc10831"
+    },
+    {
+      "path": "docs/reference/cat/indices.asciidoc",
+      "git_blob": "9a228fd3254828f01d8e3ad116a4a84bc6ef0e69",
+      "sha256": "82a116068f46c49a7d345ea5976b1e4a9b7da2a22031f2f8c1175cb4a0e57e1b"
+    },
+    {
+      "path": "docs/reference/cat/master.asciidoc",
+      "git_blob": "84150d0fcf82692dea00814f0a2ec5f482c31bde",
+      "sha256": "d03a1b9ada2f30ca148a08eb5f1e8b7aa550a450e8b884e26ad844f97253500f"
+    },
+    {
+      "path": "docs/reference/cat/nodeattrs.asciidoc",
+      "git_blob": "4fb6a42c09b31ef8f62d800a34bc14e230e80213",
+      "sha256": "207ef0a1bf1ca01802e442bde29be10b2e7828b5e883659b90a35515cd20f224"
+    },
+    {
+      "path": "docs/reference/cat/nodes.asciidoc",
+      "git_blob": "af4b92ec9737ee12411f28e5658c3427c725a28c",
+      "sha256": "b0bbf4c82308c2a50fca3abdee23aa110f1bb99f7c3938933f6e1f44e244f257"
+    },
+    {
+      "path": "docs/reference/cat/pending_tasks.asciidoc",
+      "git_blob": "290268bfac8f791ab793c6d58aeb494801b15447",
+      "sha256": "f0726ce45a02e38f1f27df8397a86ad43e9b9ce7018ebbdeae70a40fe289c64e"
+    },
+    {
+      "path": "docs/reference/cat/plugins.asciidoc",
+      "git_blob": "fcc562d75b6f35b5640de5a8c3ba7fe40df6a91e",
+      "sha256": "f6dcd8a95732eafd8fa5ba6cde3aaf7bdd6b3e5ee6a4a781fa532cf640246a4a"
+    },
+    {
+      "path": "docs/reference/cat/recovery.asciidoc",
+      "git_blob": "8e410ab3dbdcab8ded7e07ec1b97068221e94518",
+      "sha256": "61d7a8afc90cf551d5e65c29576d95da84aaafc68849de0784ee619b0c0e95b7"
+    },
+    {
+      "path": "docs/reference/cat/repositories.asciidoc",
+      "git_blob": "dcd346500fd387ed0ad9aee54005478a82139de4",
+      "sha256": "c2be7bb5027cd3b9525960ab66220d3ac07136f90c70379531c94e476be1d54a"
+    },
+    {
+      "path": "docs/reference/cat/segments.asciidoc",
+      "git_blob": "59fefaa309b97ea04f7f86e710b9256607f95881",
+      "sha256": "06ebc8f89494a18770aab190b3895bdbe8bab6ecf71d7c4cc3d849f4641e72b3"
+    },
+    {
+      "path": "docs/reference/cat/shards.asciidoc",
+      "git_blob": "f4418b807791ff8e3b8e5858d04ede2e990007a5",
+      "sha256": "09251677cd52d9b700f1ed2ad253ccb03ca6ff58cd50a111d8d9782f0e1c5b06"
+    },
+    {
+      "path": "docs/reference/cat/snapshots.asciidoc",
+      "git_blob": "70a0a4d082b71669d5f6057104ed2e1bce4ab7e6",
+      "sha256": "15ab881ae84a54a688d3d8fd5114528fd6dd006202cd7c9c02beff732847a326"
+    },
+    {
+      "path": "docs/reference/cat/templates.asciidoc",
+      "git_blob": "96c28aae4385dcdd9f2c292664e735cdfcd2f97b",
+      "sha256": "94b12745d240cebe38328f2fdeb9e752974461effb6eea8c097c3c56c4b74aa3"
+    },
+    {
+      "path": "docs/reference/cat/thread_pool.asciidoc",
+      "git_blob": "cd7dae666be0d56730abec2fd0d95c433521fbc7",
+      "sha256": "7f1bff23d261fa5f9dfd91ddbdf925321854bd4fbd36df468b7bfd38679a285d"
+    },
+    {
+      "path": "docs/reference/cluster.asciidoc",
+      "git_blob": "81b0b2ae3d8808c68be4782c8c57aa4dcdb0b482",
+      "sha256": "5a11e8636ebfba0338fcac5efda87a6a10dafde93454018ca36880c5ba0fcea8"
+    },
+    {
+      "path": "docs/reference/cluster/allocation-explain.asciidoc",
+      "git_blob": "752074cde39763a0e6781eb6e677aebeb16e3110",
+      "sha256": "4f3e6c9da5ecc49df9364953013fcda3b810bfb0752b2f3274af9e1a984b4822"
+    },
+    {
+      "path": "docs/reference/cluster/get-settings.asciidoc",
+      "git_blob": "32661bdaf462ab9b97f612fbbfdf8f5b37f61c6a",
+      "sha256": "c651c69871b3e6e85b5a94c7f2d1255c4b8fac7d0aeb3be6be6e374001da1c51"
+    },
+    {
+      "path": "docs/reference/cluster/health.asciidoc",
+      "git_blob": "d43bc51ee5e47055c31246118176392abe76750c",
+      "sha256": "3f128d67e7c9d833ffe9f7ab82fa5ccfcaa38e55a3fb5c8d34ca1515f404775f"
+    },
+    {
+      "path": "docs/reference/cluster/nodes-hot-threads.asciidoc",
+      "git_blob": "4b1d4948df9f4190a72fd49dbbe33716f36c1265",
+      "sha256": "53ce1164881fee020ac9313abbc2540631236e93e9148b6243602a0166106ed3"
+    },
+    {
+      "path": "docs/reference/cluster/nodes-info.asciidoc",
+      "git_blob": "2c7a74719e048ab85056a70855a5ff6318201c96",
+      "sha256": "6c136aec50a1bddbb649e7fad0cd973876cbf9ce2d6a1eaa657b0a2da15df7fe"
+    },
+    {
+      "path": "docs/reference/cluster/nodes-reload-secure-settings.asciidoc",
+      "git_blob": "68bca72be248c5aec5e045315df5ee29bed672db",
+      "sha256": "53fd7ed22ad6bab7983bf1ded851e42314c9f88babbe4425b818d8e2e56387fe"
+    },
+    {
+      "path": "docs/reference/cluster/nodes-stats.asciidoc",
+      "git_blob": "521b3f18329db384c1cc3f1c13a916fc4f73721b",
+      "sha256": "3e00322379075f35e6c4da7308458971c9ffb8aac768c74dec614ff6aea2750f"
+    },
+    {
+      "path": "docs/reference/cluster/nodes-usage.asciidoc",
+      "git_blob": "2a0b9f7b6136c55b2fafd37e1ebef99b0b88cb90",
+      "sha256": "c8be7603e110f8bf24356b94dbf8bff6ac047e6ecfed325ef40355f0067dd1b5"
+    },
+    {
+      "path": "docs/reference/cluster/pending.asciidoc",
+      "git_blob": "82b9fd9732a52c57c576af074a9c57a836c06528",
+      "sha256": "3c502f2ea8dff0e2c12772b0e6109961e8ef0818779f5e041f0583ff1e281194"
+    },
+    {
+      "path": "docs/reference/cluster/remote-info.asciidoc",
+      "git_blob": "d9f4517395649bda82f0e8f5cf907c5381add062",
+      "sha256": "37301a8b122a99824466a610dfd3a359f530753b14b50dc033c4c9ad9a327e41"
+    },
+    {
+      "path": "docs/reference/cluster/reroute.asciidoc",
+      "git_blob": "62a2afbe94266f2e938a3e9e05489e145b6bef42",
+      "sha256": "6811ba84be9da6360301ec47cefeb60f52f25032bdf9996cbdf7a4fb37d00055"
+    },
+    {
+      "path": "docs/reference/cluster/state.asciidoc",
+      "git_blob": "8c09d31de2ca757c0d730f806a51ab9c340f35c9",
+      "sha256": "f34ef47f2f0ffa9301deb1fbc74d8197d21d5b4fe684c78d14e2bc646cdb1b85"
+    },
+    {
+      "path": "docs/reference/cluster/stats.asciidoc",
+      "git_blob": "d35d832eaf088ce81f5afbe81c925a62b3276619",
+      "sha256": "27eb3bb1eb78614c41eeff556ef609b7e47eb03bcc304cfdf658792f95afd58e"
+    },
+    {
+      "path": "docs/reference/cluster/tasks.asciidoc",
+      "git_blob": "7db58055f20fdda05febe058fb0ade7acc4b1870",
+      "sha256": "c4e6c5787f8f26f2b274f36d745ef9b8fcf69398200b47a9793d4655667e8cfb"
+    },
+    {
+      "path": "docs/reference/cluster/update-settings.asciidoc",
+      "git_blob": "e2da6c5161763652f9f7d64239aeec6ea469f0a5",
+      "sha256": "12f4a33d8d085ddfe571c102a416e1dcb86f8fa9eaa3be075395e280e8686700"
+    },
+    {
+      "path": "docs/reference/cluster/voting-exclusions.asciidoc",
+      "git_blob": "ee4389aec29a3a084206462daeaeba9ca57a12f7",
+      "sha256": "c52dae64c75345375e4eac7f13a8ee8610273173ec6b953420ecaae88b608c84"
+    },
+    {
+      "path": "docs/reference/docs.asciidoc",
+      "git_blob": "a860bfc42a0da02d8d61156e5722ceb5a87da798",
+      "sha256": "7f98828b6436fef1bb82e53a005e8dda6de974dd1281037859ae052d042a7098"
+    },
+    {
+      "path": "docs/reference/docs/bulk.asciidoc",
+      "git_blob": "440d2dd709318166092f75490c853350b30f6eaa",
+      "sha256": "1410b22cd3c5bf7bd5674570a1910170665d8679620fece79c5ab9b180d0e671"
+    },
+    {
+      "path": "docs/reference/docs/concurrency-control.asciidoc",
+      "git_blob": "4b02239ee6cedeb705d136a7e991a21d0b3b24fd",
+      "sha256": "233130dec2ec565224bfc048f30849f129c0397ff6c4aed0cf990b5e8d55cc51"
+    },
+    {
+      "path": "docs/reference/docs/data-replication.asciidoc",
+      "git_blob": "969e3dfd54ce265658d24424064614dd40a978d0",
+      "sha256": "d4bd04f808026995df5461281993470dd2cfa7d2afbac1d93950860aa2e0fdee"
+    },
+    {
+      "path": "docs/reference/docs/delete-by-query.asciidoc",
+      "git_blob": "b9fd6772286839071eaeb7f06e4dc5df020b2e47",
+      "sha256": "46dac1b4bd67ad533d17d7c6a3f655d074e6d7ce5d683c0654e9cce1d8e8df59"
+    },
+    {
+      "path": "docs/reference/docs/delete.asciidoc",
+      "git_blob": "66f2daf03354c9765c21c484228ff94ba1e17603",
+      "sha256": "5b43df742c8ea3d2bf81263eb62fcd4023433b8262f07cacecad2596e792b6ef"
+    },
+    {
+      "path": "docs/reference/docs/get.asciidoc",
+      "git_blob": "e51e4943483f4220165cada5644b9bf7d3b01d50",
+      "sha256": "8076e7636c9b50ac3556384cde76d3a254b3eb062bb59ed6c1cce8217c3cecbb"
+    },
+    {
+      "path": "docs/reference/docs/index_.asciidoc",
+      "git_blob": "ab1da88da6a05bb81249836bee21dd7d8a1fc4c9",
+      "sha256": "67c5ed32e97ae5e335a60bf3cb907a55fb936275f280f2e97af3fb8edb713a3d"
+    },
+    {
+      "path": "docs/reference/docs/multi-get.asciidoc",
+      "git_blob": "3360f2c06ffa4d6c0425925cac0672a9ffb7b4be",
+      "sha256": "765ec41549626a9646d7d13160457cf7e0580546006da0f7f40663469a71d5eb"
+    },
+    {
+      "path": "docs/reference/docs/multi-termvectors.asciidoc",
+      "git_blob": "df00b39ef425bf15d0f05e820a502c4bf72fa09f",
+      "sha256": "13b415b2556204920a4c738b4e0f5e60b4094e4f347521b5318482190a793aa8"
+    },
+    {
+      "path": "docs/reference/docs/refresh.asciidoc",
+      "git_blob": "127ec9fc6fd9d2fffbdb87bd7f1d3f28da991363",
+      "sha256": "731abe8de436028bab3e9d4313de5e12f5c2ea49e799aea06f34b4d05371b504"
+    },
+    {
+      "path": "docs/reference/docs/reindex.asciidoc",
+      "git_blob": "203c7746b7252617fdfd81908df00a381b80fa17",
+      "sha256": "c5717e1c83fe6d631ad53dc936bf5d25321a4fa2016a0fbf1c696af01dc2ffa5"
+    },
+    {
+      "path": "docs/reference/docs/termvectors.asciidoc",
+      "git_blob": "d7df1faca7865eee9e5adf0a58ca4f6a7bae64ea",
+      "sha256": "ef419210f35ffc9a7ccdb399ce95a7414970154ddfa4312689acaa1cb173ca0f"
+    },
+    {
+      "path": "docs/reference/docs/update-by-query.asciidoc",
+      "git_blob": "fded2c95e5e61fea67fdcb0e573ecca5964d1435",
+      "sha256": "66b686a7ad2042cdda8bacf3d81a841272847717ee2a0e2c47b8f306cd5aa623"
+    },
+    {
+      "path": "docs/reference/docs/update.asciidoc",
+      "git_blob": "6019340e21ee18a76a53cbfd89bd0925a6b87a99",
+      "sha256": "c223411b49aeaadbdd51cf6b54076090c170a7f66dfd396c040131e8e67144e6"
+    },
+    {
+      "path": "docs/reference/frozen-indices.asciidoc",
+      "git_blob": "60f07b58bcb7db1ed97e08814935641eabb9f70c",
+      "sha256": "7cdcce572258bb113f4b3e24fe7276ad82ca4988fa576104f73fcfd73a3dd09e"
+    },
+    {
+      "path": "docs/reference/getting-started.asciidoc",
+      "git_blob": "f91a60bb93397c17b7d4143974e4a4366e2cb78b",
+      "sha256": "9b85f7d9956f0701f784d202a3bdcc94eb0dc5697a2707758df09b9f6275066f"
+    },
+    {
+      "path": "docs/reference/glossary.asciidoc",
+      "git_blob": "e59e57f3c5a531b21cd447a6eb7df9fa4654ec0a",
+      "sha256": "e77bd96deb82cb27afd6e4d76435e100d30232c6762926912d63c644843a5af5"
+    },
+    {
+      "path": "docs/reference/gs-index.asciidoc",
+      "git_blob": "30beb16b0dfb536e4e315989dbe86c80e90b6b73",
+      "sha256": "0f66a0fb6c2426012885d9daf72c3fc358dae24be332b6f08d2eed5ecbac1db9"
+    },
+    {
+      "path": "docs/reference/how-to.asciidoc",
+      "git_blob": "accdb8e8915ede7665b8f30be88000f2e8415521",
+      "sha256": "6df11c3cc467dbbf754945f2335cb0f6c51757adf7dacc2eea575001005f37e3"
+    },
+    {
+      "path": "docs/reference/index-modules.asciidoc",
+      "git_blob": "df4688db9d7f881cf8115fc6345356b078ac87fe",
+      "sha256": "42c7926cd264a817e631ede8a84f3856d570e7160ec91b8aee279fc5f83eb99f"
+    },
+    {
+      "path": "docs/reference/index.asciidoc",
+      "git_blob": "ac982c6165722d340171dd997dde35eb65ac2379",
+      "sha256": "bd33d82401375722316e14f71a77f991436508de48af23f5ed8d2b12ddd7540b"
+    },
+    {
+      "path": "docs/reference/index.x.asciidoc",
+      "git_blob": "35204eef5b67e027a1e4323f604c551f0262827e",
+      "sha256": "fb1e1a73c2149f6100f3c96ece5a4ebf59ef52ae2aa5c7a190a62acc6da948cb"
+    },
+    {
+      "path": "docs/reference/indices.asciidoc",
+      "git_blob": "beb26b76d6cdcc1e61847754b06f91185a47312b",
+      "sha256": "8f0a36686c0c8cc9e5fa72483ed639abc7d76649c6068ffc285d1310b8e48b35"
+    },
+    {
+      "path": "docs/reference/indices/add-alias.asciidoc",
+      "git_blob": "a5c7d4c49e90bee6adcaa63d6c723aaf908d3840",
+      "sha256": "9590508ad64a624b82109a763af2bd9496aca425fae81eb8392e208b9c8e4a0f"
+    },
+    {
+      "path": "docs/reference/indices/alias-exists.asciidoc",
+      "git_blob": "e1398f079952e4f859f050f15866f87f83488151",
+      "sha256": "3b1b3779e61177e47d2754c897d4e789891cf33ff7cdc56fbac345c7d29d83ba"
+    },
+    {
+      "path": "docs/reference/indices/aliases.asciidoc",
+      "git_blob": "9d3507f5ac8d6090f37c61d5dcc4845bbd441617",
+      "sha256": "425cbfa1b4d997d69fcd1d989005169d180d81ee23f145d289c636d7bf344fdb"
+    },
+    {
+      "path": "docs/reference/indices/analyze.asciidoc",
+      "git_blob": "b48243c6b59f6dccf775d383820ae38d2a6e729c",
+      "sha256": "0be686ea6b09b9707a53a31219fe041cfbce39db33ab377c6d8e272413a75368"
+    },
+    {
+      "path": "docs/reference/indices/apis/freeze.asciidoc",
+      "git_blob": "b2f96725ba2261e59e34e7db164a6daaccd226ef",
+      "sha256": "60ebb43cbe73703f5c7c28378117484085e0e2ee8b47b8b2064c57042950fbce"
+    },
+    {
+      "path": "docs/reference/indices/apis/reload-analyzers.asciidoc",
+      "git_blob": "657f6556df4b20104c58636403750c4e2efebada",
+      "sha256": "5817821374d628e174bdcfd50b2d61dae74bad22135dde275d68f5bebdba7fa6"
+    },
+    {
+      "path": "docs/reference/indices/apis/unfreeze.asciidoc",
+      "git_blob": "fa70259580c9d30c17feec29e63aced16816e02c",
+      "sha256": "fad5d48c618d6e19277ad8e2857147df6ff28eaaa531fd96b6bffb58b2ebb207"
+    },
+    {
+      "path": "docs/reference/indices/clearcache.asciidoc",
+      "git_blob": "b09d993a1278760300c0b29094e6d89a7b882fa2",
+      "sha256": "a630527883c364597a023be625b61e942ec970738de46dfca344dc166e0ea975"
+    },
+    {
+      "path": "docs/reference/indices/close.asciidoc",
+      "git_blob": "71a5f8b63420338f9da2367516f2403437b57fa2",
+      "sha256": "075d1ad13d30ae14cf84b93db5c754b8516951d7d78fa3f07111ea80ea5b7262"
+    },
+    {
+      "path": "docs/reference/indices/create-index.asciidoc",
+      "git_blob": "a40327be2120a05d72794ad9234103c3b8f1ae20",
+      "sha256": "096b980aa0e42f423d18dfeb4f196a9649e226e3084cc22525f6f6d7f4962155"
+    },
+    {
+      "path": "docs/reference/indices/delete-alias.asciidoc",
+      "git_blob": "e7ef772cbbd647532688f61c6e1fccd3059cc019",
+      "sha256": "8c126ddfa3b3b9f042c8e26e8e669014dce68a720a6a4fb9cc2e2c11ffe5d797"
+    },
+    {
+      "path": "docs/reference/indices/delete-index-template.asciidoc",
+      "git_blob": "9ee1158fa447f71a12f24513b4c70eca36b592c0",
+      "sha256": "7e5e82af379c280cc44c5a8ad2f01e416d9b83eeb8d52c83f4c82f5d82898791"
+    },
+    {
+      "path": "docs/reference/indices/delete-index.asciidoc",
+      "git_blob": "7fe33149bc5be4ffccc72c567eeaa149a6517096",
+      "sha256": "897a414c85172728d86dc01a9a1146a04b2c9351cdfed115aaf46c9fefbc7353"
+    },
+    {
+      "path": "docs/reference/indices/flush.asciidoc",
+      "git_blob": "29a5b6d4d28a4b7909b1257fb027e9162a2c7e4a",
+      "sha256": "a724e083af8587baf7a040347cbb809831489cf09f7e5798315d49396dc28caf"
+    },
+    {
+      "path": "docs/reference/indices/forcemerge.asciidoc",
+      "git_blob": "79ffb19614b9d1db0581e79c3625a1412d50d175",
+      "sha256": "4976e36e2ca4ea781292d531c57c95415c3878ca5f452a2a00a1f00851886467"
+    },
+    {
+      "path": "docs/reference/indices/get-alias.asciidoc",
+      "git_blob": "9a66eb65d4d5494e664c2b54995bda3c79f90337",
+      "sha256": "a44efed22fae6fa0c6b7b41274a7702ff278f71579dc031e5258b987964099b9"
+    },
+    {
+      "path": "docs/reference/indices/get-field-mapping.asciidoc",
+      "git_blob": "9397052b2871bc2b00e5b3a8a88ce04a0e58e6aa",
+      "sha256": "5c182a898bbe6c6683be3fd5661203177610b8764e8957b2a8858ce7c67d4cc9"
+    },
+    {
+      "path": "docs/reference/indices/get-index-template.asciidoc",
+      "git_blob": "703c134abc9f0bf8ab941198c019ee47ff0fb576",
+      "sha256": "98c935cfb64fcf6ca415a509ac7512c5824243a1541cdf17b9f886ce74aded09"
+    },
+    {
+      "path": "docs/reference/indices/get-index.asciidoc",
+      "git_blob": "fa6ebbf6681e71aab142522c972f7a58f991430b",
+      "sha256": "6ef5bd3706d90564413100523e9930b36704d236e36a1f95b6fde831bfd639c3"
+    },
+    {
+      "path": "docs/reference/indices/get-mapping.asciidoc",
+      "git_blob": "45c608cd28dc6bed51f3245b808f127d1af9149a",
+      "sha256": "0167e545fc5673956c8ba1fe47f371f070a3c19f77d40a6507d3636a899ea3af"
+    },
+    {
+      "path": "docs/reference/indices/get-settings.asciidoc",
+      "git_blob": "ce1ada57bd6d67c6c69135340557b162d1636b5d",
+      "sha256": "961b06fa17372ecafb81937c1dee9d9fff2185a9ea1cf0a0dbb0f542cf39b3bf"
+    },
+    {
+      "path": "docs/reference/indices/indices-exists.asciidoc",
+      "git_blob": "b85210af96d15b67fa0653f94a36f0b53ee14894",
+      "sha256": "e4d5d9f0e15924e854c5f8d2ab50f40de03f7e3d1b0f0a30369f30fe09ebcc2d"
+    },
+    {
+      "path": "docs/reference/indices/open-close.asciidoc",
+      "git_blob": "49d73060458f68e4cc086bc98edeb57585ea366f",
+      "sha256": "eb243cb0674e967ce10ccbb847d5540d439c4ef6fd0064f8a5e79ece9dea1dfe"
+    },
+    {
+      "path": "docs/reference/indices/put-mapping.asciidoc",
+      "git_blob": "46b33f042649cf94b7e1f3de0a349effc0816962",
+      "sha256": "305964f4b3854fd6291d2d2f67dad90a19fe91f6239c6a9d68f493aceea659a9"
+    },
+    {
+      "path": "docs/reference/indices/recovery.asciidoc",
+      "git_blob": "d6f7fafed2c5a69b0702bca460f4ef5e2bbb473e",
+      "sha256": "3a062a2fae2ea5940d47751505f53ee6cadef0c02d40c27b36cc18d57f018a88"
+    },
+    {
+      "path": "docs/reference/indices/refresh.asciidoc",
+      "git_blob": "743ea8c19e6b19b7407e50131428a65c1ab91e23",
+      "sha256": "d0db8060b5c946e7328ba09c004c824886152511cb149c767ec4ad1ecb051266"
+    },
+    {
+      "path": "docs/reference/indices/rollover-index.asciidoc",
+      "git_blob": "17336fbc45855cd60c36f68f330722f45f9ddff4",
+      "sha256": "b387eb17990988a728e52b7cb6754b2db21f9bdf0bb1fd9c24939759c95eeee6"
+    },
+    {
+      "path": "docs/reference/indices/segments.asciidoc",
+      "git_blob": "31c2abed4630418b52c2d753ab7578701f35bc46",
+      "sha256": "4a6dbc72c664e48ee4891e058d45dfecda59281e89d77f721387f0c59ef0ca8e"
+    },
+    {
+      "path": "docs/reference/indices/shard-stores.asciidoc",
+      "git_blob": "98697149adc1fa75200eb0b96988813537d299eb",
+      "sha256": "0889b759e1d84d6746a1a0bf945d400d25a452891c075fc58796427243148213"
+    },
+    {
+      "path": "docs/reference/indices/shrink-index.asciidoc",
+      "git_blob": "283bf59080c729897febf08c7ece01b810805b6e",
+      "sha256": "4268d661bfdb12e54ee68bbf6f35f368c431990724187fe7d450cfcf38143207"
+    },
+    {
+      "path": "docs/reference/indices/split-index.asciidoc",
+      "git_blob": "dd7b1213cb39f8579a39c6dc7a8f3150b860bfdf",
+      "sha256": "13e88016eedb785fa63c04adfc333e971a26ae3b97762be5a07dce16db91286b"
+    },
+    {
+      "path": "docs/reference/indices/stats.asciidoc",
+      "git_blob": "e9393a86da55b2bd0224f406eb765aa6a222d4ea",
+      "sha256": "01a701b9d1c9c415e2b56d71b1e07b904eb219c1787524f88cde337fd2dc5f4f"
+    },
+    {
+      "path": "docs/reference/indices/template-exists.asciidoc",
+      "git_blob": "550297a5059827b0ea8a1eac0bde6b37ddf0787c",
+      "sha256": "550202dd76992f731f99ace6abd95b076e734d2167d41f68c45db008673e33d6"
+    },
+    {
+      "path": "docs/reference/indices/templates.asciidoc",
+      "git_blob": "1c410a3d8fd90ceb770db3c4cd254407da0de489",
+      "sha256": "7fe93dee3dbab21fede666494403a82eadf2de3f72e30c3e41a6d5f56385a1e7"
+    },
+    {
+      "path": "docs/reference/indices/types-exists.asciidoc",
+      "git_blob": "7139b4cc785419458fd751547975b4fc5bd625ba",
+      "sha256": "a58aa245fb197c950e61db1d6e01d55bfbea790b33f11ba149baf68c0401ee2c"
+    },
+    {
+      "path": "docs/reference/indices/update-settings.asciidoc",
+      "git_blob": "d959af25b91edf6f9f638aa99c3ef6c06cfc2bf0",
+      "sha256": "9730345bd3b3edb0a0bc484958661bc0b03ccc7a620220aea03458c6a8e683d3"
+    },
+    {
+      "path": "docs/reference/ingest.asciidoc",
+      "git_blob": "a945a56c1942b3b12e18df3abdb6a1894a7a8b8c",
+      "sha256": "71fc2f483f39fd4a5ae765c0031b65d8de075c9ee96f8afe2cef8f44e1cf65fb"
+    },
+    {
+      "path": "docs/reference/ingest/apis/delete-pipeline.asciidoc",
+      "git_blob": "468a5bf5d686fc4d8244c71270f914db5ed40773",
+      "sha256": "f7a32fad808f79c2f5d520fd93f72903c987ed61d4cecea923cfccc0252fe134"
+    },
+    {
+      "path": "docs/reference/ingest/apis/get-pipeline.asciidoc",
+      "git_blob": "2f798f9fbd76b5dae6a2a5991ca05ea45c72f18f",
+      "sha256": "1d2ba17cf011d44406e6724598476cf4649e099a345a0c1954e7b88a43dacb7e"
+    },
+    {
+      "path": "docs/reference/ingest/apis/index.asciidoc",
+      "git_blob": "c1ad765fcc6bded9e5f311064a2f60d4aae4faf9",
+      "sha256": "5bb6a15a0993141fd461ed23e5ec97e751befb33937103b5c6d1cfef47c33afc"
+    },
+    {
+      "path": "docs/reference/ingest/apis/put-pipeline.asciidoc",
+      "git_blob": "e27b4d1b50eed52865881cc50613f2503bc696e9",
+      "sha256": "10ee9a59d7ef03d35802686e52d872f594a6ce9db3eefa783601ccfe644bbff3"
+    },
+    {
+      "path": "docs/reference/ingest/apis/simulate-pipeline.asciidoc",
+      "git_blob": "deb464eac7a53858f5db983198308d0304d9b4c8",
+      "sha256": "50e9e830d633153d5d7dabc38d4e89703430f6c179bfc7f351536cdbd081a9ae"
+    },
+    {
+      "path": "docs/reference/ingest/ingest-node.asciidoc",
+      "git_blob": "e6b7cadf6f69883146182d87899bdbf82dd2a47e",
+      "sha256": "24b17694d52f4658a2cbf714d5e155a64c77bb702303d7ab3b034942756cf035"
+    },
+    {
+      "path": "docs/reference/ingest/processors/append.asciidoc",
+      "git_blob": "1c2dc935116ce13c34debf7138d832cea3a67549",
+      "sha256": "40246b83ca124401555452371e91289c6b49bb1dcfe099d267da33a27ad43344"
+    },
+    {
+      "path": "docs/reference/ingest/processors/bytes.asciidoc",
+      "git_blob": "76f054cac64c29f7cb217c973cc3ed2ac0bea1a1",
+      "sha256": "67a63d79c7f969e88acf15dbe8d301570f3676d2e3fa91dc71c7124e93607a9a"
+    },
+    {
+      "path": "docs/reference/ingest/processors/common-options.asciidoc",
+      "git_blob": "dcf8b63630b4b562a98e4890c12465150c2d0ac1",
+      "sha256": "d3b5beecf8eb19f7c291f7ce4d59eeaf86604617ea66019a81aaa4d4d0a36ec6"
+    },
+    {
+      "path": "docs/reference/ingest/processors/convert.asciidoc",
+      "git_blob": "9c439a3c1a985c14d1feb581079892b32a220708",
+      "sha256": "5d7eea0b21bd6c7447f0129181c08ed1ec33cb61a334db01f1114690c704d8e0"
+    },
+    {
+      "path": "docs/reference/ingest/processors/date-index-name.asciidoc",
+      "git_blob": "783ecc9b2b1b0b1a6d40eec646519f83386cda2a",
+      "sha256": "37d4c0e6dff834ed6d24882697532f060aa643271c628c15abf6578c63d0fe3c"
+    },
+    {
+      "path": "docs/reference/ingest/processors/date.asciidoc",
+      "git_blob": "d797dffd8d43581ae893a8df8f83fd7d48cc4915",
+      "sha256": "56826b8197031460c0c938bc28a72be54ead797c9ebe0c1a8b3f061f2ae98648"
+    },
+    {
+      "path": "docs/reference/ingest/processors/dissect.asciidoc",
+      "git_blob": "f2a7a42b9d668de3f689c829ee516914f6e9c77c",
+      "sha256": "b637f861a595b44a2960cf014d555924e80c854a4428df60a677963838415f05"
+    },
+    {
+      "path": "docs/reference/ingest/processors/dot-expand.asciidoc",
+      "git_blob": "1e8eb7da6cf0329302c59b4895dbd0ad4f982979",
+      "sha256": "5f1c06d65cebae095cf338fd6563f99d43311e958112af9707d0dda429d3ef4c"
+    },
+    {
+      "path": "docs/reference/ingest/processors/drop.asciidoc",
+      "git_blob": "e763c13be2c824853d02238c650d80acf1884751",
+      "sha256": "cd45b3e80fb020bb3b0b9aa55e9921d061969669a0130ef3d8d86b1e78a3ceee"
+    },
+    {
+      "path": "docs/reference/ingest/processors/fail.asciidoc",
+      "git_blob": "c33c0b754fa75ffff3fb0197ad6d7332a124d30a",
+      "sha256": "07ceaba1ea341a6452a96eae6bd440ed5fe74640505cef33ae7e50479e823d5a"
+    },
+    {
+      "path": "docs/reference/ingest/processors/foreach.asciidoc",
+      "git_blob": "69bf2d85f0d8e4ad05fa217414a66fbf39206d00",
+      "sha256": "918fb0af3def98488800c13647b09ab8b9ee5548b2a9f596d32ad9d426b5f7bf"
+    },
+    {
+      "path": "docs/reference/ingest/processors/geoip.asciidoc",
+      "git_blob": "7ce7b430ef61050c1cf2b34055416b01d3cdf0d1",
+      "sha256": "b1a3f08a7217e1db20e67e66cb33c0736f7acb6cd4063efff566aba3c25b1257"
+    },
+    {
+      "path": "docs/reference/ingest/processors/grok.asciidoc",
+      "git_blob": "f6f5fb3c9288188f12169f82498620cb5f57117d",
+      "sha256": "688dc7c46815946043ed814de100bc083878e790694164c5393ce6359106649d"
+    },
+    {
+      "path": "docs/reference/ingest/processors/gsub.asciidoc",
+      "git_blob": "f6919eb1e95f1aa617a643ae7069fd308c2c7de8",
+      "sha256": "fdaa877747eaaed30917ad80daf2e4cd8873374a9ee51282639aac2488701488"
+    },
+    {
+      "path": "docs/reference/ingest/processors/html_strip.asciidoc",
+      "git_blob": "2fa3cd7bbb8ae6438cd294fc355f8007f4dc9358",
+      "sha256": "2188090e3826d8ac1f14138d71efd8f9b1c90e622345175b4b6e009f2eec6413"
+    },
+    {
+      "path": "docs/reference/ingest/processors/join.asciidoc",
+      "git_blob": "a31f0eee7c16f194b7b7a2c38d2aca93deca01c6",
+      "sha256": "173ea29036ce3257fc6fc50626a6befb4552f9da05f43fddf79b51862f53e24d"
+    },
+    {
+      "path": "docs/reference/ingest/processors/json.asciidoc",
+      "git_blob": "bbbd18e8337a419e07a553f805870721ef58e997",
+      "sha256": "6ed6ffece39e8b0c85a6718ca1976d0e909c9d77ddb3ed144818c740a93810ee"
+    },
+    {
+      "path": "docs/reference/ingest/processors/kv.asciidoc",
+      "git_blob": "3f4350a3301edb26a1102b069061b08e471e8a20",
+      "sha256": "0f250df87808554b87e8d9da6462f580b461758460924a698b0a5ce0dd4728ef"
+    },
+    {
+      "path": "docs/reference/ingest/processors/lowercase.asciidoc",
+      "git_blob": "878b74ed9ba2424a8fa1071b33441c5f6723fc8c",
+      "sha256": "a1624534d1fa609c334d9ac1d7177e51cf70ef301474217c4ce165025a010dda"
+    },
+    {
+      "path": "docs/reference/ingest/processors/pipeline.asciidoc",
+      "git_blob": "1b138123a7218a5c7fc5da045460e9ebab15dbbe",
+      "sha256": "a95a0ca607c4eaf4591e9414d38ccd935285c3eac8dc6681a88f6e9f23bfe4e4"
+    },
+    {
+      "path": "docs/reference/ingest/processors/remove.asciidoc",
+      "git_blob": "a3f539a6cc3475762b2d4c1a0126afe985d9ab2e",
+      "sha256": "fc58641a32bcec10a35a6f40be33502b80d185b5c211c4f354e5d84e3c369d27"
+    },
+    {
+      "path": "docs/reference/ingest/processors/rename.asciidoc",
+      "git_blob": "7f690367fa38850b8b1fd70f29840a96c9df56a6",
+      "sha256": "07368b8fbfb5781ea69c33fabeb9c0ff8456f4d29fd82b5e617276126e74defe"
+    },
+    {
+      "path": "docs/reference/ingest/processors/script.asciidoc",
+      "git_blob": "9e0dbe60b8d8ba57bea6acca880787f9c19a4c65",
+      "sha256": "81bd085d5f7485b7c10a223538628e03e2890a38503b4448127979edde5fc081"
+    },
+    {
+      "path": "docs/reference/ingest/processors/set-security-user.asciidoc",
+      "git_blob": "738ce97dda9df46d2d8f02e4dbc6e8f495aee409",
+      "sha256": "1430e4d6fd090059fd03194047e0d8e5b4b53119ccea2a2b0abb06f90cb64919"
+    },
+    {
+      "path": "docs/reference/ingest/processors/set.asciidoc",
+      "git_blob": "c964182ef6573ebb3e680775ed0de80256986115",
+      "sha256": "6dd611d3059426ba2c295b48a6b3c03b3513446f0b48cf5858ed348c8b9d5c30"
+    },
+    {
+      "path": "docs/reference/ingest/processors/sort.asciidoc",
+      "git_blob": "455b32dca5a844a893acc37a852a03fbdb22923a",
+      "sha256": "7f0fa6ae8ae66eabaab8db088a8cff3090ce744e7017172eb52ec074ae0eb706"
+    },
+    {
+      "path": "docs/reference/ingest/processors/split.asciidoc",
+      "git_blob": "7d1487b8ca04761d813eb44771e3a004a0c8610f",
+      "sha256": "1b4a23be37579e7f55fb4e638607b25aa8bdcaca5bcc0cc4e04f3e5276696d61"
+    },
+    {
+      "path": "docs/reference/ingest/processors/trim.asciidoc",
+      "git_blob": "7c28767076ecceab7362aba61ff6358c5d3e106c",
+      "sha256": "7b85da35fb84afd4b638796f364941243a09e2a4555debd509246ff7b0237de5"
+    },
+    {
+      "path": "docs/reference/ingest/processors/uppercase.asciidoc",
+      "git_blob": "7565be1c7c3036bee30998da6e59e8955d94f498",
+      "sha256": "258033e19c45669a6a2454dac78a2d9d6d6d70a81e032a23fc55fb0ca33df087"
+    },
+    {
+      "path": "docs/reference/ingest/processors/url-decode.asciidoc",
+      "git_blob": "76fc00c80f679cedeb9930c200159f93878b0ede",
+      "sha256": "bb14d8fdf2927839df9a46962505343e837990749c75c2d0f019d8ad0d3bef17"
+    },
+    {
+      "path": "docs/reference/ingest/processors/user-agent.asciidoc",
+      "git_blob": "152989e956de9a7dd7eec1804dad76e9d7fb36a8",
+      "sha256": "8ff73903a457a4ecb2396a519639016c34574cc83dfad5d57353a4a8d7679855"
+    },
+    {
+      "path": "docs/reference/intro.asciidoc",
+      "git_blob": "c16f1bd78a1d5b4a6c39849d1fb05b348f609a7c",
+      "sha256": "3df40941296f85283af1131de3b9aadf11844d77421f967828e79d6ee4fc03c9"
+    },
+    {
+      "path": "docs/reference/mapping.asciidoc",
+      "git_blob": "de6951f9670830eaddf5eb46bb9e11126c5bcc35",
+      "sha256": "090d5adba01d2c315fc23c909cab0344b3c1d6364ca338f7e9b3986f2c4c90ba"
+    },
+    {
+      "path": "docs/reference/modules.asciidoc",
+      "git_blob": "51f458c010e6d0035337b9f2ef7754274fded6d5",
+      "sha256": "5bd2609fa4484ed68a924f89db1aa3a1dd2332260e5e1dab7ec136a6cc024b54"
+    },
+    {
+      "path": "docs/reference/modules/cluster.asciidoc",
+      "git_blob": "810ed7c4a34b497cc449b65cda19a090df9016e6",
+      "sha256": "d4af20a4444cd7c3632f040f4cda6809e63c22200059275dd54e0ac7b88113e9"
+    },
+    {
+      "path": "docs/reference/modules/cluster/allocation_awareness.asciidoc",
+      "git_blob": "4381d0281cc9dbb2b7cf49997889549777ad3e60",
+      "sha256": "4bbfa898ddf4782111a0d7c05950ad7824dd07f3019ee4015c200a41d133498b"
+    },
+    {
+      "path": "docs/reference/modules/cluster/allocation_filtering.asciidoc",
+      "git_blob": "bf01b5fab8399779804d374791b139464fa7c993",
+      "sha256": "9677344331d13a440c1b50a65d404ef6b664782625ab17c867e750d793932bcb"
+    },
+    {
+      "path": "docs/reference/modules/cluster/disk_allocator.asciidoc",
+      "git_blob": "5daa50d9c25b0e191e14635afa38ea33571f6a45",
+      "sha256": "9d6c0cde18d1b815645bee2349f2010337a8efa1b2898b3f3db8264aa1222c4f"
+    },
+    {
+      "path": "docs/reference/modules/cluster/misc.asciidoc",
+      "git_blob": "08568088baa7de2ebe62d94dceb09b107dfdc9bd",
+      "sha256": "2c8d2ffb8d05bec37c942b75483b2dad5e2965e5a28f844950ffd59391b234b7"
+    },
+    {
+      "path": "docs/reference/modules/cluster/shards_allocation.asciidoc",
+      "git_blob": "7513142cb86ae32bec4ce4cc4d98bc430b473e67",
+      "sha256": "9ad1ceb357f69708978ed06fde3bb58d451301708b0754f577c49451791be2e3"
+    },
+    {
+      "path": "docs/reference/modules/cross-cluster-search.asciidoc",
+      "git_blob": "3a5f17a2bf1de06f68b9e618edb3b7d61a62a384",
+      "sha256": "49d281dde5ef49d1eb9e32cf6cebd42456367398162939b980cd680f9f5a4e8c"
+    },
+    {
+      "path": "docs/reference/modules/discovery.asciidoc",
+      "git_blob": "d3e0d4fe8475152ebca3539ac805da2565aa8e8e",
+      "sha256": "23b6c319d996a8cdd778e81733de0418a51176dd03112c5e792564ef76f46127"
+    },
+    {
+      "path": "docs/reference/modules/discovery/adding-removing-nodes.asciidoc",
+      "git_blob": "2a62bb5e49dd36343930717de2ca6e558db9b29c",
+      "sha256": "4b780f23db396d1f7625357254b21ddd1390edb3651b4bfa21adb28369c74c88"
+    },
+    {
+      "path": "docs/reference/modules/discovery/bootstrapping.asciidoc",
+      "git_blob": "cc7cb0ea9122709633cecf3bb53f1d7f2c7d2756",
+      "sha256": "1b98d0205150a97739219f556052186c963c5e0b5677d70978cd63bbf7649bf7"
+    },
+    {
+      "path": "docs/reference/modules/discovery/discovery-settings.asciidoc",
+      "git_blob": "bfd9cbd51fe4ce0a7a0fb0553a8dbef1f4377259",
+      "sha256": "6f66372fd7cd8c5345a5925e51319ad5be08f9a01e781e9043a24f1896799a5e"
+    },
+    {
+      "path": "docs/reference/modules/discovery/discovery.asciidoc",
+      "git_blob": "2fa4e14701479917a889bf20e6a819ae12ab79f2",
+      "sha256": "c177f22d4644da3483f161f8e17091b391d11a45e2eefab17f86fe3527d359d4"
+    },
+    {
+      "path": "docs/reference/modules/discovery/fault-detection.asciidoc",
+      "git_blob": "9062444b80d6cab1438c23140c54465d1f9537b6",
+      "sha256": "df99f06b6541d274692a84a5c507205b5835e795e88b681ba0df89ab36adb08f"
+    },
+    {
+      "path": "docs/reference/modules/discovery/publishing.asciidoc",
+      "git_blob": "8452f0cd04f8747b58cd30dcfdb0ae3c6007e16b",
+      "sha256": "428f08cbed81826190bf3a6c27e4c130e9a032c78791a6b8e906aecf83c59592"
+    },
+    {
+      "path": "docs/reference/modules/discovery/quorums.asciidoc",
+      "git_blob": "1a1954454268cd227445403492c7a0bc37c27edd",
+      "sha256": "6c32a1f75776faaa4352e975495cc2cb9e66de106caa8b48402fba315ce50dd7"
+    },
+    {
+      "path": "docs/reference/modules/discovery/voting.asciidoc",
+      "git_blob": "7c6ea0c1cc985dbbbae0533e62edbf656f749b6a",
+      "sha256": "a05e7a6382a9a356479d2100a7ec1dc86915c1ac09d0bf18ed5d7c00ccbb7699"
+    },
+    {
+      "path": "docs/reference/modules/gateway.asciidoc",
+      "git_blob": "2b0783c9de0b0fcb501ddbbebf244862c8f53c24",
+      "sha256": "7c0b6daab737c1b44deec545f2535f5491b1f83efca4479db15a6ed60f40ec1f"
+    },
+    {
+      "path": "docs/reference/modules/http.asciidoc",
+      "git_blob": "d622c3b6e6672d326cecfdedfd6d3bad1a16fb7d",
+      "sha256": "fd4c707336ce0cdf93e09246ade99cce415257c74ac9c4fafc5f46201738a472"
+    },
+    {
+      "path": "docs/reference/modules/indices.asciidoc",
+      "git_blob": "33ab7ecb4a8144838c524fe43358ba3ec931931b",
+      "sha256": "a344570aad03b39aa91039f02463800add0633c5286bf3f599f300fab58d17a1"
+    },
+    {
+      "path": "docs/reference/modules/indices/circuit_breaker.asciidoc",
+      "git_blob": "7969057330d729ed89faad78351d5564d692209a",
+      "sha256": "9d956641ed112852be345293dd0fc6a273564c335cea3c97e53369cd5b600a26"
+    },
+    {
+      "path": "docs/reference/modules/indices/fielddata.asciidoc",
+      "git_blob": "e8c8a8d2c490cc7ca85a51691ed6ffc3d5857240",
+      "sha256": "c83219bd799f90cb1bcb9f5d30e036ab56e9371ba445d478cba0ff7fe643f55c"
+    },
+    {
+      "path": "docs/reference/modules/indices/indexing_buffer.asciidoc",
+      "git_blob": "d3aa436c5d4adf13779bf6af9e79c0ab7310fe37",
+      "sha256": "49e21d9d6cadf7245c610e39d3cf713d11ba89d5669524eba70327f04f66c846"
+    },
+    {
+      "path": "docs/reference/modules/indices/query_cache.asciidoc",
+      "git_blob": "aaa1ab17428419921f63c0b074adff78d56ccce5",
+      "sha256": "6016d8686681ae03cd01b25470a11561afbe9f45ae07d066fa355304430be31a"
+    },
+    {
+      "path": "docs/reference/modules/indices/recovery.asciidoc",
+      "git_blob": "613d0885d1db70e6f54bd5161c795e7e90ff7eb3",
+      "sha256": "76fcf89976172844bd33525c9b185cd3f0990a576aeddd9f6b247012de372929"
+    },
+    {
+      "path": "docs/reference/modules/indices/request_cache.asciidoc",
+      "git_blob": "fc04c5e9c63f686649bb67c46b2a3827522893d9",
+      "sha256": "8724ddf983cabafef0b6f46c1efa2ac662be5da4fecbca304ded1dcb9aa2ce98"
+    },
+    {
+      "path": "docs/reference/modules/indices/search-settings.asciidoc",
+      "git_blob": "071471a1803ca4a88188ab3e4c2fcc40e5b52951",
+      "sha256": "c1267181c320c514f2f02938cec3b5b5fba8c9446a5f5ed868e5e2ccacdf2f36"
+    },
+    {
+      "path": "docs/reference/modules/memcached.asciidoc",
+      "git_blob": "508d328671b26f79ab775fea628552240c519ae6",
+      "sha256": "e1482b03cd31ce2877bb715d836285094626d69924f1d6a0a7c962d93e03ba3f"
+    },
+    {
+      "path": "docs/reference/modules/network.asciidoc",
+      "git_blob": "6c9e72c18be272feb14de41212ff594329a544c2",
+      "sha256": "215ea3bfecb1382b6d2e9f4263afbddea60e2e40218c4983682b53e7b8b67088"
+    },
+    {
+      "path": "docs/reference/modules/node.asciidoc",
+      "git_blob": "467e6076913c7d4c840e007ff0bc0753cc1075d1",
+      "sha256": "e6cd937c1dc50edca0e97e031a20e5e18b7e1801b9174e1eca1c1e81543d545e"
+    },
+    {
+      "path": "docs/reference/modules/plugins.asciidoc",
+      "git_blob": "0485065d2b75058da471aa04be0d39a038e09259",
+      "sha256": "d52fac59eb3fcfa2acbe21c21b0588e1406219f84ac32a79a31a6b0099d069fa"
+    },
+    {
+      "path": "docs/reference/modules/remote-clusters.asciidoc",
+      "git_blob": "52fe0ba42064e40d39a7d7c178d423b5ecc9b8cc",
+      "sha256": "79a84786328d71dd629ee7d8e24efefaab8794ce2c2c3b7b9a927d6b8b64ebce"
+    },
+    {
+      "path": "docs/reference/modules/snapshots.asciidoc",
+      "git_blob": "aa739a40f8eb0188d1b622b0c825075591bbbc7a",
+      "sha256": "5bdc9713a3574a59528bb12237662dee90ca09d97e6ab5e6905c81ec9be828f2"
+    },
+    {
+      "path": "docs/reference/modules/threadpool.asciidoc",
+      "git_blob": "3bea925f972e5648edcfe9d4395a3cb3387ea995",
+      "sha256": "1ba1358a9a17236e87b30ebbe4d4aab72e62340073b06bf534ad5261433b5b6a"
+    },
+    {
+      "path": "docs/reference/modules/thrift.asciidoc",
+      "git_blob": "1ea3f81812693012eb3bd5a6765991dd315fc387",
+      "sha256": "4eecccd23b46bc3793d6384cba9ee480b50274dc56bf3af7c4f7c8b0e82ef2b0"
+    },
+    {
+      "path": "docs/reference/modules/transport.asciidoc",
+      "git_blob": "5e0697d2e3c797ef2d6981764887ec46816541f6",
+      "sha256": "5e2b8f3014d0090f62fc1124875f6d79328083459377583fde31da1a19785960"
+    },
+    {
+      "path": "docs/reference/query-dsl.asciidoc",
+      "git_blob": "1a279101531c25d32614aa26400446eadfa742f4",
+      "sha256": "2316b491c4601893e808b752884466a651e5e2cbaa015dd85367fb6441240b3d"
+    },
+    {
+      "path": "docs/reference/redirects.asciidoc",
+      "git_blob": "1a79051b902540958336957c8c680f1220f5a6f7",
+      "sha256": "cbbe61d31db8ff96db32821a6bd4a1f33ce6165169aae21db704355d66188cec"
+    },
+    {
+      "path": "docs/reference/release-notes.asciidoc",
+      "git_blob": "17420ab565acbf5e27eeaebc3e6834535f813bf5",
+      "sha256": "f4192a747aea32a367238dfe7c18a20b58ee4b03e589c8d798521deea7ed25f5"
+    },
+    {
+      "path": "docs/reference/scripting.asciidoc",
+      "git_blob": "33b8795a581146c01acc7a4287fe42a5951f6661",
+      "sha256": "6ad88487a928fabcbf8de33efd73499476d24ba47e917c8f5f43b0b85564a840"
+    },
+    {
+      "path": "docs/reference/search.asciidoc",
+      "git_blob": "84ff2e45282c8aafa29f3e58cc38313291488b32",
+      "sha256": "6675a34dd6e5f222c2ba7008213d9fb15c6f6786fca274dde78f62d6c61e4391"
+    },
+    {
+      "path": "docs/reference/search/count.asciidoc",
+      "git_blob": "93262a12f8acd1f772af499856e6d86e872e23f4",
+      "sha256": "3d03419e9ea8b37eab32c5e3bb3d253d9fc394f11a5f3de15a8d4d4d619d9363"
+    },
+    {
+      "path": "docs/reference/search/explain.asciidoc",
+      "git_blob": "061bae555bcfbfa23dc71e0c7a071626772412f1",
+      "sha256": "fe51f56a95265cb1bed1aaee45b454f5fb03224cab3ff87fa2a091699857ef00"
+    },
+    {
+      "path": "docs/reference/search/field-caps.asciidoc",
+      "git_blob": "c7d532a0b869d14f9f7923920e7f61c38e39b46c",
+      "sha256": "06c4e3212dd7946125046c9c7b535cab0f6ae35804063a4753df6289214bac93"
+    },
+    {
+      "path": "docs/reference/search/multi-search.asciidoc",
+      "git_blob": "51e0f680a3be8debd2e0c8a747966e039b507c55",
+      "sha256": "6f4374d94c9cfa7c064469851cde4417ae1e88c09ea5510d5737cd93445d5a57"
+    },
+    {
+      "path": "docs/reference/search/profile.asciidoc",
+      "git_blob": "44628133f6bffb95b07a9ba305aee5b8b03a6a81",
+      "sha256": "26c64caea9ca356a6fb28222460631cb531315711416db68180c16352eab02ae"
+    },
+    {
+      "path": "docs/reference/search/rank-eval.asciidoc",
+      "git_blob": "4070e448931ea57ce1913e28120c3bd864e601c3",
+      "sha256": "5ed3b9a0b7d4b21465007330f1cab01660e95522744c0044435a970079fbbcf6"
+    },
+    {
+      "path": "docs/reference/search/request-body.asciidoc",
+      "git_blob": "b84d695e9f1094f00c7ba716f7be5431c4684fe3",
+      "sha256": "bca73a4fb26ca34f10749d9403836781952fadeb2b4cd2ad18f75784aa0b8a8d"
+    },
+    {
+      "path": "docs/reference/search/request/collapse.asciidoc",
+      "git_blob": "8cc48fbcc634f8cd9d7d65df728d4a50568ad20c",
+      "sha256": "94ffbeb01424305b45cf5b9bb424cadb12b7f3dedc3609b666839aefba57991e"
+    },
+    {
+      "path": "docs/reference/search/request/docvalue-fields.asciidoc",
+      "git_blob": "6190eb6aef13fec04f479f94a485610d223b181f",
+      "sha256": "b9bd81cfe86edd5f29425c7d07d59f04ac7199b84505717e33a57ec7e850e60b"
+    },
+    {
+      "path": "docs/reference/search/request/explain.asciidoc",
+      "git_blob": "704b958edd01627008b2cdd854d10187b9d7d08e",
+      "sha256": "1af8fb40bf73dc2cbd5565ffce337224ec1be7776ada767e8e899f8e5d197697"
+    },
+    {
+      "path": "docs/reference/search/request/from-size.asciidoc",
+      "git_blob": "a97dbad4bc364a7204b3700283497a9e96654625",
+      "sha256": "fbf3095e97cd33f3add001cdbd4be568fc31f7e98c7d3cd57c7681ba0c319273"
+    },
+    {
+      "path": "docs/reference/search/request/highlighters-internal.asciidoc",
+      "git_blob": "11534a01aa2348890bf54800066a4501815111a7",
+      "sha256": "07a901c04e6c4b7c048211ee4218813fc01808228f87caeaa30f83cc8300d109"
+    },
+    {
+      "path": "docs/reference/search/request/highlighting.asciidoc",
+      "git_blob": "58448f246f61efec3eeb8b56b9de52437106bb97",
+      "sha256": "f6bf1316741270478cfc53c57e57915adf2d724105e3db6f2b2b5113393768e2"
+    },
+    {
+      "path": "docs/reference/search/request/index-boost.asciidoc",
+      "git_blob": "9cf09fcd7b40d4be8a422b8e5af261aae17adaac",
+      "sha256": "7994dbb2f9bc46056466890741d50792874a0893f63a7df9409ac5737ae22400"
+    },
+    {
+      "path": "docs/reference/search/request/inner-hits.asciidoc",
+      "git_blob": "8aef784e69d50e96b36179de982c283794bf3c70",
+      "sha256": "c4f47d6000eb37349ce01838e231d0e7d316695833ea60dc261764bfb4bdb4ca"
+    },
+    {
+      "path": "docs/reference/search/request/min-score.asciidoc",
+      "git_blob": "1a03d6d3ee483d7d87bc05902cf2a76172ce58ac",
+      "sha256": "40ff6ada639c9aac3e93932d8fd9590495a2ff3c5f674cd5a10e388eabbefbc4"
+    },
+    {
+      "path": "docs/reference/search/request/named-queries-and-filters.asciidoc",
+      "git_blob": "c850210f03046d2f31c97ed5f4732f4f74ce806d",
+      "sha256": "21c364fe4d57c5a2e1525906fca22e1ca479075d56ba6259d9e2d192afd7c5e0"
+    },
+    {
+      "path": "docs/reference/search/request/post-filter.asciidoc",
+      "git_blob": "478b4082e04c31a63b75bc5e17d599bf259b3887",
+      "sha256": "4d83332ba3ac626a791bfc79fea2246d450c0bc456aa0d45729d9e6b30d623f2"
+    },
+    {
+      "path": "docs/reference/search/request/preference.asciidoc",
+      "git_blob": "12bcca51c1777cc94991d3c318df7b0ef8772381",
+      "sha256": "441b9960a00edc550a8ae77bb707f9942b1d724fe2707b17a43aa724f5502519"
+    },
+    {
+      "path": "docs/reference/search/request/query.asciidoc",
+      "git_blob": "d114bf93791eb8b0b3dbd4346609adafd20dd58b",
+      "sha256": "418c3df02ff0bf229f26b48fe5aa35533a04ce8434d674c1d0086e957688c124"
+    },
+    {
+      "path": "docs/reference/search/request/rescore.asciidoc",
+      "git_blob": "64c3896ee3da28a22677c5aa67313054cdb806d1",
+      "sha256": "c9200ed4b507bcd3fe0114d2bb215d170d04f61f7f85a6699f0e99e70f211d38"
+    },
+    {
+      "path": "docs/reference/search/request/script-fields.asciidoc",
+      "git_blob": "090e403c57856f8657e162d23e9c81c64cd8a512",
+      "sha256": "10e99793321822793c08a234a739ca215e38f46b29c4e2174b8153af432bd857"
+    },
+    {
+      "path": "docs/reference/search/request/scroll.asciidoc",
+      "git_blob": "bb5ad2888647c9db4133b99c94db8c472ebdbefc",
+      "sha256": "9cf93739e85eb3419a376416af2e5007b0233336ae19daafca9c310f6d85b9f1"
+    },
+    {
+      "path": "docs/reference/search/request/search-after.asciidoc",
+      "git_blob": "e940b0688cc24f79311ca080f0b4dc530142b355",
+      "sha256": "e42c1f1d2191b6d5dcdf88a35230d6fa843a90624a38258063b6343b2c554416"
+    },
+    {
+      "path": "docs/reference/search/request/search-type.asciidoc",
+      "git_blob": "684d84358896a7f5f5afd1e53415e68bc36125b9",
+      "sha256": "51e34edf762a4f849326ca3eee5b6fe0bc5b4a2d7ff469ce362a55d67cabf718"
+    },
+    {
+      "path": "docs/reference/search/request/seq-no.asciidoc",
+      "git_blob": "5bfc328a30906e9ed98c151e5b298b20243d63d9",
+      "sha256": "a366e38c6023037e472f95ae63ab0bcc5bc644f565f00118e9fcd25c666d37df"
+    },
+    {
+      "path": "docs/reference/search/request/sort.asciidoc",
+      "git_blob": "fdec892f2ccae0f786a7bbdca4faea68c7535cc7",
+      "sha256": "fa58b3a7943b510a5cc5339217f5d8c9f9d158deea31863e89fd5c507fccb513"
+    },
+    {
+      "path": "docs/reference/search/request/source-filtering.asciidoc",
+      "git_blob": "467c31356b719c244f9452240ef0deccfd90aed8",
+      "sha256": "21f8272b8ae38f2a206813e4e2a3d81600c5d1b152cb94ee16c1535ed6d846d7"
+    },
+    {
+      "path": "docs/reference/search/request/stored-fields.asciidoc",
+      "git_blob": "550c3b81af4cf888d527959883975598968342aa",
+      "sha256": "bc968f74a4ea655a8e0339b713bce136d99606f19077caa992be94f0ff74c681"
+    },
+    {
+      "path": "docs/reference/search/request/track-total-hits.asciidoc",
+      "git_blob": "1e9ede3ae94d752806ee4f190ac56f62fedd87da",
+      "sha256": "27ebc70121b7e40924f3552636db200d1bcc1cbc3f1a6ed4edcea2acaddcfc71"
+    },
+    {
+      "path": "docs/reference/search/request/version.asciidoc",
+      "git_blob": "527481348e3322e07893f95d9ea85e2e4cde8571",
+      "sha256": "328ae42f812e12e62bbca8dbf94eb8e04f2580d3820fd0fa4dad8f28411656a4"
+    },
+    {
+      "path": "docs/reference/search/search-shards.asciidoc",
+      "git_blob": "288f8b7545ec89422d25cb5e8e75718b60183f39",
+      "sha256": "78947008dc5ea24d56ddf3086a5765c8753f990e3b54ef80c69483d810f40142"
+    },
+    {
+      "path": "docs/reference/search/search-template.asciidoc",
+      "git_blob": "fb6fe4d41a257cf2abcf5635f0c738ca5ba0df58",
+      "sha256": "b516e3ef64169ef4b6a9130eff0e54948679e9f03d76cf123fd18741f227a51c"
+    },
+    {
+      "path": "docs/reference/search/search.asciidoc",
+      "git_blob": "9e396485e2fa795b46423eb3e3c516fe2de3fb8b",
+      "sha256": "a1f629a2ea16494eb0a130ad17c8ce73ee08f6ead28747e68e2464f4b403b8e6"
+    },
+    {
+      "path": "docs/reference/search/suggesters.asciidoc",
+      "git_blob": "78aa5d362856402cad039c3f506577138c75fa14",
+      "sha256": "5509a0193146afb3d6a5b34b4f15574af63de8ca995a21eadc9ec2e1a189a932"
+    },
+    {
+      "path": "docs/reference/search/suggesters/completion-suggest.asciidoc",
+      "git_blob": "1090eb6652dcc252ccc180124f0b4271a657005b",
+      "sha256": "a27cce360b70d9f2bc43dcb640016967733c4f39bb6f2e5b1c1233264fefed65"
+    },
+    {
+      "path": "docs/reference/search/suggesters/context-suggest.asciidoc",
+      "git_blob": "de1774ded4559ecf18c0505de76a901928f683ff",
+      "sha256": "b84696effc212dce4942bdb37b69e6460968e98cccf2928c6501c2cc4825f4d4"
+    },
+    {
+      "path": "docs/reference/search/suggesters/misc.asciidoc",
+      "git_blob": "1cd6e6fdbfc52a79d24f986fecd494e7be47b0ac",
+      "sha256": "6a61c3983d8a57c73c85a1b99c9720ca2489ae1c3ad81b2f5679eb82576674f1"
+    },
+    {
+      "path": "docs/reference/search/suggesters/phrase-suggest.asciidoc",
+      "git_blob": "46dfec5db1c1af49ab6d2018a6a6244e50439544",
+      "sha256": "78717b20d88e91fa44b7ae289d44ef946a1c3a4808dd1f9053f41ac91e74f98e"
+    },
+    {
+      "path": "docs/reference/search/suggesters/term-suggest.asciidoc",
+      "git_blob": "3fe3ec8be4eac93a8ba85aa785d15fe9e36862cc",
+      "sha256": "697a5dd1dcd28fee2aadc42980c8006722953252ade417511be90c5efb6ebada"
+    },
+    {
+      "path": "docs/reference/search/uri-request.asciidoc",
+      "git_blob": "86e2ee4551b49bb417b58f5ade4c87a5fb4ad9cd",
+      "sha256": "92637db126fba8a9d0548666d64235fb913cb951d9b3d05b36654a49fac5fb87"
+    },
+    {
+      "path": "docs/reference/search/validate.asciidoc",
+      "git_blob": "6e27059837071006db706c2209c46092f7b33eea",
+      "sha256": "8d372be89a8fb5ef1fdf2d425d779d19e3be4f72c31a122f5928ca353edb2e49"
+    },
+    {
+      "path": "docs/reference/setup.asciidoc",
+      "git_blob": "8fd5a44443ddce82a0894b0e7538c8609efcf6ab",
+      "sha256": "6b718072facfac19074923fd7bbc53fe21fe473cf65ba7dc2441961d6f9bb48e"
+    },
+    {
+      "path": "docs/reference/setup/secure-settings.asciidoc",
+      "git_blob": "0431b5cd566827107b09e4a7ff5ba6b58aa05718",
+      "sha256": "9ba8ec586989bc77ebecbe76e30f7475df9ee4e666d5c92b6e9c2af3d654b96a"
+    },
+    {
+      "path": "docs/reference/testing.asciidoc",
+      "git_blob": "f4e4b86acc5228253a9f561353215f69de93f1a0",
+      "sha256": "b808003107684b93aebf4ea50e4183ed3309d573ee37d22694afe33d5419ef3d"
+    },
+    {
+      "path": "docs/reference/upgrade.asciidoc",
+      "git_blob": "5f2d4427892f152d376c388f4e78ffa488ab58be",
+      "sha256": "f5027bc231523ee2bfae7e943b63f7f1ec48523062db90aada7a8c33dac0bce6"
+    }
+  ],
+  "counts": {
+    "anchor-found-review-required": 120,
+    "unresolved-documentation": 5
+  },
+  "operations": [
+    {
+      "api_id": "bulk",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-bulk.html",
+      "target_anchor": "docs-bulk",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/bulk.asciidoc",
+          "line": 1,
+          "sha256": "1410b22cd3c5bf7bd5674570a1910170665d8679620fece79c5ab9b180d0e671",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/bulk.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.aliases",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-alias.html",
+      "target_anchor": "cat-alias",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/alias.asciidoc",
+          "line": 1,
+          "sha256": "2b0f653ccc9a040c30575a52714f9962f176a674c50221dac17337acc7bbaa32",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/alias.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.allocation",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-allocation.html",
+      "target_anchor": "cat-allocation",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/allocation.asciidoc",
+          "line": 1,
+          "sha256": "2995b0c200b945f31b2b8d01fb733ddb485acce476b30380fd85b8bd62d43ac6",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/allocation.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.count",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-count.html",
+      "target_anchor": "cat-count",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/count.asciidoc",
+          "line": 1,
+          "sha256": "b89f4fd624693346331df7bb9b5f3fa038c22a8944754cdfe912eed73a71cbb7",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/count.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.fielddata",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-fielddata.html",
+      "target_anchor": "cat-fielddata",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/fielddata.asciidoc",
+          "line": 1,
+          "sha256": "ca28cb9dc1b8b8272c974bbc47a1ecea38a1fc113a34fadcda4790434b54fe07",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/fielddata.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.health",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-health.html",
+      "target_anchor": "cat-health",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/health.asciidoc",
+          "line": 1,
+          "sha256": "36e63c1588fb687b0472f0c2bc8ea52ab4d81541c7dd30eace526729dbc10831",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/health.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.help",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat.html",
+      "target_anchor": "cat",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat.asciidoc",
+          "line": 1,
+          "sha256": "366c0ade7344d45a464f8cf6f3e54d26dccee22dcb1a70744121387ab4a74320",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.indices",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-indices.html",
+      "target_anchor": "cat-indices",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/indices.asciidoc",
+          "line": 1,
+          "sha256": "82a116068f46c49a7d345ea5976b1e4a9b7da2a22031f2f8c1175cb4a0e57e1b",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/indices.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.master",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-master.html",
+      "target_anchor": "cat-master",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/master.asciidoc",
+          "line": 1,
+          "sha256": "d03a1b9ada2f30ca148a08eb5f1e8b7aa550a450e8b884e26ad844f97253500f",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/master.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.nodeattrs",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-nodeattrs.html",
+      "target_anchor": "cat-nodeattrs",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/nodeattrs.asciidoc",
+          "line": 1,
+          "sha256": "207ef0a1bf1ca01802e442bde29be10b2e7828b5e883659b90a35515cd20f224",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/nodeattrs.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.nodes",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-nodes.html",
+      "target_anchor": "cat-nodes",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/nodes.asciidoc",
+          "line": 1,
+          "sha256": "b0bbf4c82308c2a50fca3abdee23aa110f1bb99f7c3938933f6e1f44e244f257",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/nodes.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.pending_tasks",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-pending-tasks.html",
+      "target_anchor": "cat-pending-tasks",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/pending_tasks.asciidoc",
+          "line": 1,
+          "sha256": "f0726ce45a02e38f1f27df8397a86ad43e9b9ce7018ebbdeae70a40fe289c64e",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/pending_tasks.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.plugins",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-plugins.html",
+      "target_anchor": "cat-plugins",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/plugins.asciidoc",
+          "line": 1,
+          "sha256": "f6dcd8a95732eafd8fa5ba6cde3aaf7bdd6b3e5ee6a4a781fa532cf640246a4a",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/plugins.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.recovery",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-recovery.html",
+      "target_anchor": "cat-recovery",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/recovery.asciidoc",
+          "line": 1,
+          "sha256": "61d7a8afc90cf551d5e65c29576d95da84aaafc68849de0784ee619b0c0e95b7",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/recovery.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.repositories",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-repositories.html",
+      "target_anchor": "cat-repositories",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/repositories.asciidoc",
+          "line": 1,
+          "sha256": "c2be7bb5027cd3b9525960ab66220d3ac07136f90c70379531c94e476be1d54a",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/repositories.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.segments",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-segments.html",
+      "target_anchor": "cat-segments",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/segments.asciidoc",
+          "line": 1,
+          "sha256": "06ebc8f89494a18770aab190b3895bdbe8bab6ecf71d7c4cc3d849f4641e72b3",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/segments.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.shards",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-shards.html",
+      "target_anchor": "cat-shards",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/shards.asciidoc",
+          "line": 1,
+          "sha256": "09251677cd52d9b700f1ed2ad253ccb03ca6ff58cd50a111d8d9782f0e1c5b06",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/shards.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.snapshots",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-snapshots.html",
+      "target_anchor": "cat-snapshots",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/snapshots.asciidoc",
+          "line": 1,
+          "sha256": "15ab881ae84a54a688d3d8fd5114528fd6dd006202cd7c9c02beff732847a326",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/snapshots.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.tasks",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html",
+      "target_anchor": "tasks",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/tasks.asciidoc",
+          "line": 1,
+          "sha256": "c4e6c5787f8f26f2b274f36d745ef9b8fcf69398200b47a9793d4655667e8cfb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/tasks.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.templates",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-templates.html",
+      "target_anchor": "cat-templates",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/templates.asciidoc",
+          "line": 1,
+          "sha256": "94b12745d240cebe38328f2fdeb9e752974461effb6eea8c097c3c56c4b74aa3",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/templates.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cat.thread_pool",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-thread-pool.html",
+      "target_anchor": "cat-thread-pool",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cat/thread_pool.asciidoc",
+          "line": 1,
+          "sha256": "7f1bff23d261fa5f9dfd91ddbdf925321854bd4fbd36df468b7bfd38679a285d",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cat/thread_pool.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "clear_scroll",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll",
+      "target_anchor": "request-body-search-scroll",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/request/scroll.asciidoc",
+          "line": 1,
+          "sha256": "9cf93739e85eb3419a376416af2e5007b0233336ae19daafca9c310f6d85b9f1",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/request/scroll.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cluster.allocation_explain",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-allocation-explain.html",
+      "target_anchor": "cluster-allocation-explain",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/allocation-explain.asciidoc",
+          "line": 1,
+          "sha256": "4f3e6c9da5ecc49df9364953013fcda3b810bfb0752b2f3274af9e1a984b4822",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/allocation-explain.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cluster.get_settings",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-update-settings.html",
+      "target_anchor": "cluster-update-settings",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/update-settings.asciidoc",
+          "line": 1,
+          "sha256": "12f4a33d8d085ddfe571c102a416e1dcb86f8fa9eaa3be075395e280e8686700",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/update-settings.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cluster.health",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-health.html",
+      "target_anchor": "cluster-health",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/health.asciidoc",
+          "line": 1,
+          "sha256": "3f128d67e7c9d833ffe9f7ab82fa5ccfcaa38e55a3fb5c8d34ca1515f404775f",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/health.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cluster.pending_tasks",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-pending.html",
+      "target_anchor": "cluster-pending",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/pending.asciidoc",
+          "line": 1,
+          "sha256": "3c502f2ea8dff0e2c12772b0e6109961e8ef0818779f5e041f0583ff1e281194",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/pending.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cluster.put_settings",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-update-settings.html",
+      "target_anchor": "cluster-update-settings",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/update-settings.asciidoc",
+          "line": 1,
+          "sha256": "12f4a33d8d085ddfe571c102a416e1dcb86f8fa9eaa3be075395e280e8686700",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/update-settings.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cluster.remote_info",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-remote-info.html",
+      "target_anchor": "cluster-remote-info",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/remote-info.asciidoc",
+          "line": 1,
+          "sha256": "37301a8b122a99824466a610dfd3a359f530753b14b50dc033c4c9ad9a327e41",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/remote-info.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cluster.reroute",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-reroute.html",
+      "target_anchor": "cluster-reroute",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/reroute.asciidoc",
+          "line": 1,
+          "sha256": "6811ba84be9da6360301ec47cefeb60f52f25032bdf9996cbdf7a4fb37d00055",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/reroute.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cluster.state",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-state.html",
+      "target_anchor": "cluster-state",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/state.asciidoc",
+          "line": 1,
+          "sha256": "f34ef47f2f0ffa9301deb1fbc74d8197d21d5b4fe684c78d14e2bc646cdb1b85",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/state.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "cluster.stats",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-stats.html",
+      "target_anchor": "cluster-stats",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/stats.asciidoc",
+          "line": 1,
+          "sha256": "27eb3bb1eb78614c41eeff556ef609b7e47eb03bcc304cfdf658792f95afd58e",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/stats.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "count",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html",
+      "target_anchor": "search-count",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/count.asciidoc",
+          "line": 1,
+          "sha256": "3d03419e9ea8b37eab32c5e3bb3d253d9fc394f11a5f3de15a8d4d4d619d9363",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/count.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "create",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
+      "target_anchor": "docs-index_",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/index_.asciidoc",
+          "line": 1,
+          "sha256": "67c5ed32e97ae5e335a60bf3cb907a55fb936275f280f2e97af3fb8edb713a3d",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/index_.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "delete",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html",
+      "target_anchor": "docs-delete",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/delete.asciidoc",
+          "line": 1,
+          "sha256": "5b43df742c8ea3d2bf81263eb62fcd4023433b8262f07cacecad2596e792b6ef",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/delete.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "delete_by_query",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete-by-query.html",
+      "target_anchor": "docs-delete-by-query",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/delete-by-query.asciidoc",
+          "line": 1,
+          "sha256": "46dac1b4bd67ad533d17d7c6a3f655d074e6d7ce5d683c0654e9cce1d8e8df59",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/delete-by-query.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "delete_by_query_rethrottle",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html",
+      "target_anchor": "docs-delete-by-query",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/delete-by-query.asciidoc",
+          "line": 1,
+          "sha256": "46dac1b4bd67ad533d17d7c6a3f655d074e6d7ce5d683c0654e9cce1d8e8df59",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/delete-by-query.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "delete_script",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
+      "target_anchor": "modules-scripting",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/scripting.asciidoc",
+          "line": 1,
+          "sha256": "6ad88487a928fabcbf8de33efd73499476d24ba47e917c8f5f43b0b85564a840",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/scripting.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "exists",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
+      "target_anchor": "docs-get",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/get.asciidoc",
+          "line": 1,
+          "sha256": "8076e7636c9b50ac3556384cde76d3a254b3eb062bb59ed6c1cce8217c3cecbb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/get.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "exists_source",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
+      "target_anchor": "docs-get",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/get.asciidoc",
+          "line": 1,
+          "sha256": "8076e7636c9b50ac3556384cde76d3a254b3eb062bb59ed6c1cce8217c3cecbb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/get.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "explain",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/search-explain.html",
+      "target_anchor": "search-explain",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/explain.asciidoc",
+          "line": 1,
+          "sha256": "fe51f56a95265cb1bed1aaee45b454f5fb03224cab3ff87fa2a091699857ef00",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/explain.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "field_caps",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html",
+      "target_anchor": "search-field-caps",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/field-caps.asciidoc",
+          "line": 1,
+          "sha256": "06c4e3212dd7946125046c9c7b535cab0f6ae35804063a4753df6289214bac93",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/field-caps.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "get",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
+      "target_anchor": "docs-get",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/get.asciidoc",
+          "line": 1,
+          "sha256": "8076e7636c9b50ac3556384cde76d3a254b3eb062bb59ed6c1cce8217c3cecbb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/get.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "get_script",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
+      "target_anchor": "modules-scripting",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/scripting.asciidoc",
+          "line": 1,
+          "sha256": "6ad88487a928fabcbf8de33efd73499476d24ba47e917c8f5f43b0b85564a840",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/scripting.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "get_source",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
+      "target_anchor": "docs-get",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/get.asciidoc",
+          "line": 1,
+          "sha256": "8076e7636c9b50ac3556384cde76d3a254b3eb062bb59ed6c1cce8217c3cecbb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/get.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "index",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
+      "target_anchor": "docs-index_",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/index_.asciidoc",
+          "line": 1,
+          "sha256": "67c5ed32e97ae5e335a60bf3cb907a55fb936275f280f2e97af3fb8edb713a3d",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/index_.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.analyze",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-analyze.html",
+      "target_anchor": "indices-analyze",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/analyze.asciidoc",
+          "line": 1,
+          "sha256": "0be686ea6b09b9707a53a31219fe041cfbce39db33ab377c6d8e272413a75368",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/analyze.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.clear_cache",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-clearcache.html",
+      "target_anchor": "indices-clearcache",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/clearcache.asciidoc",
+          "line": 1,
+          "sha256": "a630527883c364597a023be625b61e942ec970738de46dfca344dc166e0ea975",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/clearcache.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.close",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-open-close.html",
+      "target_anchor": "indices-open-close",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/open-close.asciidoc",
+          "line": 1,
+          "sha256": "eb243cb0674e967ce10ccbb847d5540d439c4ef6fd0064f8a5e79ece9dea1dfe",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/open-close.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.create",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-create-index.html",
+      "target_anchor": "indices-create-index",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/create-index.asciidoc",
+          "line": 1,
+          "sha256": "096b980aa0e42f423d18dfeb4f196a9649e226e3084cc22525f6f6d7f4962155",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/create-index.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.delete",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html",
+      "target_anchor": "indices-delete-index",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/delete-index.asciidoc",
+          "line": 1,
+          "sha256": "897a414c85172728d86dc01a9a1146a04b2c9351cdfed115aaf46c9fefbc7353",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/delete-index.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.delete_alias",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
+      "target_anchor": "indices-aliases",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/aliases.asciidoc",
+          "line": 1,
+          "sha256": "425cbfa1b4d997d69fcd1d989005169d180d81ee23f145d289c636d7bf344fdb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/aliases.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.delete_template",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
+      "target_anchor": "indices-templates",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/templates.asciidoc",
+          "line": 1,
+          "sha256": "7fe93dee3dbab21fede666494403a82eadf2de3f72e30c3e41a6d5f56385a1e7",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/templates.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.exists",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-exists.html",
+      "target_anchor": "indices-exists",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/indices-exists.asciidoc",
+          "line": 1,
+          "sha256": "e4d5d9f0e15924e854c5f8d2ab50f40de03f7e3d1b0f0a30369f30fe09ebcc2d",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/indices-exists.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.exists_alias",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
+      "target_anchor": "indices-aliases",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/aliases.asciidoc",
+          "line": 1,
+          "sha256": "425cbfa1b4d997d69fcd1d989005169d180d81ee23f145d289c636d7bf344fdb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/aliases.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.exists_template",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
+      "target_anchor": "indices-templates",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/templates.asciidoc",
+          "line": 1,
+          "sha256": "7fe93dee3dbab21fede666494403a82eadf2de3f72e30c3e41a6d5f56385a1e7",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/templates.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.exists_type",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-types-exists.html",
+      "target_anchor": "indices-types-exists",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/types-exists.asciidoc",
+          "line": 1,
+          "sha256": "a58aa245fb197c950e61db1d6e01d55bfbea790b33f11ba149baf68c0401ee2c",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/types-exists.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.flush",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-flush.html",
+      "target_anchor": "indices-flush",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/flush.asciidoc",
+          "line": 1,
+          "sha256": "a724e083af8587baf7a040347cbb809831489cf09f7e5798315d49396dc28caf",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/flush.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.flush_synced",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-flush.html#synced-flush-api",
+      "target_anchor": "synced-flush-api",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/flush.asciidoc",
+          "line": 50,
+          "sha256": "a724e083af8587baf7a040347cbb809831489cf09f7e5798315d49396dc28caf",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/flush.asciidoc#L50"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.forcemerge",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-forcemerge.html",
+      "target_anchor": "indices-forcemerge",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/forcemerge.asciidoc",
+          "line": 1,
+          "sha256": "4976e36e2ca4ea781292d531c57c95415c3878ca5f452a2a00a1f00851886467",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/forcemerge.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.get",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-index.html",
+      "target_anchor": "indices-get-index",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/get-index.asciidoc",
+          "line": 1,
+          "sha256": "6ef5bd3706d90564413100523e9930b36704d236e36a1f95b6fde831bfd639c3",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/get-index.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.get_alias",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
+      "target_anchor": "indices-aliases",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/aliases.asciidoc",
+          "line": 1,
+          "sha256": "425cbfa1b4d997d69fcd1d989005169d180d81ee23f145d289c636d7bf344fdb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/aliases.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.get_field_mapping",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-field-mapping.html",
+      "target_anchor": "indices-get-field-mapping",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/get-field-mapping.asciidoc",
+          "line": 1,
+          "sha256": "5c182a898bbe6c6683be3fd5661203177610b8764e8957b2a8858ce7c67d4cc9",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/get-field-mapping.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.get_mapping",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html",
+      "target_anchor": "indices-get-mapping",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/get-mapping.asciidoc",
+          "line": 1,
+          "sha256": "0167e545fc5673956c8ba1fe47f371f070a3c19f77d40a6507d3636a899ea3af",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/get-mapping.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.get_settings",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html",
+      "target_anchor": "indices-get-settings",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/get-settings.asciidoc",
+          "line": 1,
+          "sha256": "961b06fa17372ecafb81937c1dee9d9fff2185a9ea1cf0a0dbb0f542cf39b3bf",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/get-settings.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.get_template",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
+      "target_anchor": "indices-templates",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/templates.asciidoc",
+          "line": 1,
+          "sha256": "7fe93dee3dbab21fede666494403a82eadf2de3f72e30c3e41a6d5f56385a1e7",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/templates.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.get_upgrade",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
+      "target_anchor": "indices-upgrade",
+      "pinned_anchor_matches": [],
+      "review_state": "unresolved-documentation"
+    },
+    {
+      "api_id": "indices.open",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-open-close.html",
+      "target_anchor": "indices-open-close",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/open-close.asciidoc",
+          "line": 1,
+          "sha256": "eb243cb0674e967ce10ccbb847d5540d439c4ef6fd0064f8a5e79ece9dea1dfe",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/open-close.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.put_alias",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
+      "target_anchor": "indices-aliases",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/aliases.asciidoc",
+          "line": 1,
+          "sha256": "425cbfa1b4d997d69fcd1d989005169d180d81ee23f145d289c636d7bf344fdb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/aliases.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.put_mapping",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html",
+      "target_anchor": "indices-put-mapping",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/put-mapping.asciidoc",
+          "line": 1,
+          "sha256": "305964f4b3854fd6291d2d2f67dad90a19fe91f6239c6a9d68f493aceea659a9",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/put-mapping.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.put_settings",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html",
+      "target_anchor": "indices-update-settings",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/update-settings.asciidoc",
+          "line": 1,
+          "sha256": "9730345bd3b3edb0a0bc484958661bc0b03ccc7a620220aea03458c6a8e683d3",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/update-settings.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.put_template",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
+      "target_anchor": "indices-templates",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/templates.asciidoc",
+          "line": 1,
+          "sha256": "7fe93dee3dbab21fede666494403a82eadf2de3f72e30c3e41a6d5f56385a1e7",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/templates.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.recovery",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-recovery.html",
+      "target_anchor": "indices-recovery",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/recovery.asciidoc",
+          "line": 1,
+          "sha256": "3a062a2fae2ea5940d47751505f53ee6cadef0c02d40c27b36cc18d57f018a88",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/recovery.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.refresh",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html",
+      "target_anchor": "indices-refresh",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/refresh.asciidoc",
+          "line": 1,
+          "sha256": "d0db8060b5c946e7328ba09c004c824886152511cb149c767ec4ad1ecb051266",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/refresh.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.rollover",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-rollover-index.html",
+      "target_anchor": "indices-rollover-index",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/rollover-index.asciidoc",
+          "line": 1,
+          "sha256": "b387eb17990988a728e52b7cb6754b2db21f9bdf0bb1fd9c24939759c95eeee6",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/rollover-index.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.segments",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-segments.html",
+      "target_anchor": "indices-segments",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/segments.asciidoc",
+          "line": 1,
+          "sha256": "4a6dbc72c664e48ee4891e058d45dfecda59281e89d77f721387f0c59ef0ca8e",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/segments.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.shard_stores",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-shards-stores.html",
+      "target_anchor": "indices-shards-stores",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/shard-stores.asciidoc",
+          "line": 1,
+          "sha256": "0889b759e1d84d6746a1a0bf945d400d25a452891c075fc58796427243148213",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/shard-stores.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.shrink",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-shrink-index.html",
+      "target_anchor": "indices-shrink-index",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/shrink-index.asciidoc",
+          "line": 1,
+          "sha256": "4268d661bfdb12e54ee68bbf6f35f368c431990724187fe7d450cfcf38143207",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/shrink-index.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.split",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-split-index.html",
+      "target_anchor": "indices-split-index",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/split-index.asciidoc",
+          "line": 1,
+          "sha256": "13e88016eedb785fa63c04adfc333e971a26ae3b97762be5a07dce16db91286b",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/split-index.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.stats",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-stats.html",
+      "target_anchor": "indices-stats",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/stats.asciidoc",
+          "line": 1,
+          "sha256": "01a701b9d1c9c415e2b56d71b1e07b904eb219c1787524f88cde337fd2dc5f4f",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/stats.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.update_aliases",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
+      "target_anchor": "indices-aliases",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/indices/aliases.asciidoc",
+          "line": 1,
+          "sha256": "425cbfa1b4d997d69fcd1d989005169d180d81ee23f145d289c636d7bf344fdb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/indices/aliases.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "indices.upgrade",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
+      "target_anchor": "indices-upgrade",
+      "pinned_anchor_matches": [],
+      "review_state": "unresolved-documentation"
+    },
+    {
+      "api_id": "indices.validate_query",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html",
+      "target_anchor": "search-validate",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/validate.asciidoc",
+          "line": 1,
+          "sha256": "8d372be89a8fb5ef1fdf2d425d779d19e3be4f72c31a122f5928ca353edb2e49",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/validate.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "info",
+      "upstream_documentation_url": "http://www.elastic.co/guide/",
+      "target_anchor": "guide",
+      "pinned_anchor_matches": [],
+      "review_state": "unresolved-documentation"
+    },
+    {
+      "api_id": "ingest.delete_pipeline",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-pipeline-api.html",
+      "target_anchor": "delete-pipeline-api",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/ingest/apis/delete-pipeline.asciidoc",
+          "line": 1,
+          "sha256": "f7a32fad808f79c2f5d520fd93f72903c987ed61d4cecea923cfccc0252fe134",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/ingest/apis/delete-pipeline.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "ingest.get_pipeline",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-pipeline-api.html",
+      "target_anchor": "get-pipeline-api",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/ingest/apis/get-pipeline.asciidoc",
+          "line": 1,
+          "sha256": "1d2ba17cf011d44406e6724598476cf4649e099a345a0c1954e7b88a43dacb7e",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/ingest/apis/get-pipeline.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "ingest.processor_grok",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/grok-processor.html#grok-processor-rest-get",
+      "target_anchor": "grok-processor-rest-get",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/ingest/processors/grok.asciidoc",
+          "line": 281,
+          "sha256": "688dc7c46815946043ed814de100bc083878e790694164c5393ce6359106649d",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/ingest/processors/grok.asciidoc#L281"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "ingest.put_pipeline",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-pipeline-api.html",
+      "target_anchor": "put-pipeline-api",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/ingest/apis/put-pipeline.asciidoc",
+          "line": 1,
+          "sha256": "10ee9a59d7ef03d35802686e52d872f594a6ce9db3eefa783601ccfe644bbff3",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/ingest/apis/put-pipeline.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "ingest.simulate",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html",
+      "target_anchor": "simulate-pipeline-api",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/ingest/apis/simulate-pipeline.asciidoc",
+          "line": 2,
+          "sha256": "50e9e830d633153d5d7dabc38d4e89703430f6c179bfc7f351536cdbd081a9ae",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/ingest/apis/simulate-pipeline.asciidoc#L2"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "mget",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html",
+      "target_anchor": "docs-multi-get",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/multi-get.asciidoc",
+          "line": 1,
+          "sha256": "765ec41549626a9646d7d13160457cf7e0580546006da0f7f40663469a71d5eb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/multi-get.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "msearch",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html",
+      "target_anchor": "search-multi-search",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/multi-search.asciidoc",
+          "line": 1,
+          "sha256": "6f4374d94c9cfa7c064469851cde4417ae1e88c09ea5510d5737cd93445d5a57",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/multi-search.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "msearch_template",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html",
+      "target_anchor": "search-multi-search",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/multi-search.asciidoc",
+          "line": 1,
+          "sha256": "6f4374d94c9cfa7c064469851cde4417ae1e88c09ea5510d5737cd93445d5a57",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/multi-search.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "mtermvectors",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html",
+      "target_anchor": "docs-multi-termvectors",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/multi-termvectors.asciidoc",
+          "line": 1,
+          "sha256": "13b415b2556204920a4c738b4e0f5e60b4094e4f347521b5318482190a793aa8",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/multi-termvectors.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "nodes.hot_threads",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-hot-threads.html",
+      "target_anchor": "cluster-nodes-hot-threads",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/nodes-hot-threads.asciidoc",
+          "line": 1,
+          "sha256": "53ce1164881fee020ac9313abbc2540631236e93e9148b6243602a0166106ed3",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/nodes-hot-threads.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "nodes.info",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-info.html",
+      "target_anchor": "cluster-nodes-info",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/nodes-info.asciidoc",
+          "line": 1,
+          "sha256": "6c136aec50a1bddbb649e7fad0cd973876cbf9ce2d6a1eaa657b0a2da15df7fe",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/nodes-info.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "nodes.reload_secure_settings",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/secure-settings.html#reloadable-secure-settings",
+      "target_anchor": "reloadable-secure-settings",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/setup/secure-settings.asciidoc",
+          "line": 112,
+          "sha256": "9ba8ec586989bc77ebecbe76e30f7475df9ee4e666d5c92b6e9c2af3d654b96a",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/setup/secure-settings.asciidoc#L112"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "nodes.stats",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-stats.html",
+      "target_anchor": "cluster-nodes-stats",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/nodes-stats.asciidoc",
+          "line": 1,
+          "sha256": "3e00322379075f35e6c4da7308458971c9ffb8aac768c74dec614ff6aea2750f",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/nodes-stats.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "nodes.usage",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-usage.html",
+      "target_anchor": "cluster-nodes-usage",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/nodes-usage.asciidoc",
+          "line": 1,
+          "sha256": "c8be7603e110f8bf24356b94dbf8bff6ac047e6ecfed325ef40355f0067dd1b5",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/nodes-usage.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "ping",
+      "upstream_documentation_url": "http://www.elastic.co/guide/",
+      "target_anchor": "guide",
+      "pinned_anchor_matches": [],
+      "review_state": "unresolved-documentation"
+    },
+    {
+      "api_id": "put_script",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
+      "target_anchor": "modules-scripting",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/scripting.asciidoc",
+          "line": 1,
+          "sha256": "6ad88487a928fabcbf8de33efd73499476d24ba47e917c8f5f43b0b85564a840",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/scripting.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "rank_eval",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html",
+      "target_anchor": "search-rank-eval",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/rank-eval.asciidoc",
+          "line": 1,
+          "sha256": "5ed3b9a0b7d4b21465007330f1cab01660e95522744c0044435a970079fbbcf6",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/rank-eval.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "reindex",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html",
+      "target_anchor": "docs-reindex",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/reindex.asciidoc",
+          "line": 1,
+          "sha256": "c5717e1c83fe6d631ad53dc936bf5d25321a4fa2016a0fbf1c696af01dc2ffa5",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/reindex.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "reindex_rethrottle",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html",
+      "target_anchor": "docs-reindex",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/reindex.asciidoc",
+          "line": 1,
+          "sha256": "c5717e1c83fe6d631ad53dc936bf5d25321a4fa2016a0fbf1c696af01dc2ffa5",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/reindex.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "render_search_template",
+      "upstream_documentation_url": "http://www.elasticsearch.org/guide/en/elasticsearch/reference/master/search-template.html",
+      "target_anchor": "search-template",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/search-template.asciidoc",
+          "line": 1,
+          "sha256": "b516e3ef64169ef4b6a9130eff0e54948679e9f03d76cf123fd18741f227a51c",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/search-template.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "scripts_painless_context",
+      "upstream_documentation_url": null,
+      "target_anchor": "",
+      "pinned_anchor_matches": [],
+      "review_state": "unresolved-documentation"
+    },
+    {
+      "api_id": "scripts_painless_execute",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html",
+      "target_anchor": "painless-execute-api",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/painless/painless-guide/painless-execute-script.asciidoc",
+          "line": 1,
+          "sha256": "d89e773c7b42c75b17270556f0c2d43130c49222975023ba29b134bfb877f68f",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/painless/painless-guide/painless-execute-script.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "scroll",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll",
+      "target_anchor": "request-body-search-scroll",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/request/scroll.asciidoc",
+          "line": 1,
+          "sha256": "9cf93739e85eb3419a376416af2e5007b0233336ae19daafca9c310f6d85b9f1",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/request/scroll.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "search",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html",
+      "target_anchor": "search-search",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/search.asciidoc",
+          "line": 1,
+          "sha256": "a1f629a2ea16494eb0a130ad17c8ce73ee08f6ead28747e68e2464f4b403b8e6",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/search.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "search_shards",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/search-shards.html",
+      "target_anchor": "search-shards",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/search-shards.asciidoc",
+          "line": 1,
+          "sha256": "78947008dc5ea24d56ddf3086a5765c8753f990e3b54ef80c69483d810f40142",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/search-shards.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "search_template",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html",
+      "target_anchor": "search-template",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/search/search-template.asciidoc",
+          "line": 1,
+          "sha256": "b516e3ef64169ef4b6a9130eff0e54948679e9f03d76cf123fd18741f227a51c",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/search/search-template.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "snapshot.create",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "target_anchor": "modules-snapshots",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/modules/snapshots.asciidoc",
+          "line": 1,
+          "sha256": "5bdc9713a3574a59528bb12237662dee90ca09d97e6ab5e6905c81ec9be828f2",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/modules/snapshots.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "snapshot.create_repository",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "target_anchor": "modules-snapshots",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/modules/snapshots.asciidoc",
+          "line": 1,
+          "sha256": "5bdc9713a3574a59528bb12237662dee90ca09d97e6ab5e6905c81ec9be828f2",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/modules/snapshots.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "snapshot.delete",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "target_anchor": "modules-snapshots",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/modules/snapshots.asciidoc",
+          "line": 1,
+          "sha256": "5bdc9713a3574a59528bb12237662dee90ca09d97e6ab5e6905c81ec9be828f2",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/modules/snapshots.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "snapshot.delete_repository",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "target_anchor": "modules-snapshots",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/modules/snapshots.asciidoc",
+          "line": 1,
+          "sha256": "5bdc9713a3574a59528bb12237662dee90ca09d97e6ab5e6905c81ec9be828f2",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/modules/snapshots.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "snapshot.get",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "target_anchor": "modules-snapshots",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/modules/snapshots.asciidoc",
+          "line": 1,
+          "sha256": "5bdc9713a3574a59528bb12237662dee90ca09d97e6ab5e6905c81ec9be828f2",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/modules/snapshots.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "snapshot.get_repository",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "target_anchor": "modules-snapshots",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/modules/snapshots.asciidoc",
+          "line": 1,
+          "sha256": "5bdc9713a3574a59528bb12237662dee90ca09d97e6ab5e6905c81ec9be828f2",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/modules/snapshots.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "snapshot.restore",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "target_anchor": "modules-snapshots",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/modules/snapshots.asciidoc",
+          "line": 1,
+          "sha256": "5bdc9713a3574a59528bb12237662dee90ca09d97e6ab5e6905c81ec9be828f2",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/modules/snapshots.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "snapshot.status",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "target_anchor": "modules-snapshots",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/modules/snapshots.asciidoc",
+          "line": 1,
+          "sha256": "5bdc9713a3574a59528bb12237662dee90ca09d97e6ab5e6905c81ec9be828f2",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/modules/snapshots.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "snapshot.verify_repository",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "target_anchor": "modules-snapshots",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/modules/snapshots.asciidoc",
+          "line": 1,
+          "sha256": "5bdc9713a3574a59528bb12237662dee90ca09d97e6ab5e6905c81ec9be828f2",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/modules/snapshots.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "tasks.cancel",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html",
+      "target_anchor": "tasks",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/tasks.asciidoc",
+          "line": 1,
+          "sha256": "c4e6c5787f8f26f2b274f36d745ef9b8fcf69398200b47a9793d4655667e8cfb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/tasks.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "tasks.get",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html",
+      "target_anchor": "tasks",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/tasks.asciidoc",
+          "line": 1,
+          "sha256": "c4e6c5787f8f26f2b274f36d745ef9b8fcf69398200b47a9793d4655667e8cfb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/tasks.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "tasks.list",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html",
+      "target_anchor": "tasks",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/cluster/tasks.asciidoc",
+          "line": 1,
+          "sha256": "c4e6c5787f8f26f2b274f36d745ef9b8fcf69398200b47a9793d4655667e8cfb",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/cluster/tasks.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "termvectors",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html",
+      "target_anchor": "docs-termvectors",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/termvectors.asciidoc",
+          "line": 1,
+          "sha256": "ef419210f35ffc9a7ccdb399ce95a7414970154ddfa4312689acaa1cb173ca0f",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/termvectors.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "update",
+      "upstream_documentation_url": "http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update.html",
+      "target_anchor": "docs-update",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/update.asciidoc",
+          "line": 1,
+          "sha256": "c223411b49aeaadbdd51cf6b54076090c170a7f66dfd396c040131e8e67144e6",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/update.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "update_by_query",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html",
+      "target_anchor": "docs-update-by-query",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/update-by-query.asciidoc",
+          "line": 1,
+          "sha256": "66b686a7ad2042cdda8bacf3d81a841272847717ee2a0e2c47b8f306cd5aa623",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/update-by-query.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    },
+    {
+      "api_id": "update_by_query_rethrottle",
+      "upstream_documentation_url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html",
+      "target_anchor": "docs-update-by-query",
+      "pinned_anchor_matches": [
+        {
+          "path": "docs/reference/docs/update-by-query.asciidoc",
+          "line": 1,
+          "sha256": "66b686a7ad2042cdda8bacf3d81a841272847717ee2a0e2c47b8f306cd5aa623",
+          "url": "https://github.com/elastic/elasticsearch/blob/1c1faf179b40cccb785fb00bf32b2a91176d6c85/docs/reference/docs/update-by-query.asciidoc#L1"
+        }
+      ],
+      "review_state": "anchor-found-review-required"
+    }
+  ],
+  "limitations": [
+    "A documentation link or anchor alone does not establish public visibility.",
+    "Review prose, module registration and exact routes before any scope decision.",
+    "No runtime HTTP executions or API support are inferred.",
+    "Only selected REST reference directories plus explicit Painless execute and secure-settings references scanned; unresolved is not absent.",
+    "Upstream master URLs are metadata only; content fetched at exact release commit."
+  ]
+}

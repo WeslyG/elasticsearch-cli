@@ -1,0 +1,10 @@
+{
+  "docs/research/source-analysis/7.4.2/derived-catalog-sources/ActionModule.java": "6cab0a33791fbe753763f3a2a9d1019e8a85035d80ee69be71d4de8c21a2112e",
+  "docs/research/source-analysis/7.4.2/derived-catalog-sources/RestAddVotingConfigExclusionAction.java": "6ffcfd0dc0b8f43136f164ac9aeca83d1a97ec606ced8157cd87198418564423",
+  "docs/research/source-analysis/7.4.2/derived-catalog-sources/RestClearVotingConfigExclusionsAction.java": "0b5f76e34b3c55e1104cc67f991198818984fd26897d40a9ee04cb85e22c85b8",
+  "docs/research/source-analysis/7.4.2/derived-catalog-sources/voting-exclusions.asciidoc": "efb1c1bbc6a88b992be097363f24885994041e0e6996f9fb7ed5500e653ca532",
+  "docs/research/source-analysis/7.4.2/derived-catalog.json": "4a27aa7579b517d7f263de05ebbb507b94ef0c6166b874e19efdb9421e0b33f7",
+  "docs/research/source-analysis/7.4.2/documentation-facts.json": "413dbe11221d3116de328d6207077775ae63df98bff83aa34349333aa23e26f4",
+  "docs/research/source-analysis/7.4.2/route-scope-facts.json": "04089d76db715bbe99340dcbd45c1f25f2444a1c85671e5fef151ad00a879eed",
+  "docs/research/versions/7.4.2/inventory.json": "2aa910b87ac5a66dbb4aacf6a392608fd35a3f424fdd1a6bdd9557005bed3403"
+}

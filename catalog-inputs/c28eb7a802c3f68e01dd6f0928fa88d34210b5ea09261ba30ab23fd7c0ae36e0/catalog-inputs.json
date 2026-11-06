@@ -1,0 +1,15 @@
+{
+  "kind": "frozen-derived-catalog-inputs-not-runtime-support",
+  "release": "7.5.2",
+  "source_commit": "8bec50e1e0ad29dad5653712cf3bb580cd1afcdf",
+  "files": {
+    "docs/research/source-analysis/7.5.2/derived-catalog-sources/ActionModule.java": "20f28817766d518310127085a33f143c8ef3e9452ba9196f6c29e48f628d2e39",
+    "docs/research/source-analysis/7.5.2/derived-catalog-sources/RestAddVotingConfigExclusionAction.java": "6ffcfd0dc0b8f43136f164ac9aeca83d1a97ec606ced8157cd87198418564423",
+    "docs/research/source-analysis/7.5.2/derived-catalog-sources/RestClearVotingConfigExclusionsAction.java": "0b5f76e34b3c55e1104cc67f991198818984fd26897d40a9ee04cb85e22c85b8",
+    "docs/research/source-analysis/7.5.2/derived-catalog-sources/voting-exclusions.asciidoc": "480054c34f36ab5782dd148b8198e0eed1bcf715beac95540ed5e66d791a77ab",
+    "docs/research/source-analysis/7.5.2/derived-catalog.json": "1409903af83a7f64bdd10a99e961380c4d3d2deba0479dd75e961fa84fcf94d7",
+    "docs/research/source-analysis/7.5.2/documentation-facts.json": "835d01d053c4c49ceae98853121ad06f5855e1d767656f372f21c496b3ddc059",
+    "docs/research/source-analysis/7.5.2/route-scope-facts.json": "ad2f949ce50592ffc17da2cd426e4654a22138ff7a8413ebe5ab320779ee219d",
+    "docs/research/versions/7.5.2/inventory.json": "c5558a09f96658b484ddb4f895889922b67572f721da130710a375aa99ef3911"
+  }
+}

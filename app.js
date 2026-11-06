@@ -315,8 +315,29 @@ async function showCase(row) {
                 source_jsonl_sha256: raw.source_jsonl_sha256, source_ref: raw.source_ref,
                 fixture_context: raw.fixture_context, auxiliary_evidence_sha256: raw.auxiliary_evidence_sha256, driver_outcome: raw.driver_outcome
             });
-            for (const source of raw.code_sources || [])
-                body.append(external(source.url, source.name + " · SHA-256 " + source.sha256));
+            const sourceList = (title, sources, description) => {
+                if (!sources.length) return;
+                const details = el("details");
+                details.append(el("summary", "", title + " · " + sources.length + " файлов"));
+                if (description) details.append(el("p", "", description));
+                const list = el("ul");
+                for (const source of sources) {
+                    const item = el("li");
+                    const link = external(source.url, source.name.split("/").pop() + " · SHA-256 " + source.sha256.slice(0, 12) + "…");
+                    link.title = source.name + "\nSHA-256 " + source.sha256;
+                    item.append(link);
+                    list.append(item);
+                }
+                details.append(list);
+                body.append(details);
+            };
+            if (raw.catalog_inputs)
+                sourceList(
+                    "Замороженные входы каталога",
+                    [raw.catalog_inputs.manifest, raw.catalog_inputs.runner_hashes, ...raw.catalog_inputs.files],
+                    raw.catalog_inputs.files.length + " исходных файлов, manifest и хеши runner подтверждают байты конкретного прогона. Полный путь и SHA-256 — в подсказке ссылки. Это не доказательство полноты API.",
+                );
+            sourceList("Код исходного прогона", raw.code_sources || []);
             return;
         }
         if (record.method)
