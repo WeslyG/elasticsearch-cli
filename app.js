@@ -896,6 +896,45 @@ async function showNativeTLS(run) {
     }
 }
 
+async function showErrorShapes(run) {
+    const body = showDialog("Формат ошибок · " + run.summary.release), token = detailToken;
+    body.append(el("p", "", "Два конкретных ошибочных запроса к настоящему Elasticsearch. Сравниваем настройку подробностей и media type. Эти пробы не означают полноту API."));
+    try {
+        const raw = await getJSON(run.file);
+        if (token !== detailToken || !$("detail").open) return;
+        const table = el("table", "error-shape-table"), head = el("tr");
+        for (const title of ["Подробности", "Media", "Запрос", "HTTP", "error", "Ответ"])
+            head.append(el("th", "", title));
+        table.append(head);
+        for (const record of raw.records.filter(row => row.phase === "selected")) {
+            const tr = el("tr"), value = JSON.parse(record.body_excerpt);
+            for (const text of [
+                record.detailed_errors ? "Включены" : "Выключены",
+                record.v8_compatibility ? "V8 media" : "JSON",
+                record.method + " " + record.path, String(record.status),
+                value.error === undefined ? "—" : typeof value.error,
+            ]) tr.append(el("td", "", text));
+            const td = el("td"), button = el("button", "quiet", "Изучить");
+            button.onclick = () => {
+                const detail = showDialog(raw.summary.release + " · " + record.case);
+                jsonBlock(detail, "Фактический ответ", value);
+                jsonBlock(detail, "Запрос, заголовки, время и SHA-256", record);
+            };
+            td.append(button); tr.append(td); table.append(tr);
+        }
+        body.append(table);
+        jsonBlock(body, "Сводка, ожидание готовности и ограничения", raw.summary);
+        const sources = el("div", "error-shape-sources");
+        for (const source of raw.code_sources)
+            sources.append(external(source.url, source.name + " · SHA-256 " + source.sha256));
+        for (const source of raw.primary_sources)
+            sources.append(external(source.retained_url, source.path + " · SHA-256 " + source.sha256));
+        body.append(sources);
+    } catch (error) {
+        if (token === detailToken) body.append(el("p", "", error.message));
+    }
+}
+
 async function showFaults(run) {
     const body = showDialog("Сетевые отказы · " + run.name), token = detailToken;
     body.append(el("p", "", "Контролируемый прокси внутри worker и настоящий Elasticsearch. Ожидаемая ошибка клиентского запроса может быть успешной проверкой отказа. Эти проверки не увеличивают API-покрытие и не проверяют установленное ядро/CLI."));
@@ -986,6 +1025,11 @@ function renderJournal(payloads) {
             b.onclick = () => showNativeTLS(run);
             article.append(b);
         }
+        for (const run of p.error_shape_runs || []) {
+            const b = el("button", "quiet", "Формат ошибок · " + run.summary.selected_http + " сравнений · JSON / V8 media");
+            b.onclick = () => showErrorShapes(run);
+            article.append(b);
+        }
         for (const run of p.fault_runs || []) {
             const b = el("button", "quiet", "Сетевые отказы · " + run.summary.probes + " проверок · отдельно от REST");
             b.onclick = () => showFaults(run);
@@ -993,6 +1037,7 @@ function renderJournal(payloads) {
         }
         for (const [title, data] of [
             ["Подготовка transport: ошибки стенда", p.transport_setup_failures],
+            ["Подготовка форматов ошибок: неудачные попытки", p.error_shape_setup_failures],
             ["Пропуски fixture (не тесты)", p.applicability],
             ["Попытки и история", p.attempts],
             ["Неразобранные literal route candidates", p.route_candidates],
@@ -1014,6 +1059,8 @@ function renderJournal(payloads) {
         attempts: p.attempts,
         transport_runs: p.transport_runs,
         fault_runs: p.fault_runs,
+        error_shape_runs: p.error_shape_runs,
+        error_shape_setup_failures: p.error_shape_setup_failures,
         transport_setup_failures: p.transport_setup_failures,
         applicability: p.applicability,
         route_candidates: p.route_candidates,

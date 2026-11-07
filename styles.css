@@ -763,3 +763,8 @@ dialog .case-list button {
         transition: none !important;
     }
 }
+
+.error-shape-table { table-layout: fixed; }
+.error-shape-table th, .error-shape-table td { padding: 10px 8px; overflow-wrap: anywhere; }
+.error-shape-table th:nth-child(3) { width: 34%; }
+.error-shape-sources a { display: block; overflow-wrap: anywhere; margin: 8px 0; font: 11px var(--mono); }
