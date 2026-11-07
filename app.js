@@ -898,35 +898,46 @@ async function showNativeTLS(run) {
     }
 }
 
-async function showRankMetricTemplates(run) {
+async function showTemplateFixture(run) {
     const options = run.family === "mustache-boolean-options";
-    const title = options ? "Параметры Mustache" : "Метрики и шаблоны";
+    const stored = run.family === "stored-search-templates";
+    const title = stored ? "Хранимые шаблоны" : options ? "Параметры Mustache" : "Метрики и шаблоны";
+    const description = stored
+        ? "Реальное создание, замена и удаление скрипта, результаты поиска и ошибки отдельных элементов NDJSON."
+        : options
+            ? "Две разрешённые формы и отклоняемые значения в публичном JSON-парсере. Внутренний boolean parser этим не проверялся."
+            : "Три документа, известный порядок и заранее вычисленные метрики. Неудачные попытки сохранены отдельно.";
     const body = showDialog(title + " · " + run.summary.release), token = detailToken;
-    body.append(el("p", "", options
-        ? "Две разрешённые формы и отклоняемые значения в публичном JSON-парсере. Непосредственный boolean parser движка этим не проверялся."
-        : "Изолированный корпус: три документа, известный порядок и заранее вычисленные метрики. Неудачные попытки сохранены отдельно. Это конечный набор сценариев, а не полное покрытие API."));
+    body.append(el("p", "", description + " Это конечный набор сценариев, а не полное покрытие API."));
     try {
         const raw = await getJSON(run.file);
         if (token !== detailToken || !$("detail").open) return;
         jsonBlock(body, "Состояние попытки и ограничения", raw.summary);
-        const table = el("table", "error-shape-table"), head = el("tr");
-        for (const title of ["Сценарий", "HTTP", "Ожидался", "metric_score", "Ответ"])
-            head.append(el("th", "", title));
+        const table = el("table", "template-fixture-table"), head = el("tr");
+        const result = stored ? "API" : options ? "Значение" : "metric_score";
+        for (const heading of ["Сценарий", "HTTP", "Ожидался", result, "Ответ"])
+            head.append(el("th", "", heading));
         table.append(head);
         for (const record of raw.records) {
             const value = record.body_excerpt ? JSON.parse(record.body_excerpt) : null;
             const tr = el("tr");
-            const name = record.option_value === undefined || record.option_value === null ? record.case : record.case + " · " + record.option_value;
-            for (const text of [name, String(record.status), String(record.expected_status), value?.metric_score === undefined ? "—" : String(value.metric_score)])
-                tr.append(el("td", "", text));
+            const field = stored ? record.api_id : options ? record.option_value : value?.metric_score;
+            for (const cell of [record.case, record.status, record.expected_status, field])
+                tr.append(el("td", "", cell == null ? "—" : String(cell)));
             const td = el("td"), button = el("button", "quiet", "Изучить");
             button.onclick = () => {
                 const detail = showDialog(raw.summary.release + " · " + record.case);
-                jsonBlock(detail, "Фактический запрос", {method: record.method, path: record.path, body: record.request_body});
+                const ndjson = typeof record.request_body === "string";
+                jsonBlock(detail, "Фактический запрос", {
+                    method: record.method, path: record.path, body: ndjson ? undefined : record.request_body,
+                });
+                if (ndjson) detail.append(el("h3", "", "Фактический NDJSON"), el("pre", "", record.request_body));
                 jsonBlock(detail, "Фактический ответ", value);
                 jsonBlock(detail, "Заголовки, время, ожидаемый статус и SHA-256", record);
             };
-            td.append(button); tr.append(td); table.append(tr);
+            td.append(button);
+            tr.append(td);
+            table.append(tr);
         }
         body.append(table);
         const sources = el("div", "error-shape-sources");
@@ -1072,13 +1083,19 @@ function renderJournal(payloads) {
         for (const run of p.rank_metric_template_runs || []) {
             const state = run.summary.status === "retained-failed-attempt" ? "неудачная попытка сохранена" : "ответы сверены";
             const b = el("button", "quiet", "Метрики и шаблоны · " + run.summary.actual_http_responses + " HTTP · " + state);
-            b.onclick = () => showRankMetricTemplates(run);
+            b.onclick = () => showTemplateFixture(run);
             article.append(b);
         }
         for (const run of p.mustache_boolean_option_runs || []) {
             const state = run.summary.status === "retained-failed-attempt" ? "первая попытка" : "ответы сверены";
             const b = el("button", "quiet", "Параметры Mustache · " + run.summary.actual_http_responses + " HTTP · " + state);
-            b.onclick = () => showRankMetricTemplates(run);
+            b.onclick = () => showTemplateFixture(run);
+            article.append(b);
+        }
+        for (const run of p.stored_search_template_runs || []) {
+            const state = run.summary.status === "retained-failed-attempt" ? "неудачная попытка сохранена" : "ответы сверены";
+            const b = el("button", "quiet", "Хранимые шаблоны · " + run.summary.actual_http_responses + " HTTP · " + state);
+            b.onclick = () => showTemplateFixture(run);
             article.append(b);
         }
         for (const run of p.error_shape_runs || []) {
@@ -1096,6 +1113,7 @@ function renderJournal(payloads) {
             ["Подготовка форматов ошибок: неудачные попытки", p.error_shape_setup_failures],
             ["Подготовка метрик: неудачные попытки", p.rank_metric_template_setup_failures],
             ["Подготовка Mustache: неудачные попытки", p.mustache_boolean_option_setup_failures],
+            ["Подготовка хранимых шаблонов: неудачные попытки", p.stored_search_template_setup_failures],
             ["Пропуски fixture (не тесты)", p.applicability],
             ["Попытки и история", p.attempts],
             ["Неразобранные literal route candidates", p.route_candidates],
@@ -1120,6 +1138,8 @@ function renderJournal(payloads) {
         error_shape_runs: p.error_shape_runs,
         rank_metric_template_runs: p.rank_metric_template_runs,
         mustache_boolean_option_runs: p.mustache_boolean_option_runs,
+        stored_search_template_runs: p.stored_search_template_runs,
+        stored_search_template_setup_failures: p.stored_search_template_setup_failures,
         mustache_boolean_option_setup_failures: p.mustache_boolean_option_setup_failures,
         rank_metric_template_setup_failures: p.rank_metric_template_setup_failures,
         error_shape_setup_failures: p.error_shape_setup_failures,
