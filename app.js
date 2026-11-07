@@ -447,6 +447,22 @@ async function showContractMatrix(row) {
     }
 }
 
+function supplementalTitle(run) {
+    return {
+        "error-shapes": "Формат ошибок",
+        "rank-metric-templates": "Метрики и шаблоны",
+        "mustache-boolean-options": "Параметры Mustache",
+        "stored-search-templates": "Хранимые шаблоны",
+    }[run.family] || "Дополнительные запросы";
+}
+
+function supplementalMatch(record, {api, method: requestMethod} = {}) {
+    if (!api && !requestMethod) return true;
+    if (record.status == null) return false;
+    const actualApi = record.api_id || (record.path.split("?", 1)[0].endsWith("/_rank_eval") ? "rank_eval" : null);
+    return (!api || actualApi === api) && (!requestMethod || record.method === requestMethod);
+}
+
 function showOperation(row) {
     const body = showDialog(row.api),
         meta = el("div", "dialog-meta");
@@ -475,6 +491,22 @@ function showOperation(row) {
         const matrixButton = el("button", "evidence-button", "Матрица методов, путей и query-параметров");
         matrixButton.onclick = () => showContractMatrix(row);
         body.append(matrixButton);
+    }
+    const requestMethod = $("method").value;
+    const extra = el("div", "case-list");
+    for (const run of row.supplemental_evidence || []) {
+        const count = requestMethod
+            ? run.http_by_method[requestMethod] || 0
+            : Object.values(run.http_by_method).reduce((total, value) => total + value, 0);
+        if (!count) continue;
+        const label = supplementalTitle(run) + (requestMethod ? " · " + requestMethod : "") + " · " + count + " HTTP";
+        const b = el("button", "", label + (run.summary.status === "retained-failed-attempt" ? " · первая попытка" : ""));
+        const filters = {api: row.api, method: requestMethod};
+        b.onclick = () => run.family === "error-shapes" ? showErrorShapes(run, filters) : showTemplateFixture(run, filters);
+        extra.append(b);
+    }
+    if (extra.childElementCount) {
+        body.append(el("h3", "", "Дополнительные реальные запросы"), extra);
     }
     if (row.routes.some((r) => !r.path.startsWith("/")))
         body.append(
@@ -898,10 +930,10 @@ async function showNativeTLS(run) {
     }
 }
 
-async function showTemplateFixture(run) {
+async function showTemplateFixture(run, filters = {}) {
     const options = run.family === "mustache-boolean-options";
     const stored = run.family === "stored-search-templates";
-    const title = stored ? "Хранимые шаблоны" : options ? "Параметры Mustache" : "Метрики и шаблоны";
+    const title = supplementalTitle(run);
     const description = stored
         ? "Реальное создание, замена и удаление скрипта, результаты поиска и ошибки отдельных элементов NDJSON."
         : options
@@ -918,7 +950,7 @@ async function showTemplateFixture(run) {
         for (const heading of ["Сценарий", "HTTP", "Ожидался", result, "Ответ"])
             head.append(el("th", "", heading));
         table.append(head);
-        for (const record of raw.records) {
+        for (const record of raw.records.filter(row => supplementalMatch(row, filters))) {
             const value = record.body_excerpt ? JSON.parse(record.body_excerpt) : null;
             const tr = el("tr");
             const field = stored ? record.api_id : options ? record.option_value : value?.metric_score;
@@ -951,7 +983,7 @@ async function showTemplateFixture(run) {
     }
 }
 
-async function showErrorShapes(run) {
+async function showErrorShapes(run, filters = {}) {
     const body = showDialog("Формат ошибок · " + run.summary.release), token = detailToken;
     body.append(el("p", "", "Два конкретных ошибочных запроса к настоящему Elasticsearch. Сравниваем настройку подробностей и media type. Эти пробы не означают полноту API."));
     try {
@@ -961,7 +993,7 @@ async function showErrorShapes(run) {
         for (const title of ["Подробности", "Media", "Запрос", "HTTP", "error", "Ответ"])
             head.append(el("th", "", title));
         table.append(head);
-        for (const record of raw.records.filter(row => row.phase === "selected")) {
+        for (const record of raw.records.filter(row => row.phase === "selected" && supplementalMatch(row, filters))) {
             const tr = el("tr"), value = JSON.parse(record.body_excerpt);
             for (const text of [
                 record.detailed_errors ? "Включены" : "Выключены",
