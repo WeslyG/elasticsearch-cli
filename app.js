@@ -899,8 +899,12 @@ async function showNativeTLS(run) {
 }
 
 async function showRankMetricTemplates(run) {
-    const body = showDialog("Метрики и шаблоны · " + run.summary.release), token = detailToken;
-    body.append(el("p", "", "Изолированный корпус: три документа, известный порядок и заранее вычисленные метрики. Неудачные попытки сохранены отдельно. Это конечный набор сценариев, а не полное покрытие API."));
+    const options = run.family === "mustache-boolean-options";
+    const title = options ? "Параметры Mustache" : "Метрики и шаблоны";
+    const body = showDialog(title + " · " + run.summary.release), token = detailToken;
+    body.append(el("p", "", options
+        ? "Две разрешённые формы и отклоняемые значения в публичном JSON-парсере. Непосредственный boolean parser движка этим не проверялся."
+        : "Изолированный корпус: три документа, известный порядок и заранее вычисленные метрики. Неудачные попытки сохранены отдельно. Это конечный набор сценариев, а не полное покрытие API."));
     try {
         const raw = await getJSON(run.file);
         if (token !== detailToken || !$("detail").open) return;
@@ -912,7 +916,8 @@ async function showRankMetricTemplates(run) {
         for (const record of raw.records) {
             const value = record.body_excerpt ? JSON.parse(record.body_excerpt) : null;
             const tr = el("tr");
-            for (const text of [record.case, String(record.status), String(record.expected_status), value?.metric_score === undefined ? "—" : String(value.metric_score)])
+            const name = record.option_value === undefined || record.option_value === null ? record.case : record.case + " · " + record.option_value;
+            for (const text of [name, String(record.status), String(record.expected_status), value?.metric_score === undefined ? "—" : String(value.metric_score)])
                 tr.append(el("td", "", text));
             const td = el("td"), button = el("button", "quiet", "Изучить");
             button.onclick = () => {
@@ -1070,6 +1075,12 @@ function renderJournal(payloads) {
             b.onclick = () => showRankMetricTemplates(run);
             article.append(b);
         }
+        for (const run of p.mustache_boolean_option_runs || []) {
+            const state = run.summary.status === "retained-failed-attempt" ? "первая попытка" : "ответы сверены";
+            const b = el("button", "quiet", "Параметры Mustache · " + run.summary.actual_http_responses + " HTTP · " + state);
+            b.onclick = () => showRankMetricTemplates(run);
+            article.append(b);
+        }
         for (const run of p.error_shape_runs || []) {
             const b = el("button", "quiet", "Формат ошибок · " + run.summary.selected_http + " сравнений · JSON / V8 media");
             b.onclick = () => showErrorShapes(run);
@@ -1084,6 +1095,7 @@ function renderJournal(payloads) {
             ["Подготовка transport: ошибки стенда", p.transport_setup_failures],
             ["Подготовка форматов ошибок: неудачные попытки", p.error_shape_setup_failures],
             ["Подготовка метрик: неудачные попытки", p.rank_metric_template_setup_failures],
+            ["Подготовка Mustache: неудачные попытки", p.mustache_boolean_option_setup_failures],
             ["Пропуски fixture (не тесты)", p.applicability],
             ["Попытки и история", p.attempts],
             ["Неразобранные literal route candidates", p.route_candidates],
@@ -1107,6 +1119,8 @@ function renderJournal(payloads) {
         fault_runs: p.fault_runs,
         error_shape_runs: p.error_shape_runs,
         rank_metric_template_runs: p.rank_metric_template_runs,
+        mustache_boolean_option_runs: p.mustache_boolean_option_runs,
+        mustache_boolean_option_setup_failures: p.mustache_boolean_option_setup_failures,
         rank_metric_template_setup_failures: p.rank_metric_template_setup_failures,
         error_shape_setup_failures: p.error_shape_setup_failures,
         transport_setup_failures: p.transport_setup_failures,
