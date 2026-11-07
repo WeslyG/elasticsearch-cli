@@ -896,6 +896,43 @@ async function showNativeTLS(run) {
     }
 }
 
+async function showRankMetricTemplates(run) {
+    const body = showDialog("Метрики и шаблоны · " + run.summary.release), token = detailToken;
+    body.append(el("p", "", "Изолированный корпус: три документа, известный порядок и заранее вычисленные метрики. Неудачные попытки сохранены отдельно. Это конечный набор сценариев, а не полное покрытие API."));
+    try {
+        const raw = await getJSON(run.file);
+        if (token !== detailToken || !$("detail").open) return;
+        jsonBlock(body, "Состояние попытки и ограничения", raw.summary);
+        const table = el("table", "error-shape-table"), head = el("tr");
+        for (const title of ["Сценарий", "HTTP", "Ожидался", "metric_score", "Ответ"])
+            head.append(el("th", "", title));
+        table.append(head);
+        for (const record of raw.records) {
+            const value = record.body_excerpt ? JSON.parse(record.body_excerpt) : null;
+            const tr = el("tr");
+            for (const text of [record.case, String(record.status), String(record.expected_status), value?.metric_score === undefined ? "—" : String(value.metric_score)])
+                tr.append(el("td", "", text));
+            const td = el("td"), button = el("button", "quiet", "Изучить");
+            button.onclick = () => {
+                const detail = showDialog(raw.summary.release + " · " + record.case);
+                jsonBlock(detail, "Фактический запрос", {method: record.method, path: record.path, body: record.request_body});
+                jsonBlock(detail, "Фактический ответ", value);
+                jsonBlock(detail, "Заголовки, время, ожидаемый статус и SHA-256", record);
+            };
+            td.append(button); tr.append(td); table.append(tr);
+        }
+        body.append(table);
+        const sources = el("div", "error-shape-sources");
+        for (const source of raw.code_sources)
+            sources.append(external(source.url, source.name + " · SHA-256 " + source.sha256));
+        for (const source of raw.primary_sources)
+            sources.append(external(source.retained_url, source.path + " · SHA-256 " + source.sha256));
+        body.append(sources);
+    } catch (error) {
+        if (token === detailToken) body.append(el("p", "", error.message));
+    }
+}
+
 async function showErrorShapes(run) {
     const body = showDialog("Формат ошибок · " + run.summary.release), token = detailToken;
     body.append(el("p", "", "Два конкретных ошибочных запроса к настоящему Elasticsearch. Сравниваем настройку подробностей и media type. Эти пробы не означают полноту API."));
@@ -1025,6 +1062,12 @@ function renderJournal(payloads) {
             b.onclick = () => showNativeTLS(run);
             article.append(b);
         }
+        for (const run of p.rank_metric_template_runs || []) {
+            const state = run.summary.status === "retained-failed-attempt" ? "неудачная попытка сохранена" : "ответы сверены";
+            const b = el("button", "quiet", "Метрики и шаблоны · " + run.summary.actual_http_responses + " HTTP · " + state);
+            b.onclick = () => showRankMetricTemplates(run);
+            article.append(b);
+        }
         for (const run of p.error_shape_runs || []) {
             const b = el("button", "quiet", "Формат ошибок · " + run.summary.selected_http + " сравнений · JSON / V8 media");
             b.onclick = () => showErrorShapes(run);
@@ -1038,6 +1081,7 @@ function renderJournal(payloads) {
         for (const [title, data] of [
             ["Подготовка transport: ошибки стенда", p.transport_setup_failures],
             ["Подготовка форматов ошибок: неудачные попытки", p.error_shape_setup_failures],
+            ["Подготовка метрик: неудачные попытки", p.rank_metric_template_setup_failures],
             ["Пропуски fixture (не тесты)", p.applicability],
             ["Попытки и история", p.attempts],
             ["Неразобранные literal route candidates", p.route_candidates],
@@ -1060,6 +1104,8 @@ function renderJournal(payloads) {
         transport_runs: p.transport_runs,
         fault_runs: p.fault_runs,
         error_shape_runs: p.error_shape_runs,
+        rank_metric_template_runs: p.rank_metric_template_runs,
+        rank_metric_template_setup_failures: p.rank_metric_template_setup_failures,
         error_shape_setup_failures: p.error_shape_setup_failures,
         transport_setup_failures: p.transport_setup_failures,
         applicability: p.applicability,
