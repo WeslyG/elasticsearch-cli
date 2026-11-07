@@ -261,6 +261,8 @@ function showDialog(title) {
     const body = $("detailBody");
     body.replaceChildren(el("h2", "", title));
     if (!$("detail").open) $("detail").showModal();
+    $("detail").scrollTop = 0;
+    $("detail").scrollLeft = 0;
     return body;
 }
 async function showCase(row) {
